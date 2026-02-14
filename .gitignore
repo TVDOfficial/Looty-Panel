@@ -1,4 +1,12 @@
 node_modules/
+data/
+servers/
+backups/
+logs/
+certs/
+.env
+*.db
+*.log
 .DS_Store
 .idea/
 .vscode/

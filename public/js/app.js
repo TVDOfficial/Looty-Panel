@@ -7,12 +7,30 @@ const App = {
 
     init() {
         this.bindEvents();
+        this.initPasswordToggles();
         if (this.user && API.token) {
             this.showApp();
         } else {
             this.checkStatus();
         }
         window.addEventListener('hashchange', () => this.route());
+    },
+
+    initPasswordToggles() {
+        document.querySelectorAll('.password-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const input = btn.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    btn.textContent = '🙈';
+                    btn.title = 'Hide Password';
+                } else {
+                    input.type = 'password';
+                    btn.textContent = '👁️';
+                    btn.title = 'Show Password';
+                }
+            });
+        });
     },
 
     async checkStatus() {
