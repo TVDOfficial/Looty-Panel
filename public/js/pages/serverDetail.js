@@ -75,6 +75,11 @@ Pages.deleteServerConfirm = (id, name) => {
 };
 
 // --- Console Tab ---
+function stripAnsi(str) {
+    if (typeof str !== 'string') return str;
+    return str.replace(/\x1b\[[0-9;]*[a-zA-Z]?/g, '').replace(/\[\d+(?:;\d+)*m/g, '');
+}
+
 function isChatLine(line) {
     return /\]\s*<[^>]+>/.test(line) || /\]\s*\[Server\]/.test(line) || /\[.*\/INFO\].*<\S+>/.test(line);
 }
@@ -91,10 +96,14 @@ Pages.loadTab_console = (serverId) => {
     const state = Pages._consoleState;
 
     container.innerHTML = `
-    <div class="console-toolbar mb-2">
+    <div class="console-toolbar mb-2 flex-between">
       <div class="btn-group">
         <button class="btn btn-sm ${!state.chatMode ? 'btn-primary' : 'btn-secondary'}" id="console-mode-btn">Console</button>
         <button class="btn btn-sm ${state.chatMode ? 'btn-primary' : 'btn-secondary'}" id="chat-mode-btn">Chat</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-sm btn-ghost" id="clear-console-btn" title="Clear console display (client-side only)">Clear Console</button>
+        <button class="btn btn-sm btn-ghost" id="clear-chat-btn" title="Clear chat display (client-side only)">Clear Chat</button>
       </div>
     </div>
     <div class="console-container">
@@ -127,6 +136,16 @@ Pages.loadTab_console = (serverId) => {
 
     modeConsoleBtn.onclick = () => setChatMode(false);
     modeChatBtn.onclick = () => setChatMode(true);
+
+    document.getElementById('clear-console-btn').onclick = () => {
+        state.fullBuffer = [];
+        refreshView();
+    };
+
+    document.getElementById('clear-chat-btn').onclick = () => {
+        state.fullBuffer = state.fullBuffer.filter(l => !isChatLine(l));
+        refreshView();
+    };
 
     // Load existing buffer
     API.get(`/servers/${serverId}/console`).then(data => {
@@ -172,6 +191,7 @@ Pages.loadTab_console = (serverId) => {
 
 function appendConsoleLine(output, line) {
     const div = document.createElement('div');
+    line = stripAnsi(line);
     let cls = '';
     if (line.includes('[Loot Panel]')) cls = 'line-mcpanel';
     else if (line.includes('WARN') || line.includes('WARNING')) cls = 'line-warn';
@@ -187,7 +207,7 @@ Pages.loadTab_files = async (serverId) => {
     const container = document.getElementById('tab-files');
     container.innerHTML = '<div class="loading-screen"><div class="spinner"></div></div>';
 
-    Pages._fileState = { serverId, currentPath: '' };
+    Pages._fileState = { serverId, currentPath: '', selectedItems: Pages._fileState?.selectedItems || [] };
 
     const renderFiles = async (filePath) => {
         Pages._fileState.currentPath = filePath || '';
@@ -203,25 +223,42 @@ Pages.loadTab_files = async (serverId) => {
                 breadcrumb += `<span class="separator">/</span><span onclick="Pages._navFile('${p}')">${part}</span>`;
             }
 
+            const selectedItems = Pages._fileState.selectedItems || [];
+            Pages._fileState.selectedItems = selectedItems;
+            const selectedPaths = selectedItems.map(x => x.path);
             container.innerHTML = `
         <div class="flex-between mb-4">
           <div class="btn-group">
             <button class="btn btn-secondary btn-sm" onclick="Pages._uploadFile()">📤 Upload</button>
             <button class="btn btn-secondary btn-sm" onclick="Pages._newFolder()">📁 New Folder</button>
           </div>
+          <div class="file-mass-actions" id="file-mass-actions" style="display:none">
+            <span class="text-muted" id="file-selected-count">0 selected</span>
+            <select id="file-mass-action-select" class="form-select btn-sm" style="width:auto;margin:0 8px">
+              <option value="">Select action...</option>
+              <option value="download">Download selected</option>
+              <option value="delete">Delete selected</option>
+            </select>
+            <button class="btn btn-primary btn-sm" id="file-mass-apply-btn">Apply</button>
+            <button class="btn btn-ghost btn-sm" id="file-mass-clear-btn">Clear selection</button>
+          </div>
         </div>
         <div class="file-manager" id="file-manager-area">
           <div class="file-tree">
             <div class="file-breadcrumb">${breadcrumb}</div>
+            <div class="file-list-header">
+              <label class="file-checkbox-wrap"><input type="checkbox" id="file-select-all"> Select all</label>
+            </div>
             <div id="file-list"></div>
           </div>
         </div>
       `;
 
             const list = document.getElementById('file-list');
+
             if (filePath) {
                 const parent = filePath.split('/').slice(0, -1).join('/');
-                list.innerHTML = `<div class="file-item" onclick="Pages._navFile('${parent}')"><span class="file-icon">⬆️</span><span class="file-name">..</span></div>`;
+                list.innerHTML = `<div class="file-item file-item-parent" onclick="Pages._navFile('${parent}')"><span class="file-checkbox-spacer"></span><span class="file-icon">⬆️</span><span class="file-name">..</span></div>`;
             } else {
                 list.innerHTML = '';
             }
@@ -232,14 +269,18 @@ Pages.loadTab_files = async (serverId) => {
                 div.dataset.path = item.path;
                 div.dataset.name = item.name;
                 div.dataset.isDir = item.isDirectory ? '1' : '0';
+                const escapedPath = item.path.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                const escapedName = item.name.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                const isSelected = selectedPaths.includes(item.path);
                 div.innerHTML = `
+          <label class="file-checkbox-wrap" onclick="event.stopPropagation()"><input type="checkbox" class="file-item-cb" data-path="${String(item.path).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" data-name="${String(item.name).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" data-isdir="${item.isDirectory ? '1' : '0'}" ${isSelected ? 'checked' : ''}></label>
           <span class="file-icon">${fileIcon(item.name, item.isDirectory)}</span>
           <span class="file-name">${item.name}</span>
           <span class="file-size">${item.isDirectory ? '' : formatBytes(item.size)}</span>
           <div class="file-actions">
-            ${!item.isDirectory ? `<button class="btn-icon" title="Edit" onclick="event.stopPropagation();Pages._editFile('${item.path.replace(/'/g, "\\'")}')" style="font-size:14px">✏️</button>` : ''}
-            ${!item.isDirectory ? `<button class="btn-icon" title="Download" onclick="event.stopPropagation();Pages._downloadFile(${serverId},'${item.path.replace(/'/g, "\\'")}')" style="font-size:14px">⬇️</button>` : ''}
-            <button class="btn-icon" title="Delete" onclick="event.stopPropagation();Pages._deleteFile('${item.path.replace(/'/g, "\\'")}','${item.name.replace(/'/g, "\\'")}')" style="font-size:14px">🗑️</button>
+            ${!item.isDirectory ? `<button class="btn-icon" title="Edit" onclick="event.stopPropagation();Pages._editFile('${escapedPath}')" style="font-size:14px">✏️</button>` : ''}
+            ${!item.isDirectory ? `<button class="btn-icon" title="Download" onclick="event.stopPropagation();Pages._downloadFile(${serverId},'${escapedPath}')" style="font-size:14px">⬇️</button>` : ''}
+            <button class="btn-icon" title="Delete" onclick="event.stopPropagation();Pages._deleteFile('${escapedPath}','${escapedName}')" style="font-size:14px">🗑️</button>
           </div>
         `;
                 if (item.isDirectory) {
@@ -249,6 +290,69 @@ Pages.loadTab_files = async (serverId) => {
                 }
                 list.appendChild(div);
             });
+
+            const updateSelection = () => {
+                const checkboxes = list.querySelectorAll('.file-item-cb');
+                const sel = [];
+                checkboxes.forEach(cb => { if (cb.checked) sel.push({ path: cb.dataset.path, isDir: cb.dataset.isdir === '1' }); });
+                Pages._fileState.selectedItems = sel;
+                const massBar = document.getElementById('file-mass-actions');
+                const countEl = document.getElementById('file-selected-count');
+                if (massBar && countEl) {
+                    massBar.style.display = sel.length ? 'flex' : 'none';
+                    countEl.textContent = sel.length + ' selected';
+                }
+                document.getElementById('file-mass-action-select').value = '';
+            };
+
+            list.querySelectorAll('.file-item-cb').forEach(cb => {
+                cb.onchange = updateSelection;
+            });
+
+            const selectAll = document.getElementById('file-select-all');
+            if (selectAll) {
+                const itemCbs = list.querySelectorAll('.file-item-cb');
+                selectAll.checked = itemCbs.length > 0 && itemCbs.length === list.querySelectorAll('.file-item-cb:checked').length;
+                selectAll.onchange = () => {
+                    const checked = selectAll.checked;
+                    list.querySelectorAll('.file-item-cb').forEach(cb => { cb.checked = checked; });
+                    updateSelection();
+                };
+            }
+
+            const massBar = document.getElementById('file-mass-actions');
+            const massSelect = document.getElementById('file-mass-action-select');
+            const massApply = document.getElementById('file-mass-apply-btn');
+            const massClear = document.getElementById('file-mass-clear-btn');
+            if (massBar) massBar.style.display = selectedPaths.length ? 'flex' : 'none';
+            if (massClear) massClear.onclick = () => {
+                list.querySelectorAll('.file-item-cb').forEach(cb => { cb.checked = false; });
+                if (selectAll) selectAll.checked = false;
+                Pages._fileState.selectedItems = [];
+                massBar.style.display = 'none';
+                document.getElementById('file-selected-count').textContent = '0 selected';
+            };
+            if (massApply && massSelect) massApply.onclick = () => {
+                const action = massSelect.value;
+                const items = [...(Pages._fileState.selectedItems || [])];
+                if (!action || items.length === 0) return;
+                if (action === 'delete') {
+                    if (!confirm(`Delete ${items.length} item(s)?`)) return;
+                    (async () => {
+                        for (const it of items) {
+                            try { await API.request('DELETE', `/servers/${serverId}/files?path=${encodeURIComponent(it.path)}`); }
+                            catch (e) { Toast.error(`Failed: ${it.path}`); }
+                        }
+                        Toast.success('Deleted');
+                        Pages._fileState.selectedItems = [];
+                        renderFiles(Pages._fileState.currentPath);
+                    })();
+                } else if (action === 'download') {
+                    const files = items.filter(it => !it.isDir);
+                    files.forEach((it, i) => setTimeout(() => window.open(`/api/servers/${serverId}/files/download?path=${encodeURIComponent(it.path)}&token=${API.token}`, '_blank'), i * 200));
+                    if (items.length - files.length > 0) Toast.warning('Directories were skipped');
+                }
+            };
 
             // Custom context menu - prevent default browser menu
             const fileArea = document.getElementById('file-manager-area');
