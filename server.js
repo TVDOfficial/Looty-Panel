@@ -155,11 +155,22 @@ async function main() {
     }, 5000);
 
     // ========== Start ==========
+    function onListenError(serverLabel, err) {
+        logger.error('APP', `${serverLabel} failed to listen`, err.message);
+        if (err.code === 'EACCES') {
+            logger.error('APP', 'Port requires administrator. Run as admin or set HTTP_PORT/HTTPS_PORT to 8080/8443 in env.');
+        }
+        if (err.code === 'EADDRINUSE') {
+            logger.error('APP', 'Port already in use. Stop the other app or set HTTP_PORT/HTTPS_PORT to different ports.');
+        }
+    }
+    httpServer.on('error', (err) => onListenError('HTTP', err));
     httpServer.listen(config.HTTP_PORT, config.HOST, () => {
         logger.info('APP', `HTTP server running on http://${config.HOST}:${config.HTTP_PORT}`);
     });
 
     if (httpsServer) {
+        httpsServer.on('error', (err) => onListenError('HTTPS', err));
         httpsServer.listen(config.HTTPS_PORT, config.HOST, () => {
             logger.info('APP', `HTTPS server running on https://${config.HOST}:${config.HTTPS_PORT}`);
         });
