@@ -13,6 +13,12 @@ const API = {
         const res = await fetch(`/api${url}`, opts);
         if (res.status === 401) {
             const errBody = await res.clone().text();
+            let errData = {};
+            try { errData = JSON.parse(errBody); } catch (_) {}
+            const isAuthAttempt = url === '/auth/login' || url === '/auth/setup';
+            if (isAuthAttempt) {
+                throw new Error(errData.error || 'Invalid credentials');
+            }
             console.error('[API] 401 Unauthorized on', method, url, '— Response:', errBody || '(empty)');
             this.clearToken();
             this.token = null;

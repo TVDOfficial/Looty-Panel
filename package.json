@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js --dev"
+    "dev": "node server.js --dev",
+    "optimize-screenshots": "node scripts/optimize-screenshots.js"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -19,5 +20,8 @@
     "unzipper": "^0.12.0",
     "node-forge": "^1.3.1",
     "pidusage": "^3.0.2"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0"
   }
 }

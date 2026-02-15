@@ -247,3 +247,69 @@
 [2026-02-15T01:36:41.509Z] [INFO] [SERVER] Auto-starting server: Lootvoot
 [2026-02-15T01:36:41.512Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
 [2026-02-15T01:38:21.196Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-15T08:14:22.923Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T08:14:27.102Z] [INFO] [SERVER] Server Lootvoot stopped gracefully
+[2026-02-15T08:14:31.646Z] [INFO] [APP] Shutting down...
+[2026-02-15T08:14:34.112Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T08:14:34.117Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-15T08:14:34.119Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T08:14:34.145Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T08:14:34.177Z] [INFO] [DB] Database initialized
+[2026-02-15T08:14:34.289Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-15T08:14:34.323Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-15T08:14:34.326Z] [INFO] [APP] HTTPS server running on https://localhost:443
+[2026-02-15T08:14:34.328Z] [INFO] [APP] HTTP server running on http://localhost:80
+[2026-02-15T08:14:36.335Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-15T08:14:36.337Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-15T08:15:16.431Z] [INFO] [APP] Shutting down...
+[2026-02-15T08:15:16.435Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T08:15:16.782Z] [INFO] [APP] Shutting down...
+[2026-02-15T08:15:16.792Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T08:15:18.714Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T08:15:18.719Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-15T08:15:18.720Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T08:15:18.735Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T08:15:18.758Z] [INFO] [DB] Database initialized
+[2026-02-15T08:15:18.856Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-15T08:15:18.880Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-15T08:15:18.887Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-15T08:15:18.888Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-15T08:15:20.886Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-15T08:15:20.888Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-15T08:16:51.555Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-15T08:18:16.324Z] [INFO] [DAEMON] Service installed successfully
+[2026-02-15T08:18:42.188Z] [INFO] [APP] Shutting down...
+[2026-02-15T08:18:42.191Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T08:18:42.389Z] [INFO] [APP] Shutting down...
+[2026-02-15T08:18:42.392Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T08:18:43.992Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T08:18:43.998Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-15T08:18:44.000Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T08:18:44.036Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T08:18:44.074Z] [INFO] [DB] Database initialized
+[2026-02-15T08:18:44.210Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-15T08:18:44.245Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-15T08:18:44.257Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-15T08:18:44.258Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-15T08:18:46.248Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-15T08:18:46.250Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-15T08:20:05.749Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-15T08:24:13.292Z] [INFO] [APP] Shutting down...
+[2026-02-15T08:24:13.295Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T08:24:13.493Z] [INFO] [APP] Shutting down...
+[2026-02-15T08:24:13.494Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T08:24:15.267Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T08:24:15.271Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-15T08:24:15.272Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T08:24:15.292Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T08:24:15.325Z] [INFO] [DB] Database initialized
+[2026-02-15T08:24:15.469Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-15T08:24:15.513Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-15T08:24:15.524Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-15T08:24:15.526Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-15T08:24:17.529Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-15T08:24:17.531Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-15T08:25:41.403Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-15T08:32:06.944Z] [INFO] [BACKUP] Creating backup for Lootvoot...
+[2026-02-15T08:32:16.790Z] [ERROR] [BACKUP] Backup failed "EBUSY: resource busy or locked, read"
+[2026-02-15T08:32:16.791Z] [ERROR] [ROUTE] Create backup error "EBUSY: resource busy or locked, read"

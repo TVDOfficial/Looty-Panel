@@ -159,6 +159,9 @@ const App = {
         document.getElementById('sidebar-toggle').onclick = () => {
             document.getElementById('sidebar').classList.toggle('open');
         };
+        // Close sidebar when overlay clicked (mobile)
+        const overlay = document.getElementById('sidebar-overlay');
+        if (overlay) overlay.onclick = () => document.getElementById('sidebar').classList.remove('open');
 
         // Nav items
         document.querySelectorAll('.nav-item').forEach(item => {
@@ -273,11 +276,26 @@ const Pages = {};
 Pages.dashboard = async (el) => {
     el.innerHTML = '<div class="loading-screen"><div class="spinner spinner-lg"></div><p>Loading dashboard...</p></div>';
     try {
-        const [servers, sysInfo] = await Promise.all([API.get('/servers'), API.get('/system/info')]);
+        const promises = [API.get('/servers'), API.get('/system/info')];
+        if (App.user?.role === 'admin') promises.push(API.get('/system/daemon').catch(() => null));
+        const results = await Promise.all(promises);
+        const [servers, sysInfo, daemon] = results;
         const running = servers.filter(s => s.status === 'running').length;
         const stopped = servers.filter(s => s.status === 'stopped').length;
+        const showDaemonNotice = daemon && !daemon.installed;
 
         el.innerHTML = `
+      ${showDaemonNotice ? `
+      <div class="card mb-4 daemon-notice">
+        <div class="card-body" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+          <div>
+            <strong>Looty Panel won't auto-start with Windows</strong>
+            <p class="text-muted" style="margin:4px 0 0;font-size:13px">Install the Windows service so the panel (and your servers) start automatically when Windows boots.</p>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="location.hash='settings'">Install Service →</button>
+        </div>
+      </div>
+      ` : ''}
       <div class="stats-grid">
         <div class="stat-card"><div class="stat-icon purple">🖥️</div><div class="stat-info"><h4>${servers.length}</h4><p>Total Servers</p></div></div>
         <div class="stat-card"><div class="stat-icon green">✅</div><div class="stat-info"><h4>${running}</h4><p>Running</p></div></div>

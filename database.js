@@ -49,7 +49,7 @@ async function initDatabase() {
     jar_file TEXT DEFAULT 'server.jar',
     server_dir TEXT,
     created_by INTEGER,
-    auto_start INTEGER DEFAULT 0,
+    auto_start INTEGER DEFAULT 1,
     auto_restart INTEGER DEFAULT 1,
     status TEXT DEFAULT 'stopped',
     created_at TEXT DEFAULT (datetime('now')),

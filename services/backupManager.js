@@ -5,6 +5,7 @@ const unzipper = require('unzipper');
 const { getDb } = require('../database');
 const config = require('../config');
 const logger = require('../utils/logger');
+const serverManager = require('./serverManager');
 
 function ensureBackupDir() {
     if (!fs.existsSync(config.BACKUPS_DIR)) {
@@ -17,6 +18,11 @@ async function createBackup(serverId, notes = '') {
 
     const server = getDb().prepare('SELECT * FROM servers WHERE id = ?').get(serverId);
     if (!server) throw new Error('Server not found');
+
+    const state = serverManager.getServerState(serverId);
+    if (state.status === 'running' || state.status === 'starting') {
+        throw new Error('Stop the server before creating a backup. Running servers lock world files, which prevents backups on Windows.');
+    }
 
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const filename = `${server.name}_${timestamp}.zip`;

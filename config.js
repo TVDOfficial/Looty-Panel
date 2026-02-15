@@ -19,9 +19,9 @@ function getOrCreateJwtSecret() {
 
 module.exports = {
   // Server
-  HTTP_PORT: process.env.HTTP_PORT || 3000,
-  HTTPS_PORT: process.env.HTTPS_PORT || 3443,
-  HOST: process.env.HOST || 'localhost',
+  HTTP_PORT: process.env.HTTP_PORT || 80,
+  HTTPS_PORT: process.env.HTTPS_PORT || 443,
+  HOST: process.env.HOST || '0.0.0.0',
 
   // Paths
   BASE_DIR,

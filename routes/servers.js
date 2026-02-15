@@ -86,10 +86,10 @@ router.post('/', async (req, res) => {
             fs.writeFileSync(propsPath, `server-port=${mcPort}\nmotd=A Looty Panel Minecraft Server\nonline-mode=true\nmax-players=20\n`);
         }
 
-        // Insert into database
+        // Insert into database (auto_start=1 by default so server starts when panel comes online)
         const result = getDb().prepare(
-            `INSERT INTO servers (name, type, mc_version, port, memory_min, memory_max, java_path, jar_file, server_dir, created_by)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+            `INSERT INTO servers (name, type, mc_version, port, memory_min, memory_max, java_path, jar_file, server_dir, created_by, auto_start)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)`
         ).run(
             name, type, version, mcPort,
             memoryMin || config.DEFAULT_MIN_MEMORY,

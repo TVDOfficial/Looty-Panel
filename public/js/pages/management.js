@@ -173,7 +173,31 @@ Pages.settings = async (el) => {
               <div class="theme-preview" style="background:linear-gradient(135deg,#0a0f1a,#0d1422);border:2px solid ${currentTheme === 'looty' ? 'var(--accent)' : 'var(--border-color)'}">
                 <div style="width:30%;height:100%;background:#0f1625;border-right:1px solid #d4a84b"></div>
               </div>
-              <span>Looty (Blue & Gold)</span>
+              <span>Looty</span>
+            </div>
+            <div class="theme-option ${currentTheme === 'bluegold' ? 'active' : ''}" data-theme="bluegold">
+              <div class="theme-preview" style="background:linear-gradient(135deg,#0a0e18,#0d1320);border:2px solid ${currentTheme === 'bluegold' ? 'var(--accent)' : 'var(--border-color)'}">
+                <div style="width:30%;height:100%;background:#0f1624;border-right:2px solid #d4a013"></div>
+              </div>
+              <span>Blue & Gold</span>
+            </div>
+            <div class="theme-option ${currentTheme === 'universe' ? 'active' : ''}" data-theme="universe">
+              <div class="theme-preview" style="background:linear-gradient(135deg,#050810,#0f1525);border:2px solid ${currentTheme === 'universe' ? 'var(--accent)' : 'var(--border-color)'}">
+                <div style="width:30%;height:100%;background:#080d18;border-right:1px solid #8b5cf6"></div>
+              </div>
+              <span>Universe</span>
+            </div>
+            <div class="theme-option ${currentTheme === 'minecraft' ? 'active' : ''}" data-theme="minecraft">
+              <div class="theme-preview" style="background:linear-gradient(135deg,#1a2f1a,#1c3420);border:2px solid ${currentTheme === 'minecraft' ? 'var(--accent)' : 'var(--border-color)'}">
+                <div style="width:30%;height:100%;background:#1e3820;border-right:1px solid #4ade80"></div>
+              </div>
+              <span>Minecraft</span>
+            </div>
+            <div class="theme-option ${currentTheme === 'snowy' ? 'active' : ''}" data-theme="snowy">
+              <div class="theme-preview" style="background:linear-gradient(135deg,#0f1419,#121920);border:2px solid ${currentTheme === 'snowy' ? 'var(--accent)' : 'var(--border-color)'}">
+                <div style="width:30%;height:100%;background:#141a22;border-right:1px solid #7dd3fc"></div>
+              </div>
+              <span>Snowy</span>
             </div>
           </div>
         </div>
@@ -263,7 +287,8 @@ Pages.settings = async (el) => {
         // Update preview borders
         document.querySelectorAll('.theme-preview').forEach(p => p.style.borderColor = 'var(--border-color)');
         opt.querySelector('.theme-preview').style.borderColor = 'var(--accent)';
-        Toast.success(`Theme changed to ${theme}`);
+        const names = { midnight:'Midnight', noble:'Noble', dark:'Dark', ocean:'Ocean', emerald:'Emerald', crimson:'Crimson', amoled:'AMOLED', looty:'Looty', bluegold:'Blue & Gold', universe:'Universe', minecraft:'Minecraft', snowy:'Snowy' };
+        Toast.success(`Theme changed to ${names[theme] || theme}`);
       };
     });
 
@@ -399,12 +424,53 @@ const ThemeManager = {
       '--accent-glow': 'rgba(212, 168, 75, 0.3)',
       '--gradient-brand': 'linear-gradient(135deg, #2563eb, #1e40af, #d4a84b)',
     },
+    bluegold: {
+      '--bg-primary': '#0a0e18', '--bg-secondary': '#0f1624', '--bg-tertiary': '#152033',
+      '--bg-card': '#0d1320', '--bg-elevated': '#141c2e', '--bg-hover': '#1a2840', '--bg-input': '#060912',
+      '--border-color': '#1e3a5c', '--border-light': '#2a4a78',
+      '--text-primary': '#f5f7fc', '--text-secondary': '#a8b8d4', '--text-muted': '#6b7d9e',
+      '--accent': '#d4a013', '--accent-hover': '#e8b82a',
+      '--accent-glow': 'rgba(212, 160, 19, 0.35)',
+      '--gradient-brand': 'linear-gradient(135deg, #1e4a8a, #2563eb, #d4a013)',
+      '--radius-sm': '6px', '--radius-md': '10px', '--radius-lg': '14px',
+    },
+    universe: {
+      '--bg-primary': '#050810', '--bg-secondary': '#0a0e1a', '--bg-tertiary': '#0f1525',
+      '--bg-card': '#080d18', '--bg-elevated': '#0d1322', '--bg-hover': '#141c30', '--bg-input': '#030508',
+      '--border-color': '#1e2a45', '--border-light': '#2a3a5c',
+      '--text-primary': '#e8ecf8', '--text-secondary': '#8898b8', '--text-muted': '#5a6a8a',
+      '--accent': '#8b5cf6', '--accent-hover': '#a78bfa',
+      '--accent-glow': 'rgba(139, 92, 246, 0.4)',
+      '--gradient-brand': 'linear-gradient(135deg, #4c1d95, #7c3aed, #06b6d4)',
+      '--radius-sm': '8px', '--radius-md': '12px', '--radius-lg': '18px',
+    },
+    minecraft: {
+      '--bg-primary': '#1a2f1a', '--bg-secondary': '#1e3820', '--bg-tertiary': '#244028',
+      '--bg-card': '#1c3420', '--bg-elevated': '#223828', '--bg-hover': '#2a4530', '--bg-input': '#142418',
+      '--border-color': '#2d5a2d', '--border-light': '#3d6a3d',
+      '--text-primary': '#e8f0e8', '--text-secondary': '#90b090', '--text-muted': '#5a805a',
+      '--accent': '#4ade80', '--accent-hover': '#22c55e',
+      '--accent-glow': 'rgba(74, 222, 128, 0.25)',
+      '--gradient-brand': 'linear-gradient(135deg, #166534, #22c55e, #84cc16)',
+      '--radius-sm': '4px', '--radius-md': '4px', '--radius-lg': '6px',
+    },
+    snowy: {
+      '--bg-primary': '#0f1419', '--bg-secondary': '#141a22', '--bg-tertiary': '#1a222c',
+      '--bg-card': '#121920', '--bg-elevated': '#181f28', '--bg-hover': '#1e2835', '--bg-input': '#0a0e12',
+      '--border-color': '#2a3545', '--border-light': '#3a4a5c',
+      '--text-primary': '#e8ecf0', '--text-secondary': '#98a8b8', '--text-muted': '#6a7a8a',
+      '--accent': '#7dd3fc', '--accent-hover': '#38bdf8',
+      '--accent-glow': 'rgba(125, 211, 252, 0.3)',
+      '--gradient-brand': 'linear-gradient(135deg, #0c4a6e, #0ea5e9, #e0f2fe)',
+      '--radius-sm': '10px', '--radius-md': '14px', '--radius-lg': '20px',
+    },
   },
 
   apply(themeName) {
     const theme = this.themes[themeName];
     if (!theme) return;
     const root = document.documentElement;
+    document.body.setAttribute('data-theme', themeName);
     for (const [prop, value] of Object.entries(theme)) {
       root.style.setProperty(prop, value);
     }
@@ -414,6 +480,7 @@ const ThemeManager = {
   init() {
     const saved = localStorage.getItem('mcpanel_theme');
     if (saved && this.themes[saved]) this.apply(saved);
+    else document.body.setAttribute('data-theme', 'midnight');
   },
 };
 

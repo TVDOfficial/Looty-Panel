@@ -4,6 +4,23 @@
 
 Looty Panel is a professional, modern, and lightweight Minecraft server management panel designed for high performance and ease of use. It provides a comprehensive suite of tools to manage, monitor, and automate your Minecraft servers from a sleek web interface.
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="public/Screenshots/Screenshot%202026-02-15%20163001.png" width="280" />
+  <img src="public/Screenshots/Screenshot%202026-02-15%20163036.png" width="280" />
+  <img src="public/Screenshots/Screenshot%202026-02-15%20163056.png" width="280" />
+</p>
+<p align="center">
+  <img src="public/Screenshots/Screenshot%202026-02-15%20163122.png" width="280" />
+  <img src="public/Screenshots/Screenshot%202026-02-15%20163142.png" width="280" />
+  <img src="public/Screenshots/Screenshot%202026-02-15%20163156.png" width="280" />
+</p>
+
+> **Tip:** Run `npm run optimize-screenshots` before committing to compress images and reduce repo size.
+
+---
+
 ## ✨ Features
 
 - **🚀 Multiple Server Types**: Native support for Paper, Spigot, Purpur, Vanilla, Fabric, and Forge.
