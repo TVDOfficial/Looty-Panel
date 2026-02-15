@@ -27,6 +27,16 @@ async function main() {
     // Init database (async for sql.js)
     await initDatabase();
 
+    // Load panel settings (e.g. log max size)
+    try {
+        const { getDb } = require('./database');
+        const row = getDb().prepare('SELECT value FROM settings WHERE key = ?').get('panel_log_max_size_mb');
+        if (row && row.value) {
+            const val = parseInt(row.value, 10);
+            if (val >= 1 && val <= 100) config.LOG_MAX_SIZE_MB = val;
+        }
+    } catch (e) { /* ignore */ }
+
     // ========== Express App ==========
     const app = express();
     app.use(express.json({ limit: '50mb' }));

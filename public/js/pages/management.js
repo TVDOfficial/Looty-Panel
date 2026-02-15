@@ -112,10 +112,11 @@ Pages._loadAuditLog = async () => {
 Pages.settings = async (el) => {
   el.innerHTML = '<div class="loading-screen"><div class="spinner spinner-lg"></div></div>';
   try {
-    const [sysInfo, java, daemon] = await Promise.all([
+    const [sysInfo, java, daemon, panelSettings] = await Promise.all([
       API.get('/system/info'),
       API.get('/system/java'),
       App.user.role === 'admin' ? API.get('/system/daemon').catch(() => ({ installed: false })) : Promise.resolve(null),
+      App.user.role === 'admin' ? API.get('/system/panel-settings').catch(() => ({ log_max_size_mb: 10 })) : Promise.resolve(null),
     ]);
 
     const currentTheme = localStorage.getItem('mcpanel_theme') || 'midnight';
@@ -168,6 +169,12 @@ Pages.settings = async (el) => {
               </div>
               <span>AMOLED</span>
             </div>
+            <div class="theme-option ${currentTheme === 'looty' ? 'active' : ''}" data-theme="looty">
+              <div class="theme-preview" style="background:linear-gradient(135deg,#0a0f1a,#0d1422);border:2px solid ${currentTheme === 'looty' ? 'var(--accent)' : 'var(--border-color)'}">
+                <div style="width:30%;height:100%;background:#0f1625;border-right:1px solid #d4a84b"></div>
+              </div>
+              <span>Looty (Blue & Gold)</span>
+            </div>
           </div>
         </div>
       </div>
@@ -202,11 +209,31 @@ Pages.settings = async (el) => {
       </div>
 
       ${App.user.role === 'admin' ? `
+      <!-- Panel Settings -->
+      <div class="card mb-6">
+        <div class="card-header"><h3>⚙️ Panel Settings</h3></div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="log-max-size">Log file max size (MB)</label>
+            <input type="number" id="log-max-size" min="1" max="100" value="${panelSettings && panelSettings.log_max_size_mb ? panelSettings.log_max_size_mb : 10}" placeholder="10" style="width:120px">
+            <p class="text-muted" style="font-size:12px;margin-top:6px">Each log file will be rotated when it exceeds this size. Keeps up to 3 backup files. Range: 1–100 MB.</p>
+          </div>
+          <button class="btn btn-primary btn-sm" id="save-panel-settings-btn">Save Panel Settings</button>
+        </div>
+      </div>
+
       <!-- Daemon -->
       <div class="card mb-6">
         <div class="card-header"><h3>🔧 Windows Service (Daemon)</h3></div>
         <div class="card-body">
-          <p class="text-muted mb-4">Install Loot Panel as a Windows service so it starts automatically when your PC boots.</p>
+          <p class="mb-3"><strong>What does this do?</strong> Installing the daemon registers Loot Panel as a Windows service. This means:</p>
+          <ul class="text-muted mb-4" style="padding-left:20px;line-height:1.8">
+            <li>The panel will <strong>start automatically</strong> when Windows boots—no need to manually run it</li>
+            <li>It runs in the <strong>background</strong> even when no one is logged in</li>
+            <li>Your Minecraft servers keep running if you lock your PC or switch users</li>
+            <li>You can manage it from <em>Services</em> (services.msc) like any Windows service</li>
+          </ul>
+          <p class="text-muted mb-4">When you click Install, a UAC prompt will appear—click Yes to allow. Administrator privileges are required to register the service.</p>
           <div class="flex gap-2">
             <button class="btn btn-primary" id="daemon-install-btn">${daemon && daemon.installed ? '✅ Service Installed' : '📥 Install Service'}</button>
             ${daemon && daemon.installed ? '<button class="btn btn-danger" id="daemon-uninstall-btn">Uninstall Service</button>' : ''}
@@ -240,16 +267,39 @@ Pages.settings = async (el) => {
       };
     });
 
+    // Panel settings save
+    const savePanelBtn = document.getElementById('save-panel-settings-btn');
+    if (savePanelBtn) {
+      savePanelBtn.onclick = async () => {
+        const val = parseInt(document.getElementById('log-max-size')?.value, 10);
+        if (isNaN(val) || val < 1 || val > 100) {
+          Toast.error('Enter a value between 1 and 100');
+          return;
+        }
+        try {
+          await API.put('/system/panel-settings', { log_max_size_mb: val });
+          Toast.success('Panel settings saved');
+        } catch (e) { Toast.error(e.message); }
+      };
+    }
+
     // Daemon buttons
     const installBtn = document.getElementById('daemon-install-btn');
     if (installBtn && !(daemon && daemon.installed)) {
       installBtn.onclick = async () => {
         installBtn.disabled = true;
         installBtn.textContent = 'Installing...';
+        Toast.info('A UAC prompt will appear—click Yes to allow installation.');
         try {
-          await API.post('/system/daemon/install');
-          Toast.success('Service installed successfully');
-          installBtn.textContent = '✅ Service Installed';
+          const result = await API.post('/system/daemon/install');
+          if (result.success) {
+            Toast.success('Service installed successfully');
+            installBtn.textContent = '✅ Service Installed';
+          } else {
+            Toast.error(result.message || 'Installation failed');
+            installBtn.disabled = false;
+            installBtn.textContent = '📥 Install Service';
+          }
         } catch (e) { Toast.error(e.message); installBtn.disabled = false; installBtn.textContent = '📥 Install Service'; }
       };
     }
@@ -339,6 +389,15 @@ const ThemeManager = {
       '--accent': '#bb86fc', '--accent-hover': '#d4a5ff',
       '--accent-glow': 'rgba(187, 134, 252, 0.25)',
       '--gradient-brand': 'linear-gradient(135deg, #bb86fc, #9c64fb, #7c4dff)',
+    },
+    looty: {
+      '--bg-primary': '#0a0f1a', '--bg-secondary': '#0f1625', '--bg-tertiary': '#151e30',
+      '--bg-card': '#0d1422', '--bg-hover': '#1a2540', '--bg-input': '#060a12',
+      '--border-color': '#1e3250', '--border-light': '#2a4580',
+      '--text-primary': '#e8ecf4', '--text-secondary': '#8fa3c4', '--text-muted': '#5a7090',
+      '--accent': '#d4a84b', '--accent-hover': '#e8bc5a',
+      '--accent-glow': 'rgba(212, 168, 75, 0.3)',
+      '--gradient-brand': 'linear-gradient(135deg, #2563eb, #1e40af, #d4a84b)',
     },
   },
 

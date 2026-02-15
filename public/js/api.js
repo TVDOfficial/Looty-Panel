@@ -12,9 +12,16 @@ const API = {
 
         const res = await fetch(`/api${url}`, opts);
         if (res.status === 401) {
+            const errBody = await res.clone().text();
+            console.error('[API] 401 Unauthorized on', method, url, '— Response:', errBody || '(empty)');
+            this.clearToken();
             this.token = null;
-            localStorage.removeItem('mcpanel_token');
-            location.reload();
+            if (typeof App !== 'undefined' && App.showLogin) {
+                App.user = null;
+                App.showLogin();
+            } else {
+                location.reload();
+            }
             throw new Error('Session expired');
         }
 

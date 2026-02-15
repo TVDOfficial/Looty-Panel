@@ -8,6 +8,30 @@ if (!fs.existsSync(config.LOG_DIR)) {
 }
 
 const logFile = path.join(config.LOG_DIR, 'mcpanel.log');
+const LOG_MAX_BYTES = () => (config.LOG_MAX_SIZE_MB || 10) * 1024 * 1024;
+
+function rotateLogIfNeeded() {
+    try {
+        if (!fs.existsSync(logFile)) return;
+        const stat = fs.statSync(logFile);
+        if (stat.size < LOG_MAX_BYTES()) return;
+
+        // Rotate: mcpanel.log -> mcpanel.log.1, mcpanel.log.1 -> mcpanel.log.2, etc. Keep 3 backups
+        for (let i = 2; i >= 1; i--) {
+            const oldPath = i === 1 ? logFile : path.join(config.LOG_DIR, `mcpanel.log.${i - 1}`);
+            const newPath = path.join(config.LOG_DIR, `mcpanel.log.${i}`);
+            if (fs.existsSync(oldPath)) {
+                if (fs.existsSync(newPath)) fs.unlinkSync(newPath);
+                fs.renameSync(oldPath, newPath);
+            }
+        }
+        const rotated = path.join(config.LOG_DIR, 'mcpanel.log.1');
+        if (fs.existsSync(logFile)) {
+            if (fs.existsSync(rotated)) fs.unlinkSync(rotated);
+            fs.renameSync(logFile, rotated);
+        }
+    } catch (e) { /* ignore rotate errors */ }
+}
 
 const LEVELS = { ERROR: 0, WARN: 1, INFO: 2, DEBUG: 3 };
 const LEVEL_NAMES = ['ERROR', 'WARN', 'INFO', 'DEBUG'];
@@ -44,6 +68,7 @@ function log(level, category, message, data) {
 
     // File output
     try {
+        rotateLogIfNeeded();
         fs.appendFileSync(logFile, logLine + '\n');
     } catch (e) {
         // Ignore file write errors

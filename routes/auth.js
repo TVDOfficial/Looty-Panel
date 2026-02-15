@@ -30,21 +30,27 @@ router.post('/setup', (req, res) => {
         }
 
         const hash = bcrypt.hashSync(password, 10);
-        const result = getDb().prepare(
+        getDb().prepare(
             'INSERT INTO users (username, password_hash, role, must_change_password) VALUES (?, ?, ?, ?)'
         ).run(username, hash, 'admin', 0); // No need to change password since they just set it
 
-        const token = generateToken(result.lastInsertRowid);
+        const newUser = getDb().prepare('SELECT id FROM users WHERE username = ?').get(username);
+        if (!newUser) {
+            logger.error('AUTH', 'Setup: User was not found after insert');
+            return res.status(500).json({ error: 'Setup failed' });
+        }
+
+        const token = generateToken(newUser.id);
 
         // Log
         getDb().prepare('INSERT INTO audit_log (user_id, action, details, ip_address) VALUES (?, ?, ?, ?)').run(
-            result.lastInsertRowid, 'setup', 'Initial admin setup completed', req.ip
+            newUser.id, 'setup', 'Initial admin setup completed', req.ip
         );
 
         res.json({
             token,
             user: {
-                id: result.lastInsertRowid,
+                id: newUser.id,
                 username,
                 role: 'admin',
                 mustChangePassword: false,

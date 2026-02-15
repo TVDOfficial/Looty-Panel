@@ -10,3 +10,4 @@ certs/
 .DS_Store
 .idea/
 .vscode/
+.jwt_secret

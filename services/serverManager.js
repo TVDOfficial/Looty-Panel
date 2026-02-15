@@ -1,6 +1,7 @@
-const { spawn } = require('child_process');
+const { spawn, execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 const pidusage = require('pidusage');
 const { getDb } = require('../database');
 const logger = require('../utils/logger');
@@ -210,21 +211,88 @@ function sendCommand(serverId, command) {
     state.consoleBuffer.push(`> ${command}`);
 }
 
+// Windows fallback: pidusage often returns 0 or fails (wmic deprecated). Use PowerShell.
+function getProcessStatsWindows(pid) {
+    let memory = 0;
+    let cpuSeconds = 0;
+    try {
+        const memOut = execSync(`powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-Process -Id ${pid} -ErrorAction SilentlyContinue | Select-Object -ExpandProperty WorkingSet64"`, {
+            encoding: 'utf8',
+            timeout: 3000,
+            windowsHide: true,
+        });
+        const mem = parseInt(String(memOut).trim(), 10);
+        if (!isNaN(mem)) memory = Math.round(mem / 1024 / 1024);
+    } catch (_) { /* ignore */ }
+    try {
+        const cpuOut = execSync(`powershell -NoProfile -ExecutionPolicy Bypass -Command "(Get-Process -Id ${pid} -ErrorAction SilentlyContinue).TotalProcessorTime.TotalSeconds"`, {
+            encoding: 'utf8',
+            timeout: 3000,
+            windowsHide: true,
+        });
+        const cpu = parseFloat(String(cpuOut).trim());
+        if (!isNaN(cpu)) cpuSeconds = cpu;
+    } catch (_) { /* ignore */ }
+    return { memory, cpuSeconds };
+}
+
+// Cache for CPU % calculation on Windows (need two samples)
+const cpuCache = new Map();
+
 async function getResourceUsage(serverId) {
     const state = runningServers.get(serverId);
     if (!state || !state.process) {
+        cpuCache.delete(serverId);
         return { cpu: 0, memory: 0, uptime: 0 };
     }
-    try {
-        const stats = await pidusage(state.process.pid);
-        return {
-            cpu: Math.round(stats.cpu * 100) / 100,
-            memory: Math.round(stats.memory / 1024 / 1024),  // MB
-            uptime: Math.round((Date.now() - state.startedAt) / 1000),
-        };
-    } catch {
-        return { cpu: 0, memory: 0, uptime: 0 };
+    const pid = state.process.pid;
+    const uptime = Math.round((Date.now() - (state.startedAt || Date.now())) / 1000);
+    let memoryMb = 0;
+    let cpu = 0;
+
+    if (os.platform() === 'win32') {
+        // pidusage is unreliable on Windows (CPU "Not Accurate", wmic deprecated)
+        const win = getProcessStatsWindows(pid);
+        memoryMb = win.memory;
+        // CPU %: sample twice to compute rate
+        const now = Date.now();
+        const prev = cpuCache.get(serverId);
+        cpuCache.set(serverId, { cpuSec: win.cpuSeconds, ts: now });
+        if (prev && (now - prev.ts) > 500) {
+            const deltaSec = (now - prev.ts) / 1000;
+            const deltaCpu = win.cpuSeconds - prev.cpuSec;
+            if (deltaSec > 0 && deltaCpu >= 0) {
+                cpu = Math.round((deltaCpu / deltaSec) * 100 * 100) / 100; // % across all cores
+            }
+        }
+    } else {
+        try {
+            const stats = await pidusage(pid);
+            memoryMb = stats && typeof stats.memory === 'number'
+                ? Math.round(stats.memory / 1024 / 1024)
+                : 0;
+            cpu = stats && typeof stats.cpu === 'number'
+                ? Math.round(stats.cpu * 100) / 100
+                : 0;
+        } catch (err) {
+            logger.debug('SERVER', 'pidusage failed for server ' + serverId, err.message);
+        }
     }
+
+    // If still 0 on Windows, try pidusage as fallback (sometimes works)
+    if (os.platform() === 'win32' && memoryMb === 0) {
+        try {
+            const stats = await pidusage(pid);
+            if (stats && typeof stats.memory === 'number') {
+                memoryMb = Math.round(stats.memory / 1024 / 1024);
+            }
+            if (stats && typeof stats.cpu === 'number' && cpu === 0) {
+                cpu = Math.round(stats.cpu * 100) / 100;
+            }
+        } catch (_) { /* ignore */ }
+    }
+
+    return { cpu, memory: memoryMb, uptime };
 }
 
 function addConsoleListener(serverId, listener) {

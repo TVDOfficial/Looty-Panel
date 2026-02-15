@@ -1,0 +1,248 @@
+[2026-02-14T22:05:02.702Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:05:02.706Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:05:02.707Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:05:02.733Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T22:05:02.759Z] [INFO] [DB] Database initialized
+[2026-02-14T22:05:02.865Z] [INFO] [CERTS] Generating self-signed SSL certificate...
+[2026-02-14T22:05:03.025Z] [INFO] [CERTS] Self-signed SSL certificate generated successfully
+[2026-02-14T22:05:03.059Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:05:03.064Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:05:03.066Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:16:28.422Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:16:28.425Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:16:28.426Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:16:28.446Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T22:16:28.472Z] [INFO] [DB] Database initialized
+[2026-02-14T22:16:28.579Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:16:28.632Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:18:11.250Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:18:11.253Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:18:11.253Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:18:11.269Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T22:18:11.288Z] [INFO] [DB] Database initialized
+[2026-02-14T22:18:11.377Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:18:11.421Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:18:11.424Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:18:11.427Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:18:30.470Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:18:30.472Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:18:30.473Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:18:30.489Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T22:18:30.507Z] [INFO] [DB] Database initialized
+[2026-02-14T22:18:30.591Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:18:30.631Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:18:30.635Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:18:30.637Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:18:35.716Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:18:35.721Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:18:35.722Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:18:35.738Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T22:18:35.760Z] [INFO] [DB] Database initialized
+[2026-02-14T22:18:35.875Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:18:35.929Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:18:35.934Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:18:35.938Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:18:45.878Z] [INFO] [APP] Shutting down...
+[2026-02-14T22:19:39.020Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:19:39.024Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:19:39.025Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:19:39.043Z] [INFO] [DB] New database created
+[2026-02-14T22:19:39.086Z] [INFO] [DB] Database initialized
+[2026-02-14T22:19:39.190Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:19:39.219Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:19:39.223Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:19:39.225Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:21:16.206Z] [INFO] [APP] Shutting down...
+[2026-02-14T22:21:23.772Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:21:23.775Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:21:23.775Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:21:23.788Z] [INFO] [DB] New database created
+[2026-02-14T22:21:23.827Z] [INFO] [DB] Database initialized
+[2026-02-14T22:21:23.927Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:21:23.965Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:21:23.968Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:21:23.970Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:22:41.210Z] [INFO] [APP] Shutting down...
+[2026-02-14T22:25:45.589Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:25:45.593Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:25:45.594Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:25:45.610Z] [INFO] [DB] New database created
+[2026-02-14T22:25:45.652Z] [INFO] [DB] Database initialized
+[2026-02-14T22:25:45.747Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:25:45.785Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:25:45.788Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:25:45.791Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:26:10.024Z] [WARN] [AUTH] 401 on GET /api/servers: User 0 not found
+[2026-02-14T22:26:10.027Z] [WARN] [AUTH] 401 on GET /api/system/info: User 0 not found
+[2026-02-14T22:28:33.312Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:28:33.326Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:28:33.330Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:28:33.366Z] [INFO] [DB] New database created
+[2026-02-14T22:28:33.430Z] [INFO] [DB] Database initialized
+[2026-02-14T22:28:33.605Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:28:33.678Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:28:38.912Z] [INFO] [APP] Shutting down...
+[2026-02-14T22:28:50.443Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:28:50.448Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:28:50.448Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:28:50.474Z] [INFO] [DB] New database created
+[2026-02-14T22:28:50.523Z] [INFO] [DB] Database initialized
+[2026-02-14T22:28:50.651Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:28:50.717Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:28:50.721Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:28:50.723Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:30:26.839Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:30:26.842Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:30:26.843Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:30:26.860Z] [INFO] [DB] New database created
+[2026-02-14T22:30:26.895Z] [INFO] [DB] Database initialized
+[2026-02-14T22:30:26.986Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:30:27.015Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:30:27.018Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:30:27.020Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:36:04.122Z] [INFO] [APP] Shutting down...
+[2026-02-14T22:36:05.763Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:36:05.767Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:36:05.768Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:36:05.784Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T22:36:05.813Z] [INFO] [DB] Database initialized
+[2026-02-14T22:36:05.921Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:36:05.956Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:36:05.959Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:36:05.964Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:41:12.011Z] [INFO] [APP] Shutting down...
+[2026-02-14T22:41:14.078Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:41:14.083Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:41:14.087Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:41:14.120Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T22:41:14.160Z] [INFO] [DB] Database initialized
+[2026-02-14T22:41:14.258Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:41:14.294Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:41:14.299Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:41:14.302Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:41:48.300Z] [INFO] [JAR] Downloading paper 1.21.11...
+[2026-02-14T22:41:50.299Z] [ERROR] [ROUTE] Create server error "table servers has no column named created_by"
+[2026-02-14T22:42:28.359Z] [INFO] [APP] Shutting down...
+[2026-02-14T22:42:33.996Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:42:34.001Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T22:42:34.002Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T22:42:34.018Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T22:42:34.058Z] [INFO] [DB] Added created_by column to servers
+[2026-02-14T22:42:34.068Z] [INFO] [DB] Database initialized
+[2026-02-14T22:42:34.232Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T22:42:34.399Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T22:42:34.409Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T22:42:34.412Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T22:42:37.459Z] [INFO] [JAR] Downloading paper 1.21.11...
+[2026-02-14T22:42:53.745Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-14T22:43:37.777Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-14T22:55:20.149Z] [INFO] [APP] Shutting down...
+[2026-02-14T22:55:20.154Z] [INFO] [SERVER] Stopping server 1
+[2026-02-14T22:55:20.359Z] [INFO] [APP] Shutting down...
+[2026-02-14T22:55:20.361Z] [INFO] [SERVER] Stopping server 1
+[2026-02-14T23:01:10.970Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T23:01:10.974Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T23:01:10.975Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T23:01:10.996Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T23:01:11.030Z] [INFO] [DB] Database initialized
+[2026-02-14T23:01:11.140Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T23:01:11.197Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T23:01:11.204Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T23:01:11.208Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T23:06:57.890Z] [INFO] [APP] Shutting down...
+[2026-02-14T23:07:01.282Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T23:07:01.287Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T23:07:01.288Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T23:07:01.311Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T23:07:01.353Z] [INFO] [DB] Database initialized
+[2026-02-14T23:07:01.469Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T23:07:01.529Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T23:07:01.535Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T23:07:01.538Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T23:07:03.541Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-14T23:07:03.545Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-14T23:07:23.168Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-14T23:09:06.963Z] [WARN] [DAEMON] sc create failed, requires admin privileges
+[2026-02-14T23:17:56.265Z] [INFO] [APP] Shutting down...
+[2026-02-14T23:17:56.269Z] [INFO] [SERVER] Stopping server 1
+[2026-02-14T23:17:56.479Z] [INFO] [APP] Shutting down...
+[2026-02-14T23:17:56.481Z] [INFO] [SERVER] Stopping server 1
+[2026-02-14T23:22:30.105Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T23:22:30.111Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T23:22:30.112Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T23:22:30.133Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T23:22:30.180Z] [INFO] [DB] Database initialized
+[2026-02-14T23:22:30.309Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T23:22:30.353Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T23:22:30.357Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T23:22:30.360Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T23:22:32.358Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-14T23:22:32.360Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-14T23:22:51.060Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-14T23:35:13.593Z] [INFO] [APP] Shutting down...
+[2026-02-14T23:35:13.596Z] [INFO] [SERVER] Stopping server 1
+[2026-02-14T23:35:13.802Z] [INFO] [APP] Shutting down...
+[2026-02-14T23:35:13.804Z] [INFO] [SERVER] Stopping server 1
+[2026-02-14T23:35:15.560Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T23:35:15.564Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T23:35:15.566Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T23:35:15.583Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T23:35:15.609Z] [INFO] [DB] Database initialized
+[2026-02-14T23:35:15.740Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T23:35:15.787Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T23:35:15.792Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T23:35:15.796Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T23:35:17.789Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-14T23:35:17.793Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-14T23:35:38.990Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-14T23:54:18.501Z] [INFO] [APP] Shutting down...
+[2026-02-14T23:54:18.504Z] [INFO] [SERVER] Stopping server 1
+[2026-02-14T23:54:18.691Z] [INFO] [APP] Shutting down...
+[2026-02-14T23:54:18.693Z] [INFO] [SERVER] Stopping server 1
+[2026-02-14T23:56:04.802Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T23:56:04.807Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-14T23:56:04.807Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-14T23:56:04.833Z] [INFO] [DB] Database loaded from disk
+[2026-02-14T23:56:04.869Z] [INFO] [DB] Database initialized
+[2026-02-14T23:56:04.991Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-14T23:56:05.027Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-14T23:56:05.031Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-14T23:56:05.034Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-14T23:56:07.038Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-14T23:56:07.040Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-14T23:56:27.337Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-14T23:58:21.091Z] [INFO] [SERVER] Stopping server 1
+[2026-02-14T23:58:22.006Z] [INFO] [SERVER] Server Lootvoot stopped gracefully
+[2026-02-15T00:03:56.615Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-15T00:05:41.243Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-15T01:24:31.538Z] [INFO] [APP] Shutting down...
+[2026-02-15T01:24:31.542Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T01:24:31.731Z] [INFO] [APP] Shutting down...
+[2026-02-15T01:24:31.733Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T01:24:34.768Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T01:24:34.773Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-15T01:24:34.773Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T01:24:34.794Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T01:24:34.837Z] [INFO] [DB] Database initialized
+[2026-02-15T01:24:34.998Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-15T01:24:35.072Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-15T01:24:35.076Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-15T01:24:35.079Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-15T01:24:37.082Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-15T01:24:37.086Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-15T01:26:14.324Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-15T01:36:37.200Z] [INFO] [APP] Shutting down...
+[2026-02-15T01:36:37.203Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T01:36:37.405Z] [INFO] [APP] Shutting down...
+[2026-02-15T01:36:37.407Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T01:36:39.302Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T01:36:39.305Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-15T01:36:39.306Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T01:36:39.323Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T01:36:39.350Z] [INFO] [DB] Database initialized
+[2026-02-15T01:36:39.459Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-15T01:36:39.498Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-15T01:36:39.503Z] [INFO] [APP] HTTP server running on http://localhost:3000
+[2026-02-15T01:36:39.505Z] [INFO] [APP] HTTPS server running on https://localhost:3443
+[2026-02-15T01:36:41.509Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-15T01:36:41.512Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)

@@ -84,15 +84,16 @@ async function searchModrinth(query, serverType, mcVersion, offset = 0, limit = 
         'spigot': 'spigot',
         'bukkit': 'bukkit',
         'purpur': 'purpur',
+        'velocity': 'velocity',
         'fabric': 'fabric',
         'forge': 'forge',
     };
 
     const loader = loaderMap[serverType.toLowerCase()] || 'paper';
     facets.push(`["categories:${loader}"]`);
-    facets.push('["project_type:mod"]');
+    facets.push('["project_type:plugin"]');
 
-    if (mcVersion) {
+    if (mcVersion && loader !== 'velocity') {
         facets.push(`["versions:${mcVersion}"]`);
     }
 
@@ -195,12 +196,46 @@ async function searchPlugins(query, serverType, mcVersion, source = 'all') {
     if (!isModded && (source === 'all' || source === 'spiget')) {
         results.push(searchSpiget(query));
     }
+    if (source === 'bukkit') {
+        results.push(searchModrinth(query, 'bukkit', mcVersion));
+    }
     if (!isModded && (source === 'all' || source === 'hangar')) {
         results.push(searchHangar(query));
     }
 
     const resolved = await Promise.all(results);
     return resolved;
+}
+
+// Featured/popular plugins shown by default (EssentialsX, WorldEdit, LuckPerms, etc.)
+const FEATURED_QUERIES = ['essentials', 'worldedit', 'luckperms', 'vault', 'multiverse'];
+
+async function getFeaturedPlugins(serverType, mcVersion) {
+    const seen = new Set();
+    const merged = [];
+
+    for (const query of FEATURED_QUERIES) {
+        try {
+            const results = await searchPlugins(query, serverType, mcVersion, 'all');
+            for (const sourceResult of results) {
+                for (const p of sourceResult.results || []) {
+                    const key = `${p.source}:${(p.id || p.name || '').toString().toLowerCase()}`;
+                    if (seen.has(key)) continue;
+                    seen.add(key);
+                    merged.push(p);
+                }
+            }
+        } catch (e) { /* ignore */ }
+    }
+
+    // Limit and sort by downloads
+    return [{
+        source: 'featured',
+        total: merged.length,
+        results: merged
+            .sort((a, b) => (b.downloads || 0) - (a.downloads || 0))
+            .slice(0, 24),
+    }];
 }
 
 // ========== Get Plugin Versions from Modrinth ==========
@@ -230,6 +265,32 @@ async function getPluginVersions(projectId) {
     }
 }
 
+// ========== Get Download URL from Spiget ==========
+
+async function getSpigetDownload(resourceId) {
+    const resource = await fetchJson(`https://api.spiget.org/v2/resources/${resourceId}`);
+    if (resource.external || resource.premium) {
+        throw new Error('Cannot install external or premium resources from Spiget');
+    }
+    const url = `https://api.spiget.org/v2/resources/${resourceId}/download`;
+    const filename = `${(resource.name || 'plugin').replace(/[^a-zA-Z0-9_-]/g, '_')}.jar`;
+    return { url, filename };
+}
+
+// ========== Get Download URL from Hangar ==========
+
+async function getHangarDownload(author, slug, platform = 'PAPER') {
+    const data = await fetchJson(`https://hangar.papermc.io/api/v1/projects/${author}/${slug}/versions?limit=1`);
+    const version = data.result?.[0];
+    if (!version) throw new Error('No versions found');
+    const platformData = version.downloads?.[platform] || version.downloads?.PAPER;
+    if (!platformData?.downloadUrl) {
+        throw new Error('No direct download available (project may use external hosting)');
+    }
+    const filename = platformData.fileInfo?.name || `${slug}.jar`;
+    return { url: platformData.downloadUrl, filename };
+}
+
 // ========== Install Plugin ==========
 
 async function installPlugin(serverDir, downloadUrl, filename) {
@@ -256,7 +317,10 @@ function removePlugin(serverDir, filename) {
 module.exports = {
     getInstalledPlugins,
     searchPlugins,
+    getFeaturedPlugins,
     getPluginVersions,
     installPlugin,
     removePlugin,
+    getSpigetDownload,
+    getHangarDownload,
 };

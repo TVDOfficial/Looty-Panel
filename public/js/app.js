@@ -175,6 +175,7 @@ const App = {
         const parts = hash.split('/');
         const page = parts[0];
         const param = parts[1];
+        const subParam = parts[2]; // e.g. 'configuration' for #server/1/configuration
 
         // Update nav
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -196,7 +197,7 @@ const App = {
         switch (page) {
             case 'dashboard': title.textContent = 'Dashboard'; Pages.dashboard(content); break;
             case 'servers': title.textContent = 'Servers'; Pages.servers(content, actions); break;
-            case 'server': title.textContent = 'Server'; Pages.serverDetail(content, param, actions); break;
+            case 'server': title.textContent = 'Server'; Pages.serverDetail(content, param, actions, subParam); break;
             case 'users': title.textContent = 'User Management'; Pages.users(content, actions); break;
             case 'settings': title.textContent = 'Settings'; Pages.settings(content); break;
             default: title.textContent = 'Dashboard'; Pages.dashboard(content); break;
@@ -306,6 +307,8 @@ Pages.dashboard = async (el) => {
           <div class="server-card-actions">
             ${s.status === 'stopped' ? `<button class="btn btn-success btn-sm" onclick="event.stopPropagation();Pages.startServer(${s.id})">▶ Start</button>` : ''}
             ${s.status === 'running' ? `<button class="btn btn-danger btn-sm" onclick="event.stopPropagation();Pages.stopServer(${s.id})">⏹ Stop</button>` : ''}
+            ${s.status === 'running' || s.status === 'starting' ? `<button class="btn btn-secondary btn-sm" onclick="event.stopPropagation();Pages.killServer(${s.id})" title="Force stop">Kill</button>` : ''}
+            <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();location.hash='server/${s.id}/configuration'" title="Configure server">⚙️</button>
           </div>
         </div>
       `).join('');
@@ -321,6 +324,9 @@ Pages.startServer = async (id) => {
 };
 Pages.stopServer = async (id) => {
     try { await API.post(`/servers/${id}/stop`); Toast.success('Server stopping...'); App.route(); } catch (e) { Toast.error(e.message); }
+};
+Pages.killServer = async (id) => {
+    try { await API.post(`/servers/${id}/kill`); Toast.success('Server force stopped'); App.route(); } catch (e) { Toast.error(e.message); }
 };
 
 // --- SERVERS LIST ---
@@ -347,7 +353,9 @@ Pages.servers = async (el, actions) => {
         <div class="server-card-actions">
           ${s.status === 'stopped' ? `<button class="btn btn-success btn-sm" onclick="event.stopPropagation();Pages.startServer(${s.id})">▶ Start</button>` : ''}
           ${s.status === 'running' ? `<button class="btn btn-danger btn-sm" onclick="event.stopPropagation();Pages.stopServer(${s.id})">⏹ Stop</button>` : ''}
+          ${s.status === 'running' || s.status === 'starting' ? `<button class="btn btn-secondary btn-sm" onclick="event.stopPropagation();Pages.killServer(${s.id})" title="Force stop">Kill</button>` : ''}
           ${s.status === 'running' ? `<button class="btn btn-warning btn-sm" onclick="event.stopPropagation();Pages.restartServer(${s.id})">🔄 Restart</button>` : ''}
+          <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();location.hash='server/${s.id}/configuration'" title="Configure">⚙️</button>
         </div>
       </div>
     `).join('')}</div>`;
@@ -358,16 +366,27 @@ Pages.restartServer = async (id) => {
     try { await API.post(`/servers/${id}/restart`); Toast.success('Server restarting...'); setTimeout(() => App.route(), 2000); } catch (e) { Toast.error(e.message); }
 };
 
+// JAR type descriptions for create server wizard
+const JAR_TYPE_INFO = {
+    paper: { name: 'Paper', desc: 'Best performance. Optimized Spigot fork. Recommended for most servers. Supports Spigot plugins.' },
+    purpur: { name: 'Purpur', desc: 'Paper fork with extra customization. Great for creative/survival with unique features.' },
+    spigot: { name: 'Spigot', desc: 'Classic Bukkit/Spigot. Largest plugin ecosystem. Best plugin compatibility.' },
+    velocity: { name: 'Velocity', desc: 'Modern proxy server. Connects multiple backend servers. Use with Paper/Spigot backends.' },
+    vanilla: { name: 'Vanilla', desc: 'Official Minecraft server. No mods or plugins. Simplest option.' },
+    fabric: { name: 'Fabric', desc: 'Lightweight mod loader. Modern mod support. Popular for modded gameplay.' },
+    forge: { name: 'Forge', desc: 'Heavy mod loader. Best for large modpacks. Extensive mod library.' },
+};
+
 // --- CREATE SERVER WIZARD ---
 Pages.createServerWizard = async () => {
-    const types = ['paper', 'purpur', 'spigot', 'vanilla', 'fabric', 'forge'];
+    const types = ['paper', 'purpur', 'spigot', 'velocity', 'vanilla', 'fabric', 'forge'];
     let javaInstalls = [];
     try { javaInstalls = await API.get('/system/java'); } catch (e) { }
 
     const body = `
     <div class="form-group"><label>Server Name</label><input type="text" id="wiz-name" placeholder="My Server" required></div>
     <div class="grid-2">
-      <div class="form-group"><label>Server Type</label>
+      <div class="form-group"><label>Server Type <button type="button" class="btn-icon" id="wiz-type-info" title="Help choosing a server type" style="margin-left:4px;vertical-align:middle;font-size:14px">ℹ️</button></label>
         <select id="wiz-type">${types.map(t => `<option value="${t}">${t.charAt(0).toUpperCase() + t.slice(1)}</option>`).join('')}</select>
       </div>
       <div class="form-group"><label>Version</label>
@@ -389,6 +408,20 @@ Pages.createServerWizard = async () => {
     const footer = `<button class="btn btn-secondary modal-close" onclick="this.closest('.modal-overlay').remove()">Cancel</button><button class="btn btn-primary" id="wiz-create">Create Server</button>`;
 
     const modal = showModal('🖥️ Create New Server', body, footer);
+
+    // JAR type info button
+    document.getElementById('wiz-type-info').onclick = () => {
+        const currentType = document.getElementById('wiz-type').value;
+        const info = JAR_TYPE_INFO[currentType];
+        const allInfo = Object.entries(JAR_TYPE_INFO).map(([k, v]) =>
+            `<p class="mb-2"><strong>${v.name}</strong> — ${v.desc}</p>`
+        ).join('');
+        showModal('ℹ️ Server Type Guide', `
+            <p class="text-muted mb-4">Choose based on your needs:</p>
+            ${allInfo}
+            <p class="text-muted mt-4" style="font-size:12px">💡 Most users should pick <strong>Paper</strong> for best performance with plugins.</p>
+        `, '<button class="btn btn-primary modal-close" onclick="this.closest(\'.modal-overlay\').remove()">Got it</button>');
+    };
 
     // Load versions on type change
     const loadVersions = async () => {

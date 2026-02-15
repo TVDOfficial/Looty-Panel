@@ -4,6 +4,7 @@ const { authMiddleware, adminOnly } = require('../middleware/auth');
 const javaDetector = require('../services/javaDetector');
 const daemonInstaller = require('../services/daemonInstaller');
 const { getDb } = require('../database');
+const config = require('../config');
 const logger = require('../utils/logger');
 
 const router = express.Router();
@@ -45,7 +46,7 @@ router.get('/java', (req, res) => {
 // Daemon status
 router.get('/daemon', adminOnly, (req, res) => {
     try {
-        const status = daemonInstaller.getDaemonStatus();
+        const status = daemonInstaller.getStatus();
         res.json(status);
     } catch (err) {
         res.status(500).json({ error: 'Failed to get daemon status' });
@@ -55,7 +56,7 @@ router.get('/daemon', adminOnly, (req, res) => {
 // Install daemon
 router.post('/daemon/install', adminOnly, async (req, res) => {
     try {
-        const result = await daemonInstaller.installDaemon();
+        const result = daemonInstaller.install();
         res.json(result);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -65,10 +66,38 @@ router.post('/daemon/install', adminOnly, async (req, res) => {
 // Uninstall daemon
 router.post('/daemon/uninstall', adminOnly, async (req, res) => {
     try {
-        const result = await daemonInstaller.uninstallDaemon();
+        const result = daemonInstaller.uninstall();
         res.json(result);
     } catch (err) {
         res.status(500).json({ error: err.message });
+    }
+});
+
+// Panel settings (admin only)
+router.get('/panel-settings', adminOnly, (req, res) => {
+    try {
+        const rows = getDb().prepare('SELECT key, value FROM settings WHERE key LIKE "panel_%"').all();
+        const settings = { log_max_size_mb: 10 };
+        for (const r of rows) {
+            if (r.key === 'panel_log_max_size_mb') settings.log_max_size_mb = parseInt(r.value, 10) || 10;
+        }
+        res.json(settings);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to get settings' });
+    }
+});
+
+router.put('/panel-settings', adminOnly, (req, res) => {
+    try {
+        const { log_max_size_mb } = req.body;
+        if (typeof log_max_size_mb !== 'undefined') {
+            const val = Math.max(1, Math.min(100, parseInt(log_max_size_mb, 10) || 10));
+            getDb().prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)').run('panel_log_max_size_mb', String(val));
+            config.LOG_MAX_SIZE_MB = val;
+        }
+        res.json({ message: 'Settings saved' });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to save settings' });
     }
 });
 

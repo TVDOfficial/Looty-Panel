@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 // Get available server types and versions
 router.get('/types', async (req, res) => {
     try {
-        const types = ['paper', 'purpur', 'spigot', 'vanilla', 'fabric', 'forge'];
+        const types = ['paper', 'purpur', 'spigot', 'velocity', 'vanilla', 'fabric', 'forge'];
         res.json(types);
     } catch (err) {
         res.status(500).json({ error: 'Failed to get server types' });
@@ -83,7 +83,7 @@ router.post('/', async (req, res) => {
         // Create server.properties with default settings
         const propsPath = path.join(serverDir, 'server.properties');
         if (!fs.existsSync(propsPath)) {
-            fs.writeFileSync(propsPath, `server-port=${mcPort}\nmotd=A Loot Panel Minecraft Server\nonline-mode=true\nmax-players=20\n`);
+            fs.writeFileSync(propsPath, `server-port=${mcPort}\nmotd=A Looty Panel Minecraft Server\nonline-mode=true\nmax-players=20\n`);
         }
 
         // Insert into database
@@ -211,6 +211,16 @@ router.post('/:id/stop', async (req, res) => {
     }
 });
 
+// Kill server (force stop - immediate, no graceful shutdown)
+router.post('/:id/kill', async (req, res) => {
+    try {
+        const result = await serverManager.stopServer(parseInt(req.params.id), true);
+        res.json(result);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 // Restart server
 router.post('/:id/restart', async (req, res) => {
     try {
@@ -327,6 +337,42 @@ router.put('/:id/properties', (req, res) => {
         res.json({ message: 'Properties updated' });
     } catch (err) {
         res.status(500).json({ error: 'Failed to update properties' });
+    }
+});
+
+// Get EULA status
+router.get('/:id/eula', (req, res) => {
+    try {
+        const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
+        if (!server) return res.status(404).json({ error: 'Server not found' });
+        const eulaPath = path.join(server.server_dir, 'eula.txt');
+        if (!fs.existsSync(eulaPath)) return res.json({ agreed: false });
+        const content = fs.readFileSync(eulaPath, 'utf-8');
+        const agreed = /eula\s*=\s*true/i.test(content);
+        res.json({ agreed });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to read EULA' });
+    }
+});
+
+// Set EULA agreed
+router.post('/:id/eula', (req, res) => {
+    try {
+        const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
+        if (!server) return res.status(404).json({ error: 'Server not found' });
+        const eulaPath = path.join(server.server_dir, 'eula.txt');
+        const defaultContent = '#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).\neula=true\n';
+        if (fs.existsSync(eulaPath)) {
+            let content = fs.readFileSync(eulaPath, 'utf-8');
+            content = content.replace(/eula\s*=\s*false/i, 'eula=true');
+            if (!/eula\s*=\s*true/i.test(content)) content += '\neula=true\n';
+            fs.writeFileSync(eulaPath, content);
+        } else {
+            fs.writeFileSync(eulaPath, defaultContent);
+        }
+        res.json({ agreed: true });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to set EULA' });
     }
 });
 

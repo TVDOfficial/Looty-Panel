@@ -1,10 +1,11 @@
 const path = require('path');
 const fs = require('fs');
-const { execSync } = require('child_process');
+const os = require('os');
+const { execSync, spawnSync } = require('child_process');
 const logger = require('../utils/logger');
 
-// Simple Windows service management using sc.exe and NSSM
-// Since node-windows is removed, we use a simple approach
+// Simple Windows service management using sc.exe
+// Uses PowerShell Start-Process -Verb RunAs to trigger UAC when installing
 class DaemonInstaller {
     constructor() {
         this.serviceName = 'LootPanel';
@@ -24,18 +25,58 @@ class DaemonInstaller {
     install() {
         const nodePath = process.execPath;
         const serverJs = path.join(__dirname, '..', 'server.js');
-        // Create a simple batch file that starts the server
-        const batPath = path.join(__dirname, '..', 'mcpanel-service.bat');
-        fs.writeFileSync(batPath, `@echo off\ncd /d "${path.join(__dirname, '..')}"\n"${nodePath}" "${serverJs}"\n`);
+        const baseDir = path.join(__dirname, '..');
+        const batPath = path.join(baseDir, 'mcpanel-service.bat');
+
+        // Create the batch file (does not require admin)
+        fs.writeFileSync(batPath, `@echo off\ncd /d "${baseDir}"\n"${nodePath}" "${serverJs}"\n`);
+
+        // Use PowerShell to run sc create with UAC elevation
+        const resultFile = path.join(os.tmpdir(), `lootpanel-daemon-result-${Date.now()}.txt`);
+        const scPath = process.env.SystemRoot ? path.join(process.env.SystemRoot, 'System32', 'sc.exe') : 'C:\\Windows\\System32\\sc.exe';
+        const psScript = `
+$ErrorActionPreference = 'Stop'
+try {
+    & '${scPath.replace(/'/g, "''")}' create "${this.serviceName}" binPath= "${batPath.replace(/"/g, '`"')}" start= auto DisplayName= "Loot Panel Minecraft Server Manager"
+    "SUCCESS" | Out-File -FilePath "${resultFile.replace(/\\/g, '\\\\')}" -Encoding utf8
+} catch {
+    "FAILED: $($_.Exception.Message)" | Out-File -FilePath "${resultFile.replace(/\\/g, '\\\\')}" -Encoding utf8
+}
+`;
+        const psScriptPath = path.join(os.tmpdir(), `lootpanel-daemon-install-${Date.now()}.ps1`);
+        fs.writeFileSync(psScriptPath, psScript);
 
         try {
-            // Try using sc to create service (requires admin)
-            execSync(`sc create "${this.serviceName}" binPath= "${batPath}" start= auto DisplayName= "Loot Panel Minecraft Server Manager"`, { encoding: 'utf-8' });
-            logger.info('DAEMON', 'Service installed successfully');
-            return { success: true, message: 'Service installed. Start it from Windows Services or run: sc start LootPanel' };
+            // Start PowerShell elevated - this triggers UAC prompt
+            const result = spawnSync('powershell.exe', [
+                '-ExecutionPolicy', 'Bypass',
+                '-NoProfile',
+                '-Command',
+                `Start-Process powershell -ArgumentList '-ExecutionPolicy','Bypass','-NoProfile','-File','${psScriptPath.replace(/'/g, "''")}' -Verb RunAs -Wait`
+            ], { encoding: 'utf-8', timeout: 60000 });
+
+            // Clean up script
+            try { fs.unlinkSync(psScriptPath); } catch (e) { /* ignore */ }
+
+            if (!fs.existsSync(resultFile)) {
+                logger.warn('DAEMON', 'Elevated install may have been cancelled by user');
+                return { success: false, message: 'Installation was cancelled or UAC was denied. Click "Yes" on the prompt to allow installation.' };
+            }
+
+            const resultContent = fs.readFileSync(resultFile, 'utf-8').trim();
+            try { fs.unlinkSync(resultFile); } catch (e) { /* ignore */ }
+
+            if (resultContent.startsWith('SUCCESS')) {
+                logger.info('DAEMON', 'Service installed successfully');
+                return { success: true, message: 'Service installed. Start it from Windows Services or run: sc start LootPanel' };
+            }
+
+            const errMsg = resultContent.replace(/^FAILED:\s*/, '');
+            logger.warn('DAEMON', 'Service install failed', errMsg);
+            return { success: false, message: errMsg || 'Service installation failed.' };
         } catch (err) {
-            logger.warn('DAEMON', 'sc create failed, requires admin privileges');
-            return { success: false, message: 'Service installation requires running as Administrator. Please restart Loot Panel as admin and try again.' };
+            logger.warn('DAEMON', 'sc create failed', err.message);
+            return { success: false, message: err.message || 'Installation failed. A UAC prompt should appear—click Yes to allow.' };
         }
     }
 

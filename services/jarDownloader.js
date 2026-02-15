@@ -6,7 +6,16 @@ const logger = require('../utils/logger');
 
 /**
  * Download server JAR files from official sources.
- * Supports: Paper, Vanilla, Spigot, Purpur, Fabric, Forge
+ * Supports: Paper, Purpur, Spigot, Vanilla, Fabric, Forge, Velocity
+ *
+ * Version sources:
+ * - Paper:   https://api.papermc.io/v2/projects/paper
+ * - Purpur:  https://api.purpurmc.org/v2/purpur
+ * - Velocity: https://api.papermc.io/v2/projects/velocity
+ * - Vanilla: https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
+ * - Fabric:  https://meta.fabricmc.net/v2/versions/game
+ * - Forge:   https://files.minecraftforge.net/.../promotions_slim.json
+ * - Spigot:  hardcoded (no public API)
  */
 
 // Fetch JSON from URL
@@ -65,13 +74,25 @@ function downloadFile(url, destPath, onProgress) {
 
 async function getPaperVersions() {
     const data = await fetchJson('https://api.papermc.io/v2/projects/paper');
-    return data.versions || [];
+    const versions = data.versions || [];
+    return versions.reverse(); // API returns oldest first; show newest first
 }
 
 async function getPurpurVersions() {
     try {
         const data = await fetchJson('https://api.purpurmc.org/v2/purpur');
-        return data.versions || [];
+        const versions = data.versions || [];
+        return versions.reverse(); // API returns oldest first; show newest first
+    } catch {
+        return [];
+    }
+}
+
+async function getVelocityVersions() {
+    try {
+        const data = await fetchJson('https://api.papermc.io/v2/projects/velocity');
+        const versions = (data.versions || []).filter(v => !v.includes('-SNAPSHOT'));
+        return versions.reverse(); // Newest first
     } catch {
         return [];
     }
@@ -82,6 +103,7 @@ async function getVanillaVersions() {
     return data.versions
         .filter(v => v.type === 'release')
         .map(v => v.id);
+    // Mojang manifest is already newest first
 }
 
 async function getFabricGameVersions() {
@@ -128,6 +150,7 @@ async function getAvailableVersions(type) {
         switch (type.toLowerCase()) {
             case 'paper': return await getPaperVersions();
             case 'purpur': return await getPurpurVersions();
+            case 'velocity': return await getVelocityVersions();
             case 'vanilla': return await getVanillaVersions();
             case 'spigot':
             case 'bukkit':
@@ -158,6 +181,8 @@ async function downloadServerJar(type, version, destDir, onProgress) {
             return await downloadPaper(version, jarPath, onProgress);
         case 'purpur':
             return await downloadPurpur(version, jarPath, onProgress);
+        case 'velocity':
+            return await downloadVelocity(version, jarPath, onProgress);
         case 'vanilla':
             return await downloadVanilla(version, jarPath, onProgress);
         case 'spigot':
@@ -185,6 +210,18 @@ async function downloadPaper(version, jarPath, onProgress) {
 
 async function downloadPurpur(version, jarPath, onProgress) {
     const url = `https://api.purpurmc.org/v2/purpur/${version}/latest/download`;
+    await downloadFile(url, jarPath, onProgress);
+    return jarPath;
+}
+
+async function downloadVelocity(version, jarPath, onProgress) {
+    const builds = await fetchJson(`https://api.papermc.io/v2/projects/velocity/versions/${version}/builds`);
+    if (!builds.builds || builds.builds.length === 0) {
+        throw new Error(`No Velocity builds found for ${version}`);
+    }
+    const latestBuild = builds.builds[builds.builds.length - 1];
+    const downloadName = latestBuild.downloads.application.name;
+    const url = `https://api.papermc.io/v2/projects/velocity/versions/${version}/builds/${latestBuild.build}/downloads/${downloadName}`;
     await downloadFile(url, jarPath, onProgress);
     return jarPath;
 }

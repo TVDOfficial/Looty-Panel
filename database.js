@@ -47,13 +47,40 @@ async function initDatabase() {
     java_path TEXT DEFAULT 'java',
     jvm_args TEXT DEFAULT '',
     jar_file TEXT DEFAULT 'server.jar',
-    directory TEXT,
+    server_dir TEXT,
+    created_by INTEGER,
     auto_start INTEGER DEFAULT 0,
     auto_restart INTEGER DEFAULT 1,
     status TEXT DEFAULT 'stopped',
     created_at TEXT DEFAULT (datetime('now')),
-    updated_at TEXT DEFAULT (datetime('now'))
+    updated_at TEXT DEFAULT (datetime('now')),
+    FOREIGN KEY (created_by) REFERENCES users(id)
   )`);
+
+  // Migration: add created_by if missing
+  try {
+    const tableInfo = db.exec("PRAGMA table_info(servers)");
+    const columns = tableInfo[0].values.map(v => v[1]);
+    if (!columns.includes('created_by')) {
+      db.run("ALTER TABLE servers ADD COLUMN created_by INTEGER");
+      logger.info('DB', 'Added created_by column to servers');
+    }
+  } catch (err) {
+    logger.error('DB', 'Servers created_by migration failed', err.message);
+  }
+
+  // Migration: add server_dir if old schema had directory
+  try {
+    const tableInfo = db.exec("PRAGMA table_info(servers)");
+    const columns = tableInfo[0].values.map(v => v[1]);
+    if (columns.includes('directory') && !columns.includes('server_dir')) {
+      db.run("ALTER TABLE servers ADD COLUMN server_dir TEXT");
+      db.run("UPDATE servers SET server_dir = directory WHERE directory IS NOT NULL");
+      logger.info('DB', 'Migrated servers.directory to server_dir');
+    }
+  } catch (err) {
+    logger.error('DB', 'Servers migration failed', err.message);
+  }
 
   db.run(`CREATE TABLE IF NOT EXISTS backups (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
