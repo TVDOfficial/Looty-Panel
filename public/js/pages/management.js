@@ -112,11 +112,12 @@ Pages._loadAuditLog = async () => {
 Pages.settings = async (el) => {
   el.innerHTML = '<div class="loading-screen"><div class="spinner spinner-lg"></div></div>';
   try {
-    const [sysInfo, java, daemon, panelSettings] = await Promise.all([
+    const [sysInfo, java, daemon, panelSettings, alertSettings] = await Promise.all([
       API.get('/system/info'),
       API.get('/system/java'),
       App.user.role === 'admin' ? API.get('/system/daemon').catch(() => ({ installed: false })) : Promise.resolve(null),
       App.user.role === 'admin' ? API.get('/system/panel-settings').catch(() => ({ log_max_size_mb: 10 })) : Promise.resolve(null),
+      App.user.role === 'admin' ? API.get('/system/alert-settings').catch(() => ({})) : Promise.resolve(null),
     ]);
 
     const currentTheme = localStorage.getItem('mcpanel_theme') || 'midnight';
@@ -233,6 +234,40 @@ Pages.settings = async (el) => {
       </div>
 
       ${App.user.role === 'admin' ? `
+      <!-- Alert Settings -->
+      <div class="card mb-6">
+        <div class="card-header"><h3>🔔 Alerts (Discord & Email)</h3></div>
+        <div class="card-body">
+          <p class="text-muted mb-4">Get notified when servers crash, backups fail, or scheduled restarts occur.</p>
+          <div class="form-group mb-4">
+            <label>Discord Webhook URL</label>
+            <input type="url" id="alert-discord-webhook" value="${(alertSettings && alertSettings.discordWebhook) || ''}" placeholder="https://discord.com/api/webhooks/..." style="width:100%">
+          </div>
+          <div class="form-group mb-4">
+            <label class="flex gap-2" style="align-items:center;cursor:pointer"><input type="checkbox" id="alert-discord-on-crash" ${(alertSettings && alertSettings.discordOnCrash) ? 'checked' : ''}> Alert on server crash</label>
+            <label class="flex gap-2" style="align-items:center;cursor:pointer;margin-left:24px"><input type="checkbox" id="alert-discord-on-backup-fail" ${(alertSettings && alertSettings.discordOnBackupFail) ? 'checked' : ''}> Alert on backup failure</label>
+            <label class="flex gap-2" style="align-items:center;cursor:pointer;margin-left:24px"><input type="checkbox" id="alert-discord-on-restart" ${(alertSettings && alertSettings.discordOnRestart) ? 'checked' : ''}> Alert on scheduled restart</label>
+          </div>
+          <hr class="my-4">
+          <h4 class="mb-2">Email Alerts</h4>
+          <div class="form-group mb-2"><label class="flex gap-2" style="align-items:center;cursor:pointer"><input type="checkbox" id="alert-email-enabled" ${(alertSettings && alertSettings.emailEnabled) ? 'checked' : ''}> Enable email alerts</label></div>
+          <div class="grid-2">
+            <div class="form-group"><label>SMTP Host</label><input type="text" id="alert-email-host" value="${(alertSettings && alertSettings.emailHost) || ''}" placeholder="smtp.gmail.com"></div>
+            <div class="form-group"><label>Port</label><input type="number" id="alert-email-port" value="${(alertSettings && alertSettings.emailPort) || 587}"></div>
+            <div class="form-group"><label>User</label><input type="text" id="alert-email-user" value="${(alertSettings && alertSettings.emailUser) || ''}" placeholder="user@example.com"></div>
+            <div class="form-group"><label>Password</label><input type="password" id="alert-email-pass" value="${(alertSettings && alertSettings.emailPass) || ''}" placeholder="App password"></div>
+            <div class="form-group"><label>To (recipient)</label><input type="text" id="alert-email-to" value="${(alertSettings && alertSettings.emailTo) || ''}" placeholder="admin@example.com"></div>
+            <div class="form-group"><label class="flex gap-2" style="align-items:center;cursor:pointer"><input type="checkbox" id="alert-email-secure" ${(alertSettings && alertSettings.emailSecure) ? 'checked' : ''}> Use TLS/SSL</label></div>
+          </div>
+          <div class="form-group mt-2">
+            <label class="flex gap-2" style="align-items:center;cursor:pointer"><input type="checkbox" id="alert-email-on-crash" ${(alertSettings && alertSettings.emailOnCrash) ? 'checked' : ''}> Email on crash</label>
+            <label class="flex gap-2" style="align-items:center;cursor:pointer;margin-left:24px"><input type="checkbox" id="alert-email-on-backup-fail" ${(alertSettings && alertSettings.emailOnBackupFail) ? 'checked' : ''}> Email on backup fail</label>
+            <label class="flex gap-2" style="align-items:center;cursor:pointer;margin-left:24px"><input type="checkbox" id="alert-email-on-restart" ${(alertSettings && alertSettings.emailOnRestart) ? 'checked' : ''}> Email on restart</label>
+          </div>
+          <button class="btn btn-primary btn-sm mt-4" id="save-alert-settings-btn">Save Alert Settings</button>
+        </div>
+      </div>
+
       <!-- Panel Settings -->
       <div class="card mb-6">
         <div class="card-header"><h3>⚙️ Panel Settings</h3></div>
@@ -258,6 +293,7 @@ Pages.settings = async (el) => {
             <li>You can manage it from <em>Services</em> (services.msc) like any Windows service</li>
           </ul>
           <p class="text-muted mb-4">When you click Install, a UAC prompt will appear—click Yes to allow. Administrator privileges are required to register the service.</p>
+          <p class="text-muted mb-4">If you move the panel to a different folder, uninstall the service first, then install it again so paths are updated.</p>
           <div class="flex gap-2">
             <button class="btn btn-primary" id="daemon-install-btn">${daemon && daemon.installed ? '✅ Service Installed' : '📥 Install Service'}</button>
             ${daemon && daemon.installed ? '<button class="btn btn-danger" id="daemon-uninstall-btn">Uninstall Service</button>' : ''}
@@ -291,6 +327,32 @@ Pages.settings = async (el) => {
         Toast.success(`Theme changed to ${names[theme] || theme}`);
       };
     });
+
+    // Alert settings save
+    const saveAlertBtn = document.getElementById('save-alert-settings-btn');
+    if (saveAlertBtn) {
+      saveAlertBtn.onclick = async () => {
+        try {
+          await API.put('/system/alert-settings', {
+            alert_discord_webhook: document.getElementById('alert-discord-webhook')?.value || '',
+            alert_discord_on_crash: document.getElementById('alert-discord-on-crash')?.checked ?? true,
+            alert_discord_on_backup_fail: document.getElementById('alert-discord-on-backup-fail')?.checked ?? true,
+            alert_discord_on_restart: document.getElementById('alert-discord-on-restart')?.checked ?? false,
+            alert_email_enabled: document.getElementById('alert-email-enabled')?.checked ?? false,
+            alert_email_host: document.getElementById('alert-email-host')?.value || '',
+            alert_email_port: parseInt(document.getElementById('alert-email-port')?.value, 10) || 587,
+            alert_email_secure: document.getElementById('alert-email-secure')?.checked ?? false,
+            alert_email_user: document.getElementById('alert-email-user')?.value || '',
+            alert_email_pass: document.getElementById('alert-email-pass')?.value || '',
+            alert_email_to: document.getElementById('alert-email-to')?.value || '',
+            alert_email_on_crash: document.getElementById('alert-email-on-crash')?.checked ?? true,
+            alert_email_on_backup_fail: document.getElementById('alert-email-on-backup-fail')?.checked ?? true,
+            alert_email_on_restart: document.getElementById('alert-email-on-restart')?.checked ?? false,
+          });
+          Toast.success('Alert settings saved');
+        } catch (e) { Toast.error(e.message); }
+      };
+    }
 
     // Panel settings save
     const savePanelBtn = document.getElementById('save-panel-settings-btn');

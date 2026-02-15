@@ -44,9 +44,13 @@ async function executeTask(schedule) {
     const payload = schedule.payload ? JSON.parse(schedule.payload) : {};
 
     switch (schedule.type) {
-        case 'restart':
+        case 'restart': {
+            const server = getDb().prepare('SELECT name FROM servers WHERE id = ?').get(schedule.server_id);
             await serverManager.restartServer(schedule.server_id);
+            const alertService = require('./alertService');
+            alertService.notifyRestart(server?.name || 'Server', schedule.server_id, `Scheduled: ${schedule.name}`).catch(() => {});
             break;
+        }
         case 'backup':
             await backupManager.createBackup(schedule.server_id, `Scheduled backup: ${schedule.name}`);
             break;

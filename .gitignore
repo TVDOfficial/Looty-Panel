@@ -4,6 +4,8 @@ servers/
 backups/
 logs/
 certs/
+daemon/*.xml
+daemon/*.exe
 .env
 *.db
 *.log

@@ -5,6 +5,7 @@ const multer = require('multer');
 const { getDb } = require('../database');
 const { authMiddleware } = require('../middleware/auth');
 const logger = require('../utils/logger');
+const pathHelper = require('../utils/pathHelper');
 
 const router = express.Router();
 router.use(authMiddleware);
@@ -33,7 +34,7 @@ router.get('/:id/files', (req, res) => {
         const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
 
-        const targetPath = safePath(server.server_dir, req.query.path || '');
+        const targetPath = safePath(pathHelper.toAbsolute(server.server_dir), req.query.path || '');
         if (!fs.existsSync(targetPath)) return res.status(404).json({ error: 'Path not found' });
 
         const stat = fs.statSync(targetPath);
@@ -56,7 +57,7 @@ router.get('/:id/files', (req, res) => {
                 isDirectory: entry.isDirectory(),
                 size,
                 modified,
-                path: path.relative(server.server_dir, fullPath).replace(/\\/g, '/'),
+                path: path.relative(pathHelper.toAbsolute(server.server_dir), fullPath).replace(/\\/g, '/'),
             };
         });
 
@@ -82,7 +83,7 @@ router.get('/:id/files/read', (req, res) => {
         const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
 
-        const filePath = safePath(server.server_dir, req.query.path);
+        const filePath = safePath(pathHelper.toAbsolute(server.server_dir), req.query.path);
         if (!fs.existsSync(filePath)) return res.status(404).json({ error: 'File not found' });
 
         const stat = fs.statSync(filePath);
@@ -114,7 +115,7 @@ router.put('/:id/files/write', (req, res) => {
         const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
 
-        const filePath = safePath(server.server_dir, req.body.path);
+        const filePath = safePath(pathHelper.toAbsolute(server.server_dir), req.body.path);
         const dir = path.dirname(filePath);
         if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
@@ -132,7 +133,7 @@ router.post('/:id/files/upload', upload.array('files', 20), (req, res) => {
         const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
 
-        const targetDir = safePath(server.server_dir, req.body.path || '');
+        const targetDir = safePath(pathHelper.toAbsolute(server.server_dir), req.body.path || '');
         if (!fs.existsSync(targetDir)) fs.mkdirSync(targetDir, { recursive: true });
 
         const uploaded = [];
@@ -156,11 +157,12 @@ router.delete('/:id/files', (req, res) => {
         const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
 
-        const targetPath = safePath(server.server_dir, req.query.path);
+        const absServerDir = pathHelper.toAbsolute(server.server_dir);
+        const targetPath = safePath(absServerDir, req.query.path);
         if (!fs.existsSync(targetPath)) return res.status(404).json({ error: 'Path not found' });
 
         // Prevent deleting server root
-        if (path.resolve(targetPath) === path.resolve(server.server_dir)) {
+        if (path.resolve(targetPath) === path.resolve(absServerDir)) {
             return res.status(403).json({ error: 'Cannot delete server root directory' });
         }
 
@@ -184,8 +186,9 @@ router.post('/:id/files/rename', (req, res) => {
         const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
 
-        const oldPath = safePath(server.server_dir, req.body.oldPath);
-        const newPath = safePath(server.server_dir, req.body.newPath);
+        const absServerDir = pathHelper.toAbsolute(server.server_dir);
+        const oldPath = safePath(absServerDir, req.body.oldPath);
+        const newPath = safePath(absServerDir, req.body.newPath);
 
         if (!fs.existsSync(oldPath)) return res.status(404).json({ error: 'Source not found' });
         fs.renameSync(oldPath, newPath);
@@ -202,7 +205,7 @@ router.post('/:id/files/mkdir', (req, res) => {
         const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
 
-        const targetPath = safePath(server.server_dir, req.body.path);
+        const targetPath = safePath(pathHelper.toAbsolute(server.server_dir), req.body.path);
         fs.mkdirSync(targetPath, { recursive: true });
         res.json({ message: 'Folder created' });
     } catch (err) {
@@ -217,7 +220,7 @@ router.get('/:id/files/download', (req, res) => {
         const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
 
-        const filePath = safePath(server.server_dir, req.query.path);
+        const filePath = safePath(pathHelper.toAbsolute(server.server_dir), req.query.path);
         if (!fs.existsSync(filePath)) return res.status(404).json({ error: 'File not found' });
 
         const stat = fs.statSync(filePath);

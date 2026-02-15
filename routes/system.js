@@ -101,6 +101,38 @@ router.put('/panel-settings', adminOnly, (req, res) => {
     }
 });
 
+// Alert settings (admin only)
+router.get('/alert-settings', adminOnly, (req, res) => {
+    try {
+        const alertService = require('../services/alertService');
+        res.json(alertService.getSettings());
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to get alert settings' });
+    }
+});
+
+router.put('/alert-settings', adminOnly, (req, res) => {
+    try {
+        const alertService = require('../services/alertService');
+        const keys = [
+            'alert_discord_webhook', 'alert_discord_on_crash', 'alert_discord_on_backup_fail', 'alert_discord_on_restart',
+            'alert_email_enabled', 'alert_email_host', 'alert_email_port', 'alert_email_secure',
+            'alert_email_user', 'alert_email_pass', 'alert_email_to',
+            'alert_email_on_crash', 'alert_email_on_backup_fail', 'alert_email_on_restart',
+        ];
+        const body = req.body;
+        for (const k of keys) {
+            if (body[k] !== undefined) {
+                const v = body[k];
+                alertService.saveSetting(k, typeof v === 'boolean' ? (v ? '1' : '0') : v);
+            }
+        }
+        res.json({ message: 'Alert settings saved' });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to save alert settings' });
+    }
+});
+
 // Audit log
 router.get('/audit-log', adminOnly, (req, res) => {
     try {

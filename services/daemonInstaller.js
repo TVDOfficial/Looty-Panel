@@ -17,7 +17,11 @@ class DaemonInstaller {
 
     getStatus() {
         try {
-            const systemRoot = process.env.SystemRoot || process.env.WINDIR || 'C:\\Windows';
+            const systemRoot = process.env.SystemRoot || process.env.WINDIR || (process.env.SystemDrive ? path.join(process.env.SystemDrive, 'Windows') : null);
+            if (!systemRoot) {
+                logger.debug('DAEMON', 'SystemRoot/WINDIR not set, cannot query service');
+                return { installed: false, running: false };
+            }
             const scPath = path.join(systemRoot, 'System32', 'sc.exe');
             const output = execSync(`"${scPath}" query "${this.serviceName}" 2>&1`, { encoding: 'utf-8' });
             const installed = !output.includes('1060');

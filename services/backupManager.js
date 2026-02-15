@@ -6,6 +6,7 @@ const { getDb } = require('../database');
 const config = require('../config');
 const logger = require('../utils/logger');
 const serverManager = require('./serverManager');
+const pathHelper = require('../utils/pathHelper');
 
 function ensureBackupDir() {
     if (!fs.existsSync(config.BACKUPS_DIR)) {
@@ -56,6 +57,8 @@ async function createBackup(serverId, notes = '') {
 
         archive.on('error', (err) => {
             logger.error('BACKUP', 'Backup failed', err.message);
+            const alertService = require('./alertService');
+            alertService.notifyBackupFail(server.name, serverId, err.message).catch(() => { });
             reject(err);
         });
 
@@ -64,7 +67,7 @@ async function createBackup(serverId, notes = '') {
         // Add server directory, excluding certain patterns
         const excludePatterns = config.BACKUP_EXCLUDE || [];
         archive.glob('**/*', {
-            cwd: server.server_dir,
+            cwd: pathHelper.toAbsolute(server.server_dir),
             ignore: excludePatterns,
             dot: true,
         });
@@ -86,7 +89,7 @@ async function restoreBackup(backupId, serverId) {
     logger.info('BACKUP', `Restoring backup ${backup.filename} for ${server.name}...`);
 
     // Clear server directory (except the backup itself)
-    const serverDir = server.server_dir;
+    const serverDir = pathHelper.toAbsolute(server.server_dir);
 
     // Extract backup
     return new Promise((resolve, reject) => {

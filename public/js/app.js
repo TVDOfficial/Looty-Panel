@@ -317,6 +317,7 @@ Pages.dashboard = async (el) => {
             <h3>${s.name}</h3>
             ${statusBadge(s.status)}
           </div>
+          ${(s.motd || (s.status === 'running' && (s.playersOnline !== undefined || s.playersMax))) ? `<div class="server-card-motd" title="What players see in server list">${s.motd ? Pages._escapeHtml(s.motd) : ''}${s.status === 'running' ? ` — <span class="players-count">${s.playersOnline || 0}/${s.playersMax || 0} players</span>` : ''}</div>` : ''}
           <div class="server-card-meta">
             <span class="badge badge-type">${s.type}</span>
             <span class="badge badge-type">${s.mc_version}</span>
@@ -326,6 +327,7 @@ Pages.dashboard = async (el) => {
             ${s.status === 'stopped' ? `<button class="btn btn-success btn-sm" onclick="event.stopPropagation();Pages.startServer(${s.id})">▶ Start</button>` : ''}
             ${s.status === 'running' ? `<button class="btn btn-danger btn-sm" onclick="event.stopPropagation();Pages.stopServer(${s.id})">⏹ Stop</button>` : ''}
             ${s.status === 'running' || s.status === 'starting' ? `<button class="btn btn-secondary btn-sm" onclick="event.stopPropagation();Pages.killServer(${s.id})" title="Force stop">Kill</button>` : ''}
+            <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();Pages.cloneServer(${s.id})" title="Clone server">📋</button>
             <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();location.hash='server/${s.id}/configuration'" title="Configure server">⚙️</button>
           </div>
         </div>
@@ -334,6 +336,14 @@ Pages.dashboard = async (el) => {
     } catch (err) {
         el.innerHTML = `<div class="alert alert-error">Failed to load dashboard: ${err.message}</div>`;
     }
+};
+
+// Helper to escape HTML for MOTD display
+Pages._escapeHtml = (str) => {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
 };
 
 // Start/Stop helpers
@@ -347,21 +357,33 @@ Pages.killServer = async (id) => {
     try { await API.post(`/servers/${id}/kill`); Toast.success('Server force stopped'); App.route(); } catch (e) { Toast.error(e.message); }
 };
 
+Pages.cloneServer = async (id) => {
+    const name = prompt('Name for the cloned server:', '');
+    if (name === null) return;
+    try {
+        await API.post(`/servers/${id}/clone`, { name: name.trim() || undefined });
+        Toast.success('Server cloned successfully');
+        App.route();
+    } catch (e) { Toast.error(e.message); }
+};
+
 // --- SERVERS LIST ---
 Pages.servers = async (el, actions) => {
-    actions.innerHTML = '<button class="btn btn-primary btn-sm" id="create-server-btn">+ New Server</button>';
+    actions.innerHTML = '<button class="btn btn-secondary btn-sm" id="import-server-btn" style="margin-right:8px">📂 Import</button><button class="btn btn-primary btn-sm" id="create-server-btn">+ New Server</button>';
     document.getElementById('create-server-btn').onclick = () => Pages.createServerWizard();
+    document.getElementById('import-server-btn').onclick = () => Pages.importServer();
 
     el.innerHTML = '<div class="loading-screen"><div class="spinner spinner-lg"></div></div>';
     try {
         const servers = await API.get('/servers');
         if (servers.length === 0) {
-            el.innerHTML = '<div class="empty-state"><div class="empty-icon">🖥️</div><h3>No servers yet</h3><p>Create your first Minecraft server to get started.</p><button class="btn btn-primary" onclick="Pages.createServerWizard()">+ Create Server</button></div>';
+            el.innerHTML = '<div class="empty-state"><div class="empty-icon">🖥️</div><h3>No servers yet</h3><p>Create your first Minecraft server or import an existing one.</p><button class="btn btn-secondary" onclick="Pages.importServer()">📂 Import Server</button><button class="btn btn-primary" onclick="Pages.createServerWizard()">+ Create Server</button></div>';
             return;
         }
         el.innerHTML = `<div class="server-grid">${servers.map(s => `
       <div class="server-card" onclick="location.hash='server/${s.id}'">
         <div class="server-card-header"><h3>${s.name}</h3>${statusBadge(s.status)}</div>
+        ${(s.motd || (s.status === 'running' && (s.playersOnline !== undefined || s.playersMax))) ? `<div class="server-card-motd" title="MOTD - what players see in server list">${s.motd ? Pages._escapeHtml(s.motd) : ''}${s.status === 'running' ? ` — <span class="players-count">${s.playersOnline || 0}/${s.playersMax || 0} players</span>` : ''}</div>` : ''}
         <div class="server-card-meta">
           <span class="badge badge-type">${s.type}</span>
           <span class="badge badge-type">${s.mc_version}</span>
@@ -373,11 +395,46 @@ Pages.servers = async (el, actions) => {
           ${s.status === 'running' ? `<button class="btn btn-danger btn-sm" onclick="event.stopPropagation();Pages.stopServer(${s.id})">⏹ Stop</button>` : ''}
           ${s.status === 'running' || s.status === 'starting' ? `<button class="btn btn-secondary btn-sm" onclick="event.stopPropagation();Pages.killServer(${s.id})" title="Force stop">Kill</button>` : ''}
           ${s.status === 'running' ? `<button class="btn btn-warning btn-sm" onclick="event.stopPropagation();Pages.restartServer(${s.id})">🔄 Restart</button>` : ''}
+          <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();Pages.cloneServer(${s.id})" title="Clone">📋</button>
           <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();location.hash='server/${s.id}/configuration'" title="Configure">⚙️</button>
         </div>
       </div>
     `).join('')}</div>`;
     } catch (err) { el.innerHTML = `<div class="alert alert-error">${err.message}</div>`; }
+};
+
+Pages.importServer = async () => {
+    const body = `
+    <div class="form-group"><label>Server Directory Path</label>
+      <input type="text" id="import-dir" placeholder="D:\\MinecraftServer or path\\to\\server" style="width:100%">
+      <p class="text-muted" style="font-size:12px;margin-top:4px">Full path to your existing Minecraft server folder (must contain server.jar or similar)</p>
+    </div>
+    <div class="form-group"><label>Display Name (optional)</label>
+      <input type="text" id="import-name" placeholder="My Server">
+    </div>
+    <div class="form-group"><label>Port (optional)</label>
+      <input type="number" id="import-port" placeholder="Auto-detect from server.properties">
+    </div>
+    <div id="import-error" class="alert alert-error" style="display:none"></div>
+  `;
+    const footer = `<button class="btn btn-secondary modal-close" onclick="this.closest('.modal-overlay').remove()">Cancel</button><button class="btn btn-primary" id="import-submit">Import Server</button>`;
+    const modal = showModal('📂 Import Existing Server', body, footer);
+    document.getElementById('import-submit').onclick = async () => {
+        const dir = document.getElementById('import-dir').value.trim();
+        const errEl = document.getElementById('import-error');
+        errEl.style.display = 'none';
+        if (!dir) { errEl.textContent = 'Server directory path is required'; errEl.style.display = 'block'; return; }
+        try {
+            await API.post('/servers/import', {
+                serverDir: dir,
+                name: document.getElementById('import-name').value.trim() || undefined,
+                port: document.getElementById('import-port').value ? parseInt(document.getElementById('import-port').value, 10) : undefined,
+            });
+            Toast.success('Server imported successfully');
+            modal.remove();
+            App.route();
+        } catch (e) { errEl.textContent = e.message; errEl.style.display = 'block'; }
+    };
 };
 
 Pages.restartServer = async (id) => {

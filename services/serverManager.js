@@ -6,6 +6,7 @@ const pidusage = require('pidusage');
 const { getDb } = require('../database');
 const logger = require('../utils/logger');
 const config = require('../config');
+const pathHelper = require('../utils/pathHelper');
 
 // In-memory map of running server processes
 const runningServers = new Map();
@@ -39,7 +40,7 @@ function startServer(serverId) {
             return reject(new Error('Server is already running'));
         }
 
-        const serverDir = serverConfig.server_dir;
+        const serverDir = pathHelper.toAbsolute(serverConfig.server_dir);
         const jarFile = serverConfig.jar_file;
         const jarPath = path.join(serverDir, jarFile);
 
@@ -117,6 +118,10 @@ function startServer(serverId) {
                 state.status = 'crashed';
                 logger.warn('SERVER', `Server ${serverConfig.name} crashed with code ${code}`);
                 addLine(`[Loot Panel] Server crashed with exit code ${code}`);
+
+                // Send crash alert
+                const alertService = require('./alertService');
+                alertService.notifyCrash(serverConfig.name, serverId).catch(() => { });
 
                 // Auto-restart if enabled
                 if (serverConfig.auto_restart) {

@@ -49,14 +49,16 @@ module.exports = {
   // Logging - max size per log file in MB (configurable via panel settings)
   LOG_MAX_SIZE_MB: 10,
 
-  // Java common paths (Windows)
-  JAVA_SEARCH_PATHS: [
-    'C:\\Program Files\\Java',
-    'C:\\Program Files (x86)\\Java',
-    'C:\\Program Files\\Eclipse Adoptium',
-    'C:\\Program Files\\AdoptOpenJDK',
-    'C:\\Program Files\\Zulu',
-    'C:\\Program Files\\Microsoft\\jdk',
-    'C:\\Program Files\\BellSoft',
-  ],
+  // Java common paths (Windows) - built dynamically from Program Files env vars
+  JAVA_SEARCH_PATHS: (() => {
+    const drive = process.env.SystemDrive;
+    const pf = process.env.ProgramFiles || (drive ? path.join(drive, 'Program Files') : null);
+    const pf86 = process.env['ProgramFiles(x86)'] || (drive ? path.join(drive, 'Program Files (x86)') : null);
+    const paths = [];
+    if (pf) {
+      paths.push(path.join(pf, 'Java'), path.join(pf, 'Eclipse Adoptium'), path.join(pf, 'AdoptOpenJDK'), path.join(pf, 'Zulu'), path.join(pf, 'Microsoft', 'jdk'), path.join(pf, 'BellSoft'));
+    }
+    if (pf86) paths.push(path.join(pf86, 'Java'));
+    return paths;
+  })(),
 };

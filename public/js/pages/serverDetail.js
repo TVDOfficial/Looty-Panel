@@ -12,6 +12,7 @@ Pages.serverDetail = async (el, serverId, actions, initialTab) => {
       ${server.status === 'running' ? `<button class="btn btn-warning btn-sm" onclick="Pages.restartServer(${serverId})">🔄 Restart</button>` : ''}
       ${server.status === 'running' ? `<button class="btn btn-danger btn-sm" onclick="Pages.stopServer(${serverId})">⏹ Stop</button>` : ''}
       ${server.status === 'running' || server.status === 'starting' ? `<button class="btn btn-secondary btn-sm" onclick="Pages.killServer(${serverId})" title="Force stop (no graceful shutdown)">Kill</button>` : ''}
+      <button class="btn btn-ghost btn-sm" onclick="Pages.cloneServer(${serverId})" title="Clone this server">📋 Clone</button>
     `;
 
         el.innerHTML = `

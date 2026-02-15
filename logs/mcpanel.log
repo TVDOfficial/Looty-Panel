@@ -579,3 +579,50 @@
 [2026-02-15T21:31:51.134Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
 [2026-02-15T21:31:53.142Z] [INFO] [SERVER] Auto-starting server: Lootvoot
 [2026-02-15T21:31:53.143Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-15T22:04:34.234Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T22:04:34.237Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-15T22:04:34.238Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T22:04:34.259Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T22:04:34.293Z] [INFO] [DB] Database initialized
+[2026-02-15T22:04:34.465Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-15T22:04:34.488Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-15T22:04:34.498Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-15T22:04:34.499Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-15T22:04:36.490Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-15T22:04:36.495Z] [ERROR] [SERVER] Failed to auto-start Lootvoot "JAR file not found: C:\\Users\\TVD\\Desktop\\lootypanel\\servers\\Lootvoot_1771108957457\\server.jar"
+[2026-02-15T22:04:56.939Z] [INFO] [APP] Shutting down...
+[2026-02-15T22:13:32.905Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T22:13:32.908Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-15T22:13:32.909Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T22:13:32.924Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T22:13:32.954Z] [INFO] [DB] Database initialized
+[2026-02-15T22:13:33.091Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-15T22:13:33.106Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-15T22:13:33.114Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-15T22:13:33.115Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-15T22:13:35.109Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-15T22:13:35.111Z] [ERROR] [SERVER] Failed to auto-start Lootvoot "JAR file not found: C:\\Users\\TVD\\Desktop\\lootypanel\\servers\\Lootvoot_1771108957457\\server.jar"
+[2026-02-15T22:13:38.547Z] [INFO] [APP] Shutting down...
+[2026-02-15T22:19:11.557Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T22:19:11.583Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-15T22:19:11.587Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T22:19:11.629Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T22:19:11.710Z] [INFO] [DB] Database initialized
+[2026-02-15T22:19:11.965Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-15T22:19:12.003Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-15T22:19:12.024Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-15T22:19:12.032Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-15T22:19:14.017Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-15T22:19:14.020Z] [ERROR] [SERVER] Failed to auto-start Lootvoot "JAR file not found: C:\\Users\\TVD\\Desktop\\lootypanel\\servers\\Lootvoot_1771108957457\\server.jar"
+[2026-02-15T23:02:44.873Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T23:02:44.876Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-15T23:02:44.877Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T23:02:44.894Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T23:02:44.920Z] [INFO] [DB] Database initialized
+[2026-02-15T23:02:45.080Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-15T23:02:45.101Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-15T23:02:45.129Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-15T23:02:45.180Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-15T23:02:47.108Z] [INFO] [SERVER] Auto-starting server: Lootvoot
+[2026-02-15T23:02:47.109Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
+[2026-02-15T23:04:03.782Z] [INFO] [SERVER] Server Lootvoot is now running

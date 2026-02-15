@@ -5,21 +5,46 @@ const { getDb } = require('../database');
 const { authMiddleware } = require('../middleware/auth');
 const serverManager = require('../services/serverManager');
 const jarDownloader = require('../services/jarDownloader');
+const queryService = require('../services/queryService');
 const config = require('../config');
 const logger = require('../utils/logger');
+const pathHelper = require('../utils/pathHelper');
 
 const router = express.Router();
 router.use(authMiddleware);
 
-// List all servers
-router.get('/', (req, res) => {
+// List all servers (includes motd, status, player count for running servers)
+router.get('/', async (req, res) => {
     try {
         const servers = getDb().prepare('SELECT * FROM servers ORDER BY created_at DESC').all();
         const states = serverManager.getAllServerStates();
-        const result = servers.map(s => ({
-            ...s,
-            status: states[s.id] || 'stopped',
-        }));
+        const runningIds = servers.filter(s => (states[s.id] || 'stopped') === 'running').map(s => s.id);
+        const statusPromises = runningIds.map(async (id) => {
+            const s = servers.find(x => x.id === id);
+            if (!s) return { id, motd: null, playersOnline: 0, playersMax: 0 };
+            try {
+                const st = await queryService.getServerStatus('127.0.0.1', s.port, 2000);
+                return st.online ? { id, motd: st.motd, playersOnline: st.playersOnline, playersMax: st.playersMax } : { id, motd: null, playersOnline: 0, playersMax: 0 };
+            } catch (_) {
+                return { id, motd: null, playersOnline: 0, playersMax: 0 };
+            }
+        });
+        const statusResults = await Promise.all(statusPromises);
+        const statusMap = Object.fromEntries(statusResults.map(r => [r.id, r]));
+
+        const result = servers.map(s => {
+            const status = states[s.id] || 'stopped';
+            const live = statusMap[s.id];
+            let motd = queryService.getMotdFromProperties(pathHelper.toAbsolute(s.server_dir));
+            if (live && live.motd) motd = live.motd;
+            return {
+                ...s,
+                status,
+                motd: motd || null,
+                playersOnline: live ? live.playersOnline : 0,
+                playersMax: live ? live.playersMax : 0,
+            };
+        });
         res.json(result);
     } catch (err) {
         logger.error('ROUTE', 'List servers error', err.message);
@@ -44,6 +69,139 @@ router.get('/versions/:type', async (req, res) => {
     } catch (err) {
         logger.error('ROUTE', 'Get versions error', err.message);
         res.status(500).json({ error: 'Failed to get versions' });
+    }
+});
+
+// Import existing server from folder
+router.post('/import', async (req, res) => {
+    try {
+        const { serverDir, name, port } = req.body;
+        if (!serverDir || !fs.existsSync(serverDir)) {
+            return res.status(400).json({ error: 'Valid server directory path is required' });
+        }
+
+        const dir = path.resolve(serverDir);
+        let jarFile = 'server.jar';
+        const files = fs.readdirSync(dir).filter(f => f.endsWith('.jar'));
+        if (files.length === 0) return res.status(400).json({ error: 'No JAR file found in directory' });
+        if (files.length === 1) jarFile = files[0];
+        else if (files.includes('server.jar')) jarFile = 'server.jar';
+        else jarFile = files[0];
+
+        let mcPort = port;
+        const propsPath = path.join(dir, 'server.properties');
+        if (mcPort == null && fs.existsSync(propsPath)) {
+            const content = fs.readFileSync(propsPath, 'utf-8');
+            for (const line of content.split('\n')) {
+                const m = line.match(/^server-port\s*=\s*(\d+)/i);
+                if (m) { mcPort = parseInt(m[1], 10); break; }
+            }
+        }
+        mcPort = mcPort || config.DEFAULT_MC_PORT;
+
+        const existing = getDb().prepare('SELECT id, name FROM servers WHERE port = ?').get(mcPort);
+        if (existing) {
+            return res.status(400).json({ error: `Port ${mcPort} is already used by server "${existing.name}"` });
+        }
+
+        const serverName = name || path.basename(dir) || 'Imported Server';
+
+        const result = getDb().prepare(
+            `INSERT INTO servers (name, type, mc_version, port, memory_min, memory_max, java_path, jar_file, server_dir, created_by, auto_start)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)`
+        ).run(
+            serverName, 'paper', 'unknown', mcPort,
+            config.DEFAULT_MIN_MEMORY,
+            config.DEFAULT_MAX_MEMORY,
+            'java',
+            jarFile,
+            pathHelper.toRelative(dir),
+            req.user.id
+        );
+
+        const server = getDb().prepare('SELECT * FROM servers WHERE id = ?').get(result.lastInsertRowid);
+        getDb().prepare('INSERT INTO audit_log (user_id, action, details, ip_address) VALUES (?, ?, ?, ?)').run(
+            req.user.id, 'server_import', `Imported server: ${serverName} from ${dir}`, req.ip
+        );
+
+        res.status(201).json({ ...server, status: 'stopped' });
+    } catch (err) {
+        logger.error('ROUTE', 'Import server error', err.message);
+        res.status(500).json({ error: 'Failed to import server: ' + err.message });
+    }
+});
+
+// Clone/duplicate server
+router.post('/:id/clone', async (req, res) => {
+    try {
+        const source = getDb().prepare('SELECT * FROM servers WHERE id = ?').get(req.params.id);
+        if (!source) return res.status(404).json({ error: 'Server not found' });
+
+        const { name } = req.body;
+        const cloneName = (name || source.name + ' (copy)').trim();
+        if (!cloneName) return res.status(400).json({ error: 'Clone name is required' });
+
+        let newPort = source.port;
+        while (getDb().prepare('SELECT id FROM servers WHERE port = ?').get(newPort)) {
+            newPort++;
+        }
+
+        const safeName = cloneName.replace(/[^a-zA-Z0-9_-]/g, '_');
+        const cloneDir = path.join(config.SERVERS_DIR, `${safeName}_${Date.now()}`);
+        fs.mkdirSync(cloneDir, { recursive: true });
+
+        // Copy files (exclude logs, cache, lock files)
+        const excludeDirs = ['logs', 'cache', 'crash-reports'];
+        const excludeFiles = /\.lock$|^usercache\.json$/;
+        function copyRecursive(src, dest) {
+            const entries = fs.readdirSync(src, { withFileTypes: true });
+            for (const e of entries) {
+                const srcPath = path.join(src, e.name);
+                const destPath = path.join(dest, e.name);
+                if (e.isDirectory()) {
+                    if (excludeDirs.includes(e.name)) continue;
+                    fs.mkdirSync(destPath, { recursive: true });
+                    copyRecursive(srcPath, destPath);
+                } else {
+                    if (excludeFiles.test(e.name)) continue;
+                    fs.copyFileSync(srcPath, destPath);
+                }
+            }
+        }
+        copyRecursive(source.server_dir, cloneDir);
+
+        const result = getDb().prepare(
+            `INSERT INTO servers (name, type, mc_version, port, memory_min, memory_max, java_path, jvm_args, jar_file, server_dir, created_by, auto_start, auto_restart)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        ).run(
+            cloneName, source.type, source.mc_version, newPort,
+            source.memory_min, source.memory_max,
+            source.java_path || 'java',
+            source.jvm_args || '',
+            source.jar_file,
+            pathHelper.toRelative(cloneDir),
+            req.user.id,
+            0,
+            source.auto_restart ?? 1
+        );
+
+        // Update server.properties port
+        const propsPath = path.join(cloneDir, 'server.properties');
+        if (fs.existsSync(propsPath)) {
+            let content = fs.readFileSync(propsPath, 'utf-8');
+            content = content.replace(/server-port=\d+/i, `server-port=${newPort}`);
+            fs.writeFileSync(propsPath, content);
+        }
+
+        const server = getDb().prepare('SELECT * FROM servers WHERE id = ?').get(result.lastInsertRowid);
+        getDb().prepare('INSERT INTO audit_log (user_id, action, details, ip_address) VALUES (?, ?, ?, ?)').run(
+            req.user.id, 'server_clone', `Cloned server: ${cloneName} from ${source.name}`, req.ip
+        );
+
+        res.status(201).json({ ...server, status: 'stopped' });
+    } catch (err) {
+        logger.error('ROUTE', 'Clone server error', err.message);
+        res.status(500).json({ error: 'Failed to clone server: ' + err.message });
     }
 });
 
@@ -96,7 +254,7 @@ router.post('/', async (req, res) => {
             memoryMax || config.DEFAULT_MAX_MEMORY,
             javaPath || 'java',
             'server.jar',
-            serverDir,
+            pathHelper.toRelative(serverDir),
             req.user.id
         );
 
@@ -174,8 +332,9 @@ router.delete('/:id', async (req, res) => {
         }
 
         // Delete files if requested
-        if (req.query.deleteFiles === 'true' && fs.existsSync(server.server_dir)) {
-            fs.rmSync(server.server_dir, { recursive: true, force: true });
+        const absServerDir = pathHelper.toAbsolute(server.server_dir);
+        if (req.query.deleteFiles === 'true' && fs.existsSync(absServerDir)) {
+            fs.rmSync(absServerDir, { recursive: true, force: true });
         }
 
         getDb().prepare('DELETE FROM servers WHERE id = ?').run(req.params.id);
@@ -224,7 +383,11 @@ router.post('/:id/kill', async (req, res) => {
 // Restart server
 router.post('/:id/restart', async (req, res) => {
     try {
-        const result = await serverManager.restartServer(parseInt(req.params.id));
+        const serverId = parseInt(req.params.id);
+        const server = getDb().prepare('SELECT name FROM servers WHERE id = ?').get(serverId);
+        const result = await serverManager.restartServer(serverId);
+        const alertService = require('../services/alertService');
+        alertService.notifyRestart(server?.name || 'Server', serverId, 'Manual restart').catch(() => { });
         res.json(result);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -269,7 +432,7 @@ router.get('/:id/properties', (req, res) => {
         const server = getDb().prepare('SELECT * FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
 
-        const propsPath = path.join(server.server_dir, 'server.properties');
+        const propsPath = path.join(pathHelper.toAbsolute(server.server_dir), 'server.properties');
         if (!fs.existsSync(propsPath)) return res.json({});
 
         const content = fs.readFileSync(propsPath, 'utf-8');
@@ -294,7 +457,7 @@ router.put('/:id/properties', (req, res) => {
         const server = getDb().prepare('SELECT * FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
 
-        const propsPath = path.join(server.server_dir, 'server.properties');
+        const propsPath = path.join(pathHelper.toAbsolute(server.server_dir), 'server.properties');
         const newProps = req.body;
 
         // Read existing props to preserve comments and order
@@ -345,7 +508,7 @@ router.get('/:id/eula', (req, res) => {
     try {
         const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
-        const eulaPath = path.join(server.server_dir, 'eula.txt');
+        const eulaPath = path.join(pathHelper.toAbsolute(server.server_dir), 'eula.txt');
         if (!fs.existsSync(eulaPath)) return res.json({ agreed: false });
         const content = fs.readFileSync(eulaPath, 'utf-8');
         const agreed = /eula\s*=\s*true/i.test(content);
@@ -360,7 +523,7 @@ router.post('/:id/eula', (req, res) => {
     try {
         const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
-        const eulaPath = path.join(server.server_dir, 'eula.txt');
+        const eulaPath = path.join(pathHelper.toAbsolute(server.server_dir), 'eula.txt');
         const defaultContent = '#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).\neula=true\n';
         if (fs.existsSync(eulaPath)) {
             let content = fs.readFileSync(eulaPath, 'utf-8');
