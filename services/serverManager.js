@@ -194,6 +194,7 @@ function startServer(serverId) {
             status: 'starting',
             consoleBuffer: [],
             listeners: existing ? existing.listeners : new Set(),
+            onlinePlayers: existing ? (existing.onlinePlayers || new Set()) : new Set(),
             startedAt: Date.now(),
         };
 
@@ -215,6 +216,22 @@ function startServer(serverId) {
             const lines = data.toString().split('\n').filter(l => l.trim());
             for (const line of lines) {
                 addLine(line);
+
+                // Player tracking
+                // Paper/Spigot: [12:34:56 INFO]: PlayerName[/127.0.0.1:1234] logged in with...
+                // Vanilla: PlayerName joined the game
+                const joinMatch = line.match(/]: (\S+)\[.*\] logged in/) || line.match(/]: (\S+) joined the game/);
+                if (joinMatch) {
+                    state.onlinePlayers.add(joinMatch[1]);
+                    logger.debug('SERVER', `Player joined ${serverConfig.name}: ${joinMatch[1]}`);
+                }
+
+                const leaveMatch = line.match(/]: (\S+) left the game/);
+                if (leaveMatch) {
+                    state.onlinePlayers.delete(leaveMatch[1]);
+                    logger.debug('SERVER', `Player left ${serverConfig.name}: ${leaveMatch[1]}`);
+                }
+
                 // Detect when server is ready
                 const readyPatterns = ['Done (', 'Listening on', 'Done!', 'Done in '];
                 if (state.status === 'starting' && readyPatterns.some(p => line.includes(p))) {
@@ -475,6 +492,11 @@ function getConsoleBuffer(serverId) {
     return state ? state.consoleBuffer : [];
 }
 
+function getOnlinePlayers(serverId) {
+    const state = runningServers.get(serverId);
+    return state && state.onlinePlayers ? Array.from(state.onlinePlayers) : [];
+}
+
 // Auto-start servers on panel startup - NOW WITH DETECTION
 async function autoStartServers() {
     // First, detect any servers that are already running
@@ -528,6 +550,7 @@ module.exports = {
     getResourceUsage,
     addConsoleListener,
     getConsoleBuffer,
+    getOnlinePlayers,
     autoStartServers,
     shutdownAll,
     // Export new function

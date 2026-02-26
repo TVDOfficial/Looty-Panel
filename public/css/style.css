@@ -2252,6 +2252,121 @@ code {
   z-index: 100;
 }
 
+/* Quick Commands */
+.quick-commands-bar {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+}
+
+.quick-commands-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.command-btn {
+  white-space: nowrap;
+}
+
+.custom-command-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.custom-command-wrapper.dragging {
+  opacity: 0.5;
+  border: 1px dashed var(--accent-primary);
+}
+
+.remove-cmd {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 16px;
+  height: 16px;
+  background: var(--danger);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.custom-command-wrapper:hover .remove-cmd {
+  opacity: 1;
+}
+
+.add-cmd-btn {
+  border: 1px dashed var(--border-color);
+}
+
+/* Searchable Select */
+.searchable-select {
+  position: relative;
+  width: 100%;
+}
+
+.searchable-select .search-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+}
+
+.searchable-select .options-list {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  max-height: 250px;
+  overflow-y: auto;
+  background: var(--card-bg);
+  /* Use solid card background */
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--radius-sm);
+  z-index: 2000;
+  /* Ensure it stays above other modal elements */
+  display: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.searchable-select .options-list.show {
+  display: block;
+}
+
+.searchable-select .option {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 13px;
+}
+
+.searchable-select .option:hover {
+  background: var(--hover-color);
+}
+
+.searchable-select .option.selected {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.searchable-select .no-options {
+  padding: 12px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
 .server-grid,
 #dash-servers {
   position: relative;

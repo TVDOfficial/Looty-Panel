@@ -1780,3 +1780,18 @@
 [2026-02-26T12:10:57.663Z] [INFO] [SERVER] Server Lootvote Lobby is now running
 [2026-02-26T12:12:10.612Z] [INFO] [SERVER] Server Lootvote Survival is now running
 [2026-02-26T12:12:46.604Z] [INFO] [SERVER] Server Lootvote Skyblock is now running
+[2026-02-26T14:10:52.335Z] [INFO] [SERVER] Stopping server 4
+[2026-02-26T14:10:56.849Z] [INFO] [SERVER] Stopping server 4 (force)
+[2026-02-26T14:10:59.753Z] [INFO] [SERVER] Server Lootvote Survival stopped (exit code: null)
+[2026-02-26T14:11:11.768Z] [INFO] [PLUGINS] Removed plugin: Towny.jar
+[2026-02-26T14:11:49.979Z] [INFO] [PLUGINS] Installed plugin: voicechat-bukkit-2.6.12.jar
+[2026-02-26T14:11:56.368Z] [INFO] [PLUGINS] Installed plugin: VoiceChatPlaceholders.jar
+[2026-02-26T14:12:10.704Z] [ERROR] [ROUTE] Hangar install error "No direct download available (project may use external hosting)"
+[2026-02-26T14:20:07.584Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-26T14:20:54.864Z] [INFO] [PLUGINS] Installed plugin: Dynmap-GriefPrevention.jar
+[2026-02-26T14:21:22.690Z] [INFO] [PLUGINS] Installed plugin: GPSend___Send_give_transfer_claim_blocks___GriefPrevention_Addon.jar
+[2026-02-26T14:22:11.777Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-26T14:24:02.203Z] [INFO] [PLUGINS] Installed plugin: MyClaimsGUI___GriefPrevention_Addon_.jar
+[2026-02-26T14:25:12.375Z] [INFO] [PLUGINS] Installed plugin: GPTeleport-1.2.1.jar
+[2026-02-26T14:26:45.141Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-26T14:28:48.403Z] [INFO] [SERVER] Server Lootvote Survival is now running

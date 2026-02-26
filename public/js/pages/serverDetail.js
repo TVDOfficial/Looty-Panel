@@ -107,6 +107,7 @@ Pages.loadTab_console = (serverId) => {
         <button class="btn btn-sm btn-ghost" id="clear-chat-btn" title="Clear chat display (client-side only)">Clear Chat</button>
       </div>
     </div>
+    <div id="quick-commands-container"></div>
     <div class="console-container">
       <div class="console-output" id="console-output"></div>
       <div class="console-input-container">
@@ -115,6 +116,8 @@ Pages.loadTab_console = (serverId) => {
       </div>
     </div>
   `;
+
+    QuickCommands.render(document.getElementById('quick-commands-container'), serverId);
 
     const output = document.getElementById('console-output');
     const input = document.getElementById('console-input');

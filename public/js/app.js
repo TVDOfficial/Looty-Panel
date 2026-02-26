@@ -15,6 +15,17 @@ const App = {
         }
     },
 
+    async getPreferences() {
+        if (Object.keys(this.preferences).length === 0) {
+            try {
+                this.preferences = await API.get('/system/preferences');
+            } catch (e) {
+                console.error('Failed to fetch preferences', e);
+            }
+        }
+        return this.preferences;
+    },
+
     init() {
         this.bindEvents();
         this.initPasswordToggles();

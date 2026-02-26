@@ -426,6 +426,34 @@ router.get('/:id/console', (req, res) => {
     }
 });
 
+// Get online players
+router.get('/:id/players', (req, res) => {
+    try {
+        const players = serverManager.getOnlinePlayers(parseInt(req.params.id));
+        res.json(players);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to get players' });
+    }
+});
+
+// Check if specific plugin exists
+router.get('/:id/plugins/check/:name', async (req, res) => {
+    try {
+        const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
+        if (!server) return res.status(404).json({ error: 'Server not found' });
+
+        const pluginsDir = path.join(pathHelper.toAbsolute(server.server_dir), 'plugins');
+        if (!fs.existsSync(pluginsDir)) return res.json({ exists: false });
+
+        const search = req.params.name.toLowerCase();
+        const files = fs.readdirSync(pluginsDir);
+        const exists = files.some(f => f.toLowerCase().includes(search) && f.endsWith('.jar'));
+        res.json({ exists });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to check plugin' });
+    }
+});
+
 // Get server.properties
 router.get('/:id/properties', (req, res) => {
     try {
