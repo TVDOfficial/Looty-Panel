@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
         if (!username || !password) return res.status(400).json({ error: 'Username and password are required' });
         if (password.length < 6) return res.status(400).json({ error: 'Password must be at least 6 characters' });
 
-        const existing = getDb().prepare('SELECT id FROM users WHERE username = ?').get(username);
+        const existing = getDb().prepare('SELECT id FROM users WHERE username = ? COLLATE NOCASE').get(username);
         if (existing) return res.status(409).json({ error: 'Username already exists' });
 
         const hash = bcrypt.hashSync(password, 10);

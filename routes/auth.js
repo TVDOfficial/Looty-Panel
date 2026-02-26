@@ -34,7 +34,7 @@ router.post('/setup', (req, res) => {
             'INSERT INTO users (username, password_hash, role, must_change_password) VALUES (?, ?, ?, ?)'
         ).run(username, hash, 'admin', 0); // No need to change password since they just set it
 
-        const newUser = getDb().prepare('SELECT id FROM users WHERE username = ?').get(username);
+        const newUser = getDb().prepare('SELECT id FROM users WHERE username = ? COLLATE NOCASE').get(username);
         if (!newUser) {
             logger.error('AUTH', 'Setup: User was not found after insert');
             return res.status(500).json({ error: 'Setup failed' });
@@ -70,7 +70,7 @@ router.post('/login', (req, res) => {
             return res.status(400).json({ error: 'Username and password are required' });
         }
 
-        const user = getDb().prepare('SELECT * FROM users WHERE username = ?').get(username);
+        const user = getDb().prepare('SELECT * FROM users WHERE username = ? COLLATE NOCASE').get(username);
         if (!user || !bcrypt.compareSync(password, user.password_hash)) {
             return res.status(401).json({ error: 'Invalid credentials' });
         }

@@ -133,12 +133,29 @@ router.post('/:id/files/upload', upload.array('files', 20), (req, res) => {
         const server = getDb().prepare('SELECT server_dir FROM servers WHERE id = ?').get(req.params.id);
         if (!server) return res.status(404).json({ error: 'Server not found' });
 
-        const targetDir = safePath(pathHelper.toAbsolute(server.server_dir), req.body.path || '');
+
+        // Robust path resolution: Query > Body > Root
+        let requestPath = req.query.path;
+        if (requestPath === undefined || requestPath === null) {
+            requestPath = req.body.path;
+        }
+        const targetDir = safePath(pathHelper.toAbsolute(server.server_dir), requestPath || '');
+
+        console.log('[DEBUG] Upload Request:', {
+            serverDir: server.server_dir,
+            queryPath: req.query.path,
+            bodyPath: req.body.path,
+            resolution: requestPath,
+            targetDir: targetDir,
+            files: req.files.map(f => f.originalname)
+        });
+
         if (!fs.existsSync(targetDir)) fs.mkdirSync(targetDir, { recursive: true });
 
         const uploaded = [];
         for (const file of req.files) {
             const destPath = path.join(targetDir, file.originalname);
+            console.log('[DEBUG] Copying file to:', destPath);
             fs.copyFileSync(file.path, destPath);
             fs.unlinkSync(file.path); // Clean up temp file
             uploaded.push(file.originalname);

@@ -1,0 +1,204 @@
+.mc-motd {
+    font-family: 'Minecraft', 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    display: block;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    word-break: break-all;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.mc-color-0 {
+    color: #000000;
+}
+
+.mc-color-1 {
+    color: #0000AA;
+}
+
+.mc-color-2 {
+    color: #00AA00;
+}
+
+.mc-color-3 {
+    color: #00AAAA;
+}
+
+.mc-color-4 {
+    color: #AA0000;
+}
+
+.mc-color-5 {
+    color: #AA00AA;
+}
+
+.mc-color-6 {
+    color: #FFAA00;
+}
+
+.mc-color-7 {
+    color: #AAAAAA;
+}
+
+.mc-color-8 {
+    color: #555555;
+}
+
+.mc-color-9 {
+    color: #5555FF;
+}
+
+.mc-color-a {
+    color: #55FF55;
+}
+
+.mc-color-b {
+    color: #55FFFF;
+}
+
+.mc-color-c {
+    color: #FF5555;
+}
+
+.mc-color-d {
+    color: #FF55FF;
+}
+
+.mc-color-e {
+    color: #FFFF55;
+}
+
+.mc-color-f {
+    color: #FFFFFF;
+}
+
+.mc-format-l {
+    font-weight: bold;
+}
+
+.mc-format-m {
+    text-decoration: line-through;
+}
+
+.mc-format-n {
+    text-decoration: underline;
+}
+
+.mc-format-o {
+    font-style: italic;
+}
+
+/* Obfuscated styling */
+.mc-format-k {
+    animation: mc-obfuscate 0.2s infinite alternate;
+    background: rgba(255, 255, 255, 0.1);
+    color: transparent !important;
+    position: relative;
+    user-select: none;
+}
+
+@keyframes mc-obfuscate {
+    0% {
+        filter: blur(1.5px) contrast(2);
+    }
+
+    100% {
+        filter: blur(2px) contrast(1.5);
+    }
+}
+
+.mc-line-break {
+    height: 4px;
+    width: 100%;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .mc-motd {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+
+/* New Server Card Layout */
+.server-card-main-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.server-card-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mc-players-count {
+    font-family: 'Minecraft', monospace;
+    font-size: 14px;
+    color: #AAAAAA;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+
+.mc-signal-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+    height: 14px;
+    padding-bottom: 2px;
+}
+
+.mc-signal-bars .bar {
+    width: 2px;
+    background: #555555;
+}
+
+.mc-signal-bars .bar:nth-child(1) {
+    height: 4px;
+}
+
+.mc-signal-bars .bar:nth-child(2) {
+    height: 6px;
+}
+
+.mc-signal-bars .bar:nth-child(3) {
+    height: 8px;
+}
+
+.mc-signal-bars .bar:nth-child(4) {
+    height: 10px;
+}
+
+.mc-signal-bars .bar:nth-child(5) {
+    height: 12px;
+}
+
+.mc-signal-bars .bar.active {
+    background: #00FF00;
+    box-shadow: 0 0 2px rgba(0, 255, 0, 0.5);
+}
+
+.server-card-motd-container {
+    margin-bottom: 12px;
+    min-height: 48px;
+}
+
+.mc-motd-offline {
+    font-family: 'Minecraft', monospace;
+    color: #555555;
+    font-style: italic;
+    font-size: 13px;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}

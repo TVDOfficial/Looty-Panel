@@ -691,8 +691,15 @@ select {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .dashboard-meta {
@@ -993,35 +1000,49 @@ select {
 /* ========== Tabs ========== */
 .tabs {
   display: flex;
-  gap: 0;
+  gap: 10px;
+  background: transparent;
+  padding: 0 4px 12px;
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 20px;
   overflow-x: auto;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scrolling on iOS */
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tab {
-  padding: 12px 20px;
+  padding: 8px 16px;
   font-size: 13px;
   font-weight: 500;
   color: var(--text-muted);
-  border-bottom: 2px solid transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  /* Pill shape */
+  background: var(--bg-card);
   cursor: pointer;
   transition: var(--transition);
   white-space: nowrap;
-  background: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  font-family: var(--font-main);
+  flex-shrink: 0;
 }
 
 .tab:hover {
   color: var(--text-primary);
+  border-color: var(--border-light);
+  background: var(--bg-hover);
 }
 
 .tab.active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px var(--accent-glow);
 }
 
 .tab-content {
@@ -1806,14 +1827,14 @@ tr:hover td {
     display: block;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 150;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
   }
 
-  .sidebar.open ~ .sidebar-overlay {
+  .sidebar.open~.sidebar-overlay {
     opacity: 1;
     pointer-events: auto;
   }
@@ -2138,9 +2159,9 @@ code {
   background-image:
     radial-gradient(ellipse at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 70%, rgba(6, 182, 212, 0.06) 0%, transparent 50%),
-    radial-gradient(1px 1px at 50px 50px, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1px 1px at 150px 100px, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 250px 200px, rgba(255,255,255,0.35), transparent);
+    radial-gradient(1px 1px at 50px 50px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 150px 100px, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 250px 200px, rgba(255, 255, 255, 0.35), transparent);
 }
 
 [data-theme="universe"] .sidebar {
@@ -2177,4 +2198,22 @@ code {
 [data-theme="snowy"] .sidebar {
   background: linear-gradient(180deg, #141a22 0%, #0f1419 100%);
   border-right: 1px solid rgba(125, 211, 252, 0.2);
+}
+
+/* Plugin Filter Input */
+.plugin-filter-input {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.plugin-filter-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-glow);
 }

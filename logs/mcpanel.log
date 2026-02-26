@@ -626,3 +626,1057 @@
 [2026-02-15T23:02:47.108Z] [INFO] [SERVER] Auto-starting server: Lootvoot
 [2026-02-15T23:02:47.109Z] [INFO] [SERVER] Starting server Lootvoot (ID: 1)
 [2026-02-15T23:04:03.782Z] [INFO] [SERVER] Server Lootvoot is now running
+[2026-02-15T23:13:29.320Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T23:13:29.364Z] [INFO] [DB] Database initialized
+[2026-02-15T23:14:40.068Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T23:14:40.109Z] [INFO] [DB] Database initialized
+[2026-02-15T23:17:42.916Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T23:17:42.920Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-15T23:17:42.920Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-15T23:17:42.939Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T23:17:42.975Z] [INFO] [DB] Database initialized
+[2026-02-15T23:17:43.205Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-15T23:17:43.228Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-15T23:17:43.237Z] [ERROR] [APP] HTTP failed to listen "listen EADDRINUSE: address already in use 0.0.0.0:80"
+[2026-02-15T23:17:43.238Z] [ERROR] [APP] Port already in use. Stop the other app or set HTTP_PORT/HTTPS_PORT to different ports.
+[2026-02-15T23:17:43.239Z] [ERROR] [APP] HTTPS failed to listen "listen EADDRINUSE: address already in use 0.0.0.0:443"
+[2026-02-15T23:17:43.240Z] [ERROR] [APP] Port already in use. Stop the other app or set HTTP_PORT/HTTPS_PORT to different ports.
+[2026-02-15T23:17:45.240Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-15T23:17:45.242Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-15T23:18:02.154Z] [INFO] [SERVER] Server Lootvote stopped (exit code: 0)
+[2026-02-15T23:58:10.482Z] [INFO] [APP] Shutting down...
+[2026-02-15T23:58:10.486Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T23:58:10.698Z] [INFO] [APP] Shutting down...
+[2026-02-15T23:58:10.700Z] [INFO] [SERVER] Stopping server 1
+[2026-02-15T23:59:30.493Z] [INFO] [DB] Database loaded from disk
+[2026-02-15T23:59:30.528Z] [INFO] [DB] Database initialized
+[2026-02-16T00:00:01.368Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T00:00:01.406Z] [INFO] [DB] Database initialized
+[2026-02-16T08:36:31.817Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:36:31.822Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T08:36:31.823Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:36:31.844Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:36:31.886Z] [INFO] [DB] Database initialized
+[2026-02-16T08:36:32.070Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T08:36:32.085Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T08:36:32.095Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T08:36:32.097Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T08:36:34.096Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T08:36:34.098Z] [ERROR] [SERVER] Failed to auto-start Lootvote "JAR file not found: C:\\Users\\TVD\\Desktop\\lootypanel\\servers\\Lootvoot_1771108957457\\server.jar"
+[2026-02-16T08:36:39.893Z] [INFO] [APP] Shutting down...
+[2026-02-16T08:36:50.756Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:36:50.759Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T08:36:50.760Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:36:50.775Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:36:50.796Z] [INFO] [DB] Database initialized
+[2026-02-16T08:36:50.936Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T08:36:50.975Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T08:36:50.995Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T08:36:50.996Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T08:36:52.980Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T08:36:52.981Z] [ERROR] [SERVER] Failed to auto-start Lootvote "JAR file not found: C:\\Users\\TVD\\Desktop\\lootypanel\\servers\\Lootvoot_1771108957457\\server.jar"
+[2026-02-16T08:37:57.471Z] [INFO] [APP] Shutting down...
+[2026-02-16T08:38:01.935Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:38:01.938Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T08:38:01.939Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:38:01.953Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:38:01.978Z] [INFO] [DB] Database initialized
+[2026-02-16T08:38:02.104Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T08:38:02.117Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T08:38:02.127Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T08:38:02.127Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T08:38:04.130Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T08:38:04.132Z] [ERROR] [SERVER] Failed to auto-start Lootvote "JAR file not found: C:\\Users\\TVD\\Desktop\\lootypanel\\servers\\Lootvoot_1771108957457\\server.jar"
+[2026-02-16T08:38:45.271Z] [INFO] [APP] Shutting down...
+[2026-02-16T08:38:47.742Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:38:47.745Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T08:38:47.746Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:38:47.762Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:38:47.788Z] [INFO] [DB] Database initialized
+[2026-02-16T08:38:47.916Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T08:38:47.929Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T08:38:47.938Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T08:38:47.940Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T08:38:49.934Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T08:38:49.936Z] [ERROR] [SERVER] Failed to auto-start Lootvote "JAR file not found: C:\\Users\\TVD\\Desktop\\lootypanel\\servers\\Lootvoot_1771108957457\\server.jar"
+[2026-02-16T08:40:32.927Z] [INFO] [APP] Shutting down...
+[2026-02-16T08:40:59.558Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:40:59.583Z] [INFO] [DB] Database initialized
+[2026-02-16T08:41:26.584Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:41:26.618Z] [INFO] [DB] Database initialized
+[2026-02-16T08:41:54.823Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:41:54.864Z] [INFO] [DB] Database initialized
+[2026-02-16T08:42:52.815Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:42:52.818Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T08:42:52.819Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:42:52.837Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:42:52.861Z] [INFO] [DB] Database initialized
+[2026-02-16T08:42:53.004Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T08:42:53.024Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T08:42:53.033Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T08:42:53.034Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T08:42:55.039Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T08:42:55.042Z] [ERROR] [SERVER] Failed to auto-start Lootvote "JAR file not found: C:\\Users\\TVD\\Desktop\\lootypanel\\servers\\Lootvoot_1771108957457\\server.jar"
+[2026-02-16T08:43:02.675Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:43:02.722Z] [INFO] [DB] Database initialized
+[2026-02-16T08:43:21.531Z] [INFO] [APP] Shutting down...
+[2026-02-16T08:43:23.159Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:43:23.162Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T08:43:23.163Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:43:23.178Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:43:23.201Z] [INFO] [DB] Database initialized
+[2026-02-16T08:43:23.330Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T08:43:23.345Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T08:43:23.353Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T08:43:23.354Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T08:43:25.347Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T08:43:25.349Z] [ERROR] [SERVER] Failed to auto-start Lootvote "JAR file not found: C:\\Users\\TVD\\Desktop\\lootypanel\\servers\\Lootvoot_1771108957457\\server.jar"
+[2026-02-16T08:43:30.971Z] [INFO] [APP] Shutting down...
+[2026-02-16T08:43:35.111Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:43:35.115Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T08:43:35.116Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:43:35.136Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:43:35.176Z] [INFO] [DB] Database initialized
+[2026-02-16T08:43:35.342Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T08:43:35.369Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T08:43:35.380Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T08:43:35.382Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T08:43:37.371Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T08:43:37.374Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T08:43:37.453Z] [INFO] [APP] Shutting down...
+[2026-02-16T08:43:37.456Z] [INFO] [SERVER] Stopping server 1
+[2026-02-16T08:43:52.960Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:43:52.964Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T08:43:52.966Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:43:52.985Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:43:53.014Z] [INFO] [DB] Database initialized
+[2026-02-16T08:43:53.193Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T08:43:53.212Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T08:43:53.222Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T08:43:53.224Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T08:43:55.222Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T08:43:55.224Z] [ERROR] [SERVER] Failed to auto-start Lootvote "JAR file not found: C:\\Users\\TVD\\Desktop\\lootypanel\\servers\\Lootvoot_1771108957457\\server.jar"
+[2026-02-16T08:44:53.093Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:44:53.122Z] [INFO] [DB] Database initialized
+[2026-02-16T08:45:38.963Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:45:38.999Z] [INFO] [DB] Database initialized
+[2026-02-16T08:45:55.812Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:45:55.815Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T08:45:55.816Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:45:55.831Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:45:55.854Z] [INFO] [DB] Database initialized
+[2026-02-16T08:45:55.986Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T08:45:56.010Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T08:45:56.023Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T08:45:56.024Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T08:45:58.013Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T08:45:58.015Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T08:48:12.622Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-16T08:51:17.718Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-16T08:51:35.357Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-16T08:51:41.011Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-16T08:52:03.484Z] [WARN] [AUTH] 401 on GET /api/servers/1/plugins/search?q=discordSRV&source=all: jwt expired
+[2026-02-16T08:52:21.207Z] [INFO] [PLUGINS] Installed plugin: DiscordSRV-Build-1.30.4.jar
+[2026-02-16T08:54:21.964Z] [INFO] [SERVER] Stopping server 1
+[2026-02-16T08:54:23.105Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-16T08:54:24.108Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-16T08:54:30.583Z] [INFO] [PLUGINS] Removed plugin: GrimAC.jar
+[2026-02-16T08:55:08.376Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T08:55:45.722Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:55:45.726Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T08:55:45.727Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T08:55:45.742Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T08:55:45.768Z] [INFO] [DB] Database initialized
+[2026-02-16T08:55:45.907Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T08:55:45.922Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T08:55:45.937Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T08:55:45.939Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T08:55:47.936Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T08:55:47.940Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T08:57:54.953Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-16T09:04:41.704Z] [INFO] [APP] Shutting down...
+[2026-02-16T09:04:41.709Z] [INFO] [SERVER] Stopping server 1
+[2026-02-16T09:04:41.906Z] [INFO] [APP] Shutting down...
+[2026-02-16T09:04:41.908Z] [INFO] [SERVER] Stopping server 1
+[2026-02-16T09:04:44.810Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T09:04:44.818Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T09:04:44.820Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T09:04:44.850Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T09:04:44.911Z] [INFO] [DB] Database initialized
+[2026-02-16T09:04:45.240Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T09:04:45.273Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T09:04:45.289Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T09:04:45.291Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T09:04:47.277Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T09:04:47.279Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T09:05:02.002Z] [INFO] [APP] Shutting down...
+[2026-02-16T09:05:02.006Z] [INFO] [SERVER] Stopping server 1
+[2026-02-16T09:05:02.194Z] [INFO] [SERVER] Server Lootvote stopped gracefully
+[2026-02-16T09:05:04.749Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T09:05:04.752Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T09:05:04.753Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T09:05:04.769Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T09:05:04.795Z] [INFO] [DB] Database initialized
+[2026-02-16T09:05:04.986Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T09:05:05.023Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T09:05:05.042Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T09:05:05.043Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T09:05:07.030Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T09:05:07.034Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T09:07:01.783Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-16T10:28:08.742Z] [INFO] [APP] Shutting down...
+[2026-02-16T10:28:08.746Z] [INFO] [SERVER] Stopping server 1
+[2026-02-16T10:28:13.463Z] [INFO] [APP] Shutting down...
+[2026-02-16T10:28:13.465Z] [INFO] [SERVER] Stopping server 1
+[2026-02-16T10:28:40.318Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T10:28:40.323Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T10:28:40.324Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T10:28:40.356Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T10:28:40.407Z] [INFO] [DB] Database initialized
+[2026-02-16T10:28:40.601Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T10:28:40.618Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T10:28:40.627Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T10:28:40.628Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T10:28:42.634Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T10:28:42.636Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T10:30:38.122Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-16T10:42:09.396Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T10:42:09.400Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T10:42:09.402Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T10:42:09.423Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T10:42:09.477Z] [INFO] [DB] Database initialized
+[2026-02-16T10:42:09.651Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T10:42:09.670Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T10:42:09.683Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T10:42:09.685Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T10:42:11.686Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T10:42:11.688Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T10:43:49.724Z] [INFO] [SERVER] Stopping server 1
+[2026-02-16T10:44:06.438Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-16T10:44:06.440Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-16T10:44:06.778Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-16T10:44:08.951Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T10:46:07.137Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-16T10:50:30.792Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T10:50:30.797Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-16T10:50:30.799Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-16T10:50:30.828Z] [INFO] [DB] Database loaded from disk
+[2026-02-16T10:50:30.881Z] [INFO] [DB] Database initialized
+[2026-02-16T10:50:31.078Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-16T10:50:31.102Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-16T10:50:31.114Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-16T10:50:31.116Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-16T10:50:33.114Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-16T10:50:33.117Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T10:52:33.878Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-16T20:50:43.330Z] [ERROR] [APP] Unhandled error "Failed to decode param '/cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/bin/sh'"
+[2026-02-16T21:33:18.341Z] [INFO] [SERVER] Stopping server 1
+[2026-02-16T21:33:24.998Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-16T21:33:25.904Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-16T21:33:30.750Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T21:36:07.915Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-16T21:36:35.241Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-16T21:36:36.350Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-16T21:36:37.205Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T21:38:24.784Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-16T21:45:23.318Z] [INFO] [SERVER] Stopping server 1
+[2026-02-16T21:45:29.208Z] [INFO] [SERVER] Server Lootvote stopped gracefully
+[2026-02-16T21:45:31.434Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-16T21:47:18.167Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-16T21:59:22.329Z] [ERROR] [PLUGINS] Spiget search failed "HTTP 404 for https://api.spiget.org/v2/search/resources/holograpgic?size=20&sort=-downloads"
+[2026-02-16T21:59:29.360Z] [ERROR] [PLUGINS] Spiget search failed "HTTP 404 for https://api.spiget.org/v2/search/resources/holograpgic%20displays?size=20&sort=-downloads"
+[2026-02-16T22:01:37.041Z] [INFO] [PLUGINS] Installed plugin: DecentHolograms-2.9.9.jar
+[2026-02-16T22:01:47.251Z] [INFO] [PLUGINS] Installed plugin: DecentHolograms___1_8_-_1_21_11___PAPI_Support___No_Dependencies.jar
+[2026-02-16T22:02:08.451Z] [INFO] [PLUGINS] Removed plugin: DecentHolograms___1_8_-_1_21_11___PAPI_Support___No_Dependencies.jar
+[2026-02-17T03:33:27.851Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-17T03:33:29.054Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-17T03:39:53.972Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T03:44:36.722Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T03:45:24.390Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-17T03:45:25.360Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-17T03:45:27.002Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T03:48:27.989Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T03:54:08.437Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-17T03:54:09.557Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-17T03:55:27.177Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T03:58:31.347Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T04:02:17.114Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-17T04:02:17.974Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-17T04:02:21.836Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T04:04:09.956Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T04:05:50.992Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-17T04:05:52.042Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-17T04:06:30.568Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T04:09:04.880Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T04:49:27.076Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T04:49:27.081Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-17T04:49:27.082Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T04:49:27.120Z] [INFO] [DB] Database loaded from disk
+[2026-02-17T04:49:27.144Z] [INFO] [DB] Database initialized
+[2026-02-17T04:49:27.305Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-17T04:49:27.324Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-17T04:49:27.336Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-17T04:49:27.337Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-17T04:49:29.340Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-17T04:49:29.342Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T04:50:01.889Z] [INFO] [DAEMON] Service uninstalled
+[2026-02-17T04:50:17.421Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T04:50:17.424Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-17T04:50:17.425Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T04:50:17.448Z] [INFO] [DB] Database loaded from disk
+[2026-02-17T04:50:17.477Z] [INFO] [DB] Database initialized
+[2026-02-17T04:50:17.655Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-17T04:50:17.676Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-17T04:50:17.685Z] [ERROR] [APP] HTTP failed to listen "listen EADDRINUSE: address already in use 0.0.0.0:80"
+[2026-02-17T04:50:17.686Z] [ERROR] [APP] Port already in use. Stop the other app or set HTTP_PORT/HTTPS_PORT to different ports.
+[2026-02-17T04:50:17.687Z] [ERROR] [APP] HTTPS failed to listen "listen EADDRINUSE: address already in use 0.0.0.0:443"
+[2026-02-17T04:50:17.687Z] [ERROR] [APP] Port already in use. Stop the other app or set HTTP_PORT/HTTPS_PORT to different ports.
+[2026-02-17T04:50:18.280Z] [INFO] [DAEMON] Service installed successfully
+[2026-02-17T04:50:19.690Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-17T04:50:19.692Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T04:50:27.059Z] [INFO] [APP] Shutting down...
+[2026-02-17T04:50:27.065Z] [INFO] [SERVER] Stopping server 1
+[2026-02-17T04:50:28.140Z] [INFO] [APP] Shutting down...
+[2026-02-17T04:50:28.142Z] [INFO] [SERVER] Stopping server 1
+[2026-02-17T04:50:28.334Z] [INFO] [APP] Shutting down...
+[2026-02-17T04:50:28.336Z] [INFO] [SERVER] Stopping server 1
+[2026-02-17T04:50:31.981Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T04:50:31.985Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-17T04:50:31.986Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T04:50:32.012Z] [INFO] [DB] Database loaded from disk
+[2026-02-17T04:50:32.039Z] [INFO] [DB] Database initialized
+[2026-02-17T04:50:32.201Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-17T04:50:32.219Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-17T04:50:32.228Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-17T04:50:32.229Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-17T04:50:34.234Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-17T04:50:34.236Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T04:52:52.629Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T05:23:44.066Z] [INFO] [PLUGINS] Installed plugin: Tebex.jar
+[2026-02-17T05:24:30.973Z] [INFO] [SERVER] Stopping server 1
+[2026-02-17T05:24:36.364Z] [INFO] [SERVER] Stopping server 1
+[2026-02-17T05:24:36.809Z] [INFO] [SERVER] Server Lootvote stopped gracefully
+[2026-02-17T05:24:38.876Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T05:24:39.095Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T05:25:09.264Z] [INFO] [SERVER] Server Lootvote stopped (exit code: 0)
+[2026-02-17T05:26:34.809Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T05:35:19.440Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T05:35:35.888Z] [INFO] [SERVER] Server Lootvote stopped (exit code: 0)
+[2026-02-17T07:09:33.722Z] [WARN] [AUTH] 401 on GET /api/system/info: jwt expired
+[2026-02-17T07:09:33.724Z] [WARN] [AUTH] 401 on GET /api/servers: jwt expired
+[2026-02-17T07:09:33.912Z] [WARN] [AUTH] 401 on GET /api/system/daemon: jwt expired
+[2026-02-17T07:09:55.292Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T07:10:09.563Z] [INFO] [SERVER] Server Lootvote stopped (exit code: 0)
+[2026-02-17T07:36:53.656Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T07:36:53.660Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-17T07:36:53.660Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T07:36:53.676Z] [INFO] [DB] Database loaded from disk
+[2026-02-17T07:36:53.700Z] [INFO] [DB] Database initialized
+[2026-02-17T07:36:53.850Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-17T07:36:53.866Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-17T07:36:53.873Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-17T07:36:53.874Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-17T07:36:55.881Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-17T07:36:55.884Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T07:37:12.220Z] [WARN] [AUTH] 401 on GET /api/servers: jwt expired
+[2026-02-17T07:37:12.224Z] [WARN] [AUTH] 401 on GET /api/system/info: jwt expired
+[2026-02-17T07:37:12.226Z] [WARN] [AUTH] 401 on GET /api/system/daemon: jwt expired
+[2026-02-17T07:38:50.126Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T07:46:16.068Z] [INFO] [APP] Shutting down...
+[2026-02-17T07:46:16.070Z] [INFO] [SERVER] Stopping server 1
+[2026-02-17T07:46:16.242Z] [INFO] [APP] Shutting down...
+[2026-02-17T07:46:16.245Z] [INFO] [SERVER] Stopping server 1
+[2026-02-17T07:49:33.675Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T07:49:33.677Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-17T07:49:33.677Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T07:49:33.693Z] [INFO] [DB] Database loaded from disk
+[2026-02-17T07:49:33.711Z] [INFO] [DB] Database initialized
+[2026-02-17T07:49:33.813Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-17T07:49:33.827Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-17T07:49:33.833Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-17T07:49:33.834Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-17T07:49:35.836Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-17T07:49:38.418Z] [INFO] [SERVER] No running servers detected
+[2026-02-17T07:49:38.946Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-17T07:49:38.952Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T07:51:23.527Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T08:04:14.066Z] [INFO] [SERVER] Stopping server 1
+[2026-02-17T08:04:19.151Z] [INFO] [SERVER] Server Lootvote stopped gracefully
+[2026-02-17T08:39:22.423Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T08:39:22.425Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-17T08:39:22.425Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-17T08:39:22.442Z] [INFO] [DB] Database loaded from disk
+[2026-02-17T08:39:22.459Z] [INFO] [DB] Database initialized
+[2026-02-17T08:39:22.566Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-17T08:39:22.579Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-17T08:39:22.585Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-17T08:39:22.586Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-17T08:39:24.583Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-17T08:39:25.367Z] [INFO] [SERVER] No running servers detected
+[2026-02-17T08:39:25.874Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-17T08:39:25.875Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T08:39:31.718Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-17T08:39:32.680Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-17T08:40:32.808Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T08:44:39.467Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T08:57:01.391Z] [WARN] [AUTH] 401 on GET /api/servers/1: jwt expired
+[2026-02-17T08:57:01.392Z] [WARN] [AUTH] 401 on GET /api/servers/1/eula: jwt expired
+[2026-02-17T08:57:01.394Z] [WARN] [AUTH] 401 on GET /api/servers/1/resources: jwt expired
+[2026-02-17T08:57:05.926Z] [INFO] [SERVER] Stopping server 1
+[2026-02-17T08:57:13.264Z] [INFO] [SERVER] Server Lootvote stopped gracefully
+[2026-02-17T08:57:15.490Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T08:59:23.518Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T10:38:16.893Z] [INFO] [SERVER] Stopping server 1
+[2026-02-17T10:38:21.382Z] [INFO] [SERVER] Server Lootvote stopped gracefully
+[2026-02-17T10:38:23.661Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:38:23.740Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:38:33.756Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:38:33.798Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:38:43.811Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:38:43.852Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:38:53.855Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:38:53.896Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:39:03.909Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:39:03.951Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:39:13.962Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:39:14.003Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:39:24.008Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:39:24.052Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:39:34.056Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:39:34.099Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:39:44.108Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:39:44.151Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:39:54.154Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:39:54.195Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:40:04.198Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:40:04.239Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:40:14.251Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:40:14.293Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:40:24.301Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:40:24.344Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:40:34.348Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:40:34.389Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:40:44.391Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:40:44.432Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:40:54.438Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:40:54.479Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:41:04.489Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:41:04.532Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:41:14.542Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:41:14.584Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:41:24.597Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:41:24.648Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:41:34.664Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:41:34.705Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:41:44.712Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:41:44.753Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:41:54.757Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:41:54.798Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:42:04.802Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:42:04.843Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:42:14.855Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:42:14.897Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:42:24.899Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:42:24.943Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:42:34.947Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:42:34.988Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:42:44.995Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:42:45.038Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:42:55.051Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:42:55.092Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:43:05.093Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:43:05.135Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:43:15.149Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:43:15.192Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:43:25.196Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:43:25.238Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:43:35.255Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:43:35.297Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:43:45.306Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:43:45.347Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:43:55.351Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:43:55.392Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:44:05.399Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:44:05.440Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:44:15.445Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:44:15.486Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:44:25.488Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:44:25.533Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:44:35.538Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:44:35.580Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:44:45.583Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:44:45.624Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:44:55.639Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:44:55.679Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:45:05.694Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:45:05.736Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:45:15.747Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:45:15.788Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:45:25.803Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:45:25.846Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:45:35.850Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:45:35.891Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:45:45.902Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:45:45.949Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:45:55.955Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:45:55.996Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:46:06.008Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:46:06.052Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:46:16.062Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:46:16.104Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:46:26.114Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:46:26.168Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:46:36.178Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:46:36.219Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:46:46.229Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:46:46.270Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:46:56.280Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:46:56.326Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:47:06.332Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:47:06.373Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:47:16.377Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:47:16.417Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:47:26.424Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:47:26.474Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:47:36.490Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:47:36.531Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:47:46.541Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:47:46.582Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:47:56.593Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:47:56.640Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:48:06.650Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:48:06.692Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:48:16.698Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:48:16.739Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:48:26.747Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:48:26.791Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:48:36.798Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:48:36.841Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:48:46.855Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:48:46.896Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:48:56.897Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:48:56.945Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:49:06.957Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:49:06.998Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:49:17.011Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:49:17.052Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:49:27.066Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:49:27.118Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:49:37.122Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:49:37.163Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:49:47.178Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:49:47.219Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:49:57.227Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:49:57.270Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:50:07.278Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:50:07.319Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:50:17.333Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:50:17.374Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:50:27.377Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:50:27.420Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:50:37.427Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:50:37.479Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:50:47.490Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:50:47.531Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:50:57.535Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:50:57.576Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:51:07.592Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:51:07.636Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:51:17.640Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:51:17.682Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:51:27.695Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:51:27.738Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:51:37.753Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:51:37.794Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:51:47.803Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:51:47.861Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:51:57.876Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:51:57.924Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:52:07.929Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:52:07.971Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:52:17.982Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:52:18.023Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:52:28.032Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:52:28.083Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:52:38.098Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:52:38.139Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:52:48.153Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:52:48.195Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:52:58.197Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:52:58.240Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:53:08.244Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:53:08.287Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:53:18.289Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:53:18.330Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:53:28.342Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:53:28.384Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:53:38.397Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:53:38.439Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:53:48.448Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:53:48.489Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:53:58.497Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:53:58.538Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:54:08.554Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:54:08.597Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:54:18.612Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:54:18.654Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:54:28.657Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:54:28.700Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:54:38.702Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:54:38.743Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:54:48.747Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:54:48.789Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:54:58.802Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:54:58.845Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:55:08.853Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:55:08.895Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:55:18.901Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:55:18.943Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:55:28.958Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:55:29.002Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:55:39.013Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:55:39.054Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:55:49.061Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:55:49.102Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:55:59.113Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:55:59.156Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:56:09.164Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:56:09.208Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:56:19.211Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:56:19.252Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:56:29.256Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:56:29.300Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:56:39.306Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:56:39.348Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:56:49.360Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:56:49.401Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:56:59.416Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:56:59.457Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:57:09.459Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:57:09.502Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:57:19.503Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:57:19.545Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:57:29.557Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:57:29.600Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:57:39.613Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:57:39.670Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:57:49.680Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:57:49.722Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:57:59.734Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:57:59.777Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:58:09.781Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:58:09.822Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:58:19.838Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:58:19.879Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:58:29.881Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:58:29.927Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:58:39.933Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:58:39.978Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:58:49.985Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:58:50.026Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:59:00.030Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:59:00.077Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:59:10.082Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:59:10.128Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:59:20.135Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:59:20.176Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:59:30.191Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:59:30.234Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:59:40.249Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:59:40.290Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T10:59:50.292Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T10:59:50.334Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:00:00.341Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:00:00.381Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:00:10.385Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:00:10.426Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:00:20.436Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:00:20.479Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:00:30.490Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:00:30.534Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:00:40.538Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:00:40.580Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:00:50.583Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:00:50.626Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:01:00.637Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:01:00.690Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:01:10.692Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:01:10.733Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:01:20.734Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:01:20.772Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:01:30.780Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:01:30.818Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:01:40.833Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:01:40.886Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:01:50.898Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:01:50.935Z] [WARN] [SERVER] Server Lootvote crashed with code 1
+[2026-02-17T11:02:00.950Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:04:11.908Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-17T11:25:07.787Z] [ERROR] [ROUTE] Create backup error "Stop the server before creating a backup. Running servers lock world files, which prevents backups on Windows."
+[2026-02-17T11:25:16.322Z] [ERROR] [ROUTE] Create backup error "Stop the server before creating a backup. Running servers lock world files, which prevents backups on Windows."
+[2026-02-17T11:50:59.647Z] [INFO] [SERVER] Stopping server 1
+[2026-02-17T11:51:04.304Z] [INFO] [SERVER] Server Lootvote stopped gracefully
+[2026-02-17T11:51:06.702Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-17T11:52:54.551Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-18T05:54:07.849Z] [INFO] [SERVER] Stopping server 1
+[2026-02-18T05:54:12.689Z] [INFO] [SERVER] Server Lootvote stopped gracefully
+[2026-02-18T05:54:14.921Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-18T05:56:37.507Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-18T07:54:28.638Z] [ERROR] [APP] Unhandled error "Failed to decode param '/cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/bin/sh'"
+[2026-02-19T03:41:42.911Z] [WARN] [AUTH] 401 on GET /api/servers: jwt expired
+[2026-02-19T03:41:42.921Z] [WARN] [AUTH] 401 on GET /api/system/info: jwt expired
+[2026-02-19T03:41:42.929Z] [WARN] [AUTH] 401 on GET /api/system/daemon: jwt expired
+[2026-02-19T03:42:24.799Z] [WARN] [SERVER] Server Lootvote crashed with code 143
+[2026-02-19T03:43:01.163Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-19T03:43:01.172Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-19T03:43:01.172Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-19T03:43:01.196Z] [INFO] [DB] Database loaded from disk
+[2026-02-19T03:43:01.215Z] [INFO] [DB] Database initialized
+[2026-02-19T03:43:01.342Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-19T03:43:01.373Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-19T03:43:01.379Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-19T03:43:01.380Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-19T03:43:03.391Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-19T03:43:04.905Z] [INFO] [SERVER] No running servers detected
+[2026-02-19T03:43:05.420Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-19T03:43:05.425Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-19T03:46:38.438Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-19T03:59:55.023Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-19T03:59:56.144Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-19T03:59:59.393Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-19T04:02:48.588Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-19T04:04:18.678Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-19T04:04:19.755Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-19T04:04:23.411Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-19T04:06:24.198Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-19T04:26:13.889Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-19T04:26:13.898Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-19T04:26:13.899Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-19T04:26:13.919Z] [INFO] [DB] Database loaded from disk
+[2026-02-19T04:26:13.940Z] [INFO] [DB] Database initialized
+[2026-02-19T04:26:14.066Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-19T04:26:14.092Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-19T04:26:14.100Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-19T04:26:14.100Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-19T04:26:16.103Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-19T04:26:17.553Z] [INFO] [SERVER] No running servers detected
+[2026-02-19T04:26:18.060Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-19T04:26:18.068Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-19T04:29:36.025Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-21T01:25:42.494Z] [WARN] [AUTH] 401 on GET /api/servers: jwt expired
+[2026-02-21T01:25:42.497Z] [WARN] [AUTH] 401 on GET /api/system/info: jwt expired
+[2026-02-21T01:25:42.498Z] [WARN] [AUTH] 401 on GET /api/system/daemon: jwt expired
+[2026-02-22T04:46:47.870Z] [WARN] [AUTH] 401 on GET /api/servers: jwt expired
+[2026-02-22T04:46:47.871Z] [WARN] [AUTH] 401 on GET /api/system/info: jwt expired
+[2026-02-22T04:46:47.872Z] [WARN] [AUTH] 401 on GET /api/system/daemon: jwt expired
+[2026-02-23T00:26:13.077Z] [INFO] [SERVER] Stopping server 1
+[2026-02-23T00:26:18.419Z] [INFO] [SERVER] Server Lootvote stopped gracefully
+[2026-02-23T00:26:20.811Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-23T00:28:43.743Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-23T07:58:10.302Z] [WARN] [AUTH] 401 on GET /api/servers: jwt expired
+[2026-02-23T07:58:10.304Z] [WARN] [AUTH] 401 on GET /api/system/info: jwt expired
+[2026-02-23T07:58:10.305Z] [WARN] [AUTH] 401 on GET /api/system/daemon: jwt expired
+[2026-02-23T20:13:22.771Z] [WARN] [AUTH] 401 on GET /api/system/status: Missing or invalid Authorization header
+[2026-02-25T14:10:31.460Z] [WARN] [AUTH] 401 on GET /api/servers/1: jwt expired
+[2026-02-25T15:39:23.486Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-25T15:39:23.496Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-25T15:39:23.496Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-25T15:39:23.524Z] [INFO] [DB] Database loaded from disk
+[2026-02-25T15:39:23.547Z] [INFO] [DB] Database initialized
+[2026-02-25T15:39:23.687Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-25T15:39:23.712Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-25T15:39:23.720Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-25T15:39:23.720Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-25T15:39:25.718Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-25T15:39:28.904Z] [INFO] [SERVER] No running servers detected
+[2026-02-25T15:39:29.418Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-25T15:39:29.421Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-25T15:41:07.301Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-25T15:50:11.341Z] [INFO] [SERVER] Stopping server 1
+[2026-02-25T15:50:17.146Z] [INFO] [SERVER] Server Lootvote stopped gracefully
+[2026-02-25T15:50:19.451Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-25T15:51:16.854Z] [INFO] [JAR] Downloading velocity 3.1.1...
+[2026-02-25T15:51:56.438Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:53:19.588Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-25T15:56:13.661Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T15:56:13.689Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T15:56:15.277Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:56:17.543Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:56:27.552Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:56:29.518Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:56:39.532Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:56:41.625Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:56:51.642Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:56:53.414Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:57:03.419Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:57:05.250Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:57:15.255Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:57:17.359Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:57:27.370Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:57:29.089Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:57:39.099Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:57:40.693Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T15:57:40.721Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T15:57:47.130Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:57:49.374Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:57:59.387Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:58:01.132Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:58:11.137Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:58:12.878Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:58:22.893Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:58:24.631Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:58:34.642Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:58:37.652Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:58:47.660Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:58:55.505Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T15:58:55.530Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T15:59:18.495Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:59:20.323Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:59:30.339Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:59:32.297Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:59:42.301Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:59:44.457Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T15:59:54.466Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T15:59:56.301Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:00:06.310Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:00:17.338Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T16:00:17.368Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T16:00:26.898Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:00:32.914Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T16:00:32.938Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T16:01:33.358Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:01:43.029Z] [INFO] [SERVER] Stopping server 1
+[2026-02-25T16:01:47.468Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-25T16:01:47.898Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-25T16:01:56.441Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T16:01:59.744Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T16:01:59.746Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:02:32.906Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T16:02:35.735Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T16:02:37.488Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:02:41.700Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:02:51.714Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:02:53.357Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:03:03.370Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:11:02.122Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-25T16:11:26.165Z] [INFO] [SERVER] Server Lootvote stopped (exit code: 0)
+[2026-02-25T16:12:00.553Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-25T16:12:22.332Z] [INFO] [SERVER] Server Lootvote stopped (exit code: 0)
+[2026-02-25T16:13:13.778Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-25T16:14:20.718Z] [INFO] [JAR] Downloading paper 1.21.11...
+[2026-02-25T16:14:30.282Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T16:15:25.151Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T16:15:50.823Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-25T16:16:36.325Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-25T16:17:14.460Z] [INFO] [SERVER] Server Lootvote Survival stopped (exit code: 0)
+[2026-02-25T16:19:21.906Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T16:19:21.991Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T16:19:30.604Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:19:33.105Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:19:43.117Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:19:44.885Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:19:54.895Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:19:56.645Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:20:06.651Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:20:08.497Z] [INFO] [SERVER] Stopping server 3
+[2026-02-25T16:20:08.554Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:20:09.262Z] [INFO] [SERVER] Server Lootvote Lobby stopped gracefully
+[2026-02-25T16:20:13.995Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T16:20:20.899Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:20:24.407Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:20:34.421Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:20:37.584Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:20:38.861Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T16:20:47.602Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:20:50.027Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:20:51.195Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-25T16:21:01.650Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:21:07.129Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:21:17.136Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:21:24.382Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:21:34.388Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:21:36.333Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:21:46.345Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:21:48.739Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:21:58.747Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:22:00.766Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 1
+[2026-02-25T16:22:10.779Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:22:40.922Z] [INFO] [SERVER] Stopping server 4 (force)
+[2026-02-25T16:22:41.241Z] [INFO] [SERVER] Server Lootvote Survival stopped (exit code: null)
+[2026-02-25T16:22:42.853Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-25T16:22:58.924Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T16:22:58.987Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T16:23:18.616Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:24:15.562Z] [INFO] [SERVER] Server Lootvote Survival is now running
+[2026-02-25T16:25:27.248Z] [INFO] [SERVER] Stopping server 3
+[2026-02-25T16:25:27.894Z] [INFO] [SERVER] Server Lootvote Lobby stopped gracefully
+[2026-02-25T16:26:24.926Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T16:26:42.022Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T16:27:24.585Z] [INFO] [SERVER] Stopping server 4
+[2026-02-25T16:27:25.378Z] [INFO] [SERVER] Stopping server 4 (force)
+[2026-02-25T16:27:25.703Z] [INFO] [SERVER] Server Lootvote Survival stopped (exit code: null)
+[2026-02-25T16:27:28.173Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-25T16:27:28.708Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-25T16:28:17.932Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-25T16:28:19.188Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-25T16:30:18.260Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T16:30:24.661Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T16:30:24.670Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:30:31.162Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:30:37.238Z] [INFO] [SERVER] Server Lootvote Survival is now running
+[2026-02-25T16:31:19.747Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-25T16:31:23.403Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T16:31:27.148Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T16:31:28.367Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:32:23.810Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T16:32:27.093Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T16:32:29.111Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T16:37:19.385Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-25T16:37:19.828Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-25T16:37:24.299Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-25T16:37:50.364Z] [INFO] [SERVER] Stopping server 4
+[2026-02-25T16:37:51.714Z] [INFO] [SERVER] Stopping server 4 (force)
+[2026-02-25T16:37:52.136Z] [INFO] [SERVER] Server Lootvote Survival stopped (exit code: null)
+[2026-02-25T16:37:56.471Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-25T16:40:07.108Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-25T16:40:10.071Z] [INFO] [SERVER] Server Lootvote Survival is now running
+[2026-02-25T16:46:57.838Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-02-25T16:46:58.058Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: null)
+[2026-02-25T16:47:17.270Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T16:47:38.209Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T16:49:38.207Z] [INFO] [PLUGINS] Installed plugin: worldedit-bukkit-7.4.0.jar
+[2026-02-25T16:49:43.497Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-25T16:49:47.528Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-25T16:49:47.558Z] [INFO] [PLUGINS] Installed plugin: Vault.jar
+[2026-02-25T16:49:52.403Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-25T16:50:00.342Z] [INFO] [PLUGINS] Installed plugin: multiverse-core-5.5.2.jar
+[2026-02-25T16:50:20.690Z] [INFO] [PLUGINS] Installed plugin: multiverse-portals-5.2.0.jar
+[2026-02-25T16:50:40.290Z] [INFO] [PLUGINS] Installed plugin: Advanced-Portals-Spigot-2.6.1.jar
+[2026-02-25T16:51:07.062Z] [INFO] [PLUGINS] Installed plugin: ServerSelectorX_Free.jar
+[2026-02-25T16:51:07.479Z] [INFO] [PLUGINS] Installed plugin: ServerSelectorX_Free.jar
+[2026-02-25T16:51:25.969Z] [INFO] [PLUGINS] Removed plugin: worldedit-bukkit-7.4.0.jar
+[2026-02-25T16:51:33.190Z] [ERROR] [PLUGINS] Spiget search failed "HTTP 404 for https://api.spiget.org/v2/search/resources/fast%20async?size=20&sort=-downloads"
+[2026-02-25T16:51:39.223Z] [ERROR] [PLUGINS] Spiget search failed "HTTP 404 for https://api.spiget.org/v2/search/resources/fast%20async?size=20&sort=-downloads"
+[2026-02-25T16:51:43.527Z] [INFO] [PLUGINS] Installed plugin: FastAsyncWorldEdit-Bukkit-2.15.0.jar
+[2026-02-25T16:53:03.731Z] [INFO] [PLUGINS] Installed plugin: worldguard-bukkit-7.0.16-beta-01.jar
+[2026-02-25T16:53:28.913Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-02-25T16:53:29.162Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: null)
+[2026-02-25T16:53:32.089Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T16:54:03.898Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T16:59:40.621Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-25T17:01:23.836Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-02-25T17:01:23.998Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: null)
+[2026-02-25T17:01:28.455Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T17:02:05.572Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T17:04:37.657Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-02-25T17:04:37.804Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: null)
+[2026-02-25T17:04:51.691Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T17:05:18.675Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T17:07:28.365Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-02-25T17:07:28.496Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: null)
+[2026-02-25T17:07:32.716Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T17:07:58.959Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T17:09:10.053Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-02-25T17:09:10.207Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: null)
+[2026-02-25T17:09:17.852Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T17:09:46.947Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T17:43:11.900Z] [INFO] [PLUGINS] Removed plugin: grimac-2.3.69.jar
+[2026-02-25T17:43:18.687Z] [INFO] [PLUGINS] Removed plugin: ItemJoin 2.jar
+[2026-02-25T17:43:37.808Z] [INFO] [PLUGINS] Removed plugin: ShopGUIPlus.jar
+[2026-02-25T17:43:57.489Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-25T17:43:57.490Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-25T17:45:53.364Z] [INFO] [SERVER] Stopping server 4 (force)
+[2026-02-25T17:45:59.467Z] [INFO] [SERVER] Server Lootvote Survival stopped (exit code: null)
+[2026-02-25T17:45:59.472Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-25T17:47:41.764Z] [INFO] [SERVER] Server Lootvote Survival is now running
+[2026-02-25T18:03:54.821Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-02-25T18:03:55.049Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: null)
+[2026-02-25T18:03:56.040Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T18:05:13.763Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T18:17:03.361Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-02-25T18:17:06.139Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: null)
+[2026-02-25T18:17:27.497Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T18:18:13.268Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T18:21:55.037Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-02-25T18:21:58.155Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: null)
+[2026-02-25T18:27:48.265Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T18:28:33.416Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T18:32:30.553Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T18:32:30.569Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T18:32:32.071Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T18:34:38.161Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T18:34:42.167Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T18:34:42.890Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T18:34:59.529Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T18:35:03.440Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T18:35:06.120Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T18:35:25.512Z] [INFO] [SERVER] Stopping server 1
+[2026-02-25T18:35:26.357Z] [INFO] [SERVER] Stopping server 3
+[2026-02-25T18:35:27.567Z] [INFO] [SERVER] Stopping server 4
+[2026-02-25T18:35:28.113Z] [INFO] [SERVER] Server Lootvote Lobby stopped gracefully
+[2026-02-25T18:35:34.522Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-25T18:35:34.524Z] [INFO] [SERVER] Server Lootvote stopped gracefully
+[2026-02-25T18:35:34.557Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-25T18:35:37.952Z] [INFO] [SERVER] Server Lootvote Survival stopped gracefully
+[2026-02-25T18:35:42.487Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T18:36:15.121Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 143
+[2026-02-25T18:36:15.314Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 143
+[2026-02-25T18:36:52.625Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-25T18:36:52.635Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-25T18:36:52.635Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-25T18:36:52.669Z] [INFO] [DB] Database loaded from disk
+[2026-02-25T18:36:52.694Z] [INFO] [DB] Database initialized
+[2026-02-25T18:36:52.849Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-25T18:36:52.875Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-25T18:36:52.884Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-25T18:36:52.885Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-25T18:36:54.901Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-25T18:37:13.738Z] [INFO] [SERVER] No running servers detected
+[2026-02-25T18:37:14.245Z] [INFO] [SERVER] Auto-starting server: Lootvote
+[2026-02-25T18:37:14.249Z] [INFO] [SERVER] Starting server Lootvote (ID: 1)
+[2026-02-25T18:37:15.271Z] [INFO] [SERVER] Auto-starting server: Lootvote Velocity server
+[2026-02-25T18:37:15.274Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T18:37:16.299Z] [INFO] [SERVER] Auto-starting server: Lootvote Lobby
+[2026-02-25T18:37:16.305Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T18:38:51.921Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T18:40:00.582Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-25T18:41:14.299Z] [INFO] [SERVER] Server Lootvote is now running
+[2026-02-25T18:42:45.532Z] [INFO] [SERVER] Server Lootvote Survival is now running
+[2026-02-25T19:00:29.240Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: 0)
+[2026-02-25T19:02:05.144Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-25T19:02:08.003Z] [INFO] [SERVER] Server Lootvote stopped (exit code: null)
+[2026-02-25T19:02:19.564Z] [INFO] [PLUGINS] Removed plugin: FakePlayers-2.7.jar
+[2026-02-25T19:02:28.747Z] [INFO] [PLUGINS] Removed plugin: xFakePlayers-1.0.0.jar
+[2026-02-25T19:02:34.667Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 1)
+[2026-02-25T19:04:10.233Z] [INFO] [PLUGINS] Installed plugin: voicechat-fabric-2.6.12+26.1-snapshot-10.jar
+[2026-02-25T19:04:20.485Z] [INFO] [SERVER] Stopping server 1 (force)
+[2026-02-25T19:04:23.132Z] [INFO] [SERVER] Server Lootvote Skyblock stopped (exit code: null)
+[2026-02-25T19:04:24.978Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 1)
+[2026-02-25T19:06:32.515Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 143
+[2026-02-25T19:07:08.636Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-25T19:07:08.645Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-25T19:07:08.646Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-25T19:07:08.668Z] [INFO] [DB] Database loaded from disk
+[2026-02-25T19:07:08.689Z] [INFO] [DB] Database initialized
+[2026-02-25T19:07:08.833Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-25T19:07:08.865Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-25T19:07:08.874Z] [INFO] [APP] HTTP server running on http://0.0.0.0:80
+[2026-02-25T19:07:08.874Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-25T19:07:10.882Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-25T19:07:27.011Z] [INFO] [SERVER] No running servers detected
+[2026-02-25T19:07:27.516Z] [INFO] [SERVER] Auto-starting server: Lootvote Skyblock
+[2026-02-25T19:07:27.520Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 1)
+[2026-02-25T19:07:28.545Z] [INFO] [SERVER] Auto-starting server: Lootvote Velocity server
+[2026-02-25T19:07:28.548Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-25T19:07:29.564Z] [INFO] [SERVER] Auto-starting server: Lootvote Lobby
+[2026-02-25T19:07:29.569Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-25T19:09:05.805Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-25T19:10:18.484Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-25T19:11:06.414Z] [INFO] [SERVER] Server Lootvote Skyblock is now running
+[2026-02-25T19:12:24.756Z] [INFO] [SERVER] Server Lootvote Survival is now running
+[2026-02-26T07:55:29.006Z] [WARN] [AUTH] 401 on GET /api/servers: jwt expired
+[2026-02-26T07:55:29.015Z] [WARN] [AUTH] 401 on GET /api/system/info: jwt expired
+[2026-02-26T07:55:29.016Z] [WARN] [AUTH] 401 on GET /api/system/daemon: jwt expired
+[2026-02-26T10:36:19.454Z] [WARN] [AUTH] 401 on GET /api/servers: jwt expired
+[2026-02-26T10:36:19.460Z] [WARN] [AUTH] 401 on GET /api/system/daemon: jwt expired
+[2026-02-26T10:36:19.461Z] [WARN] [AUTH] 401 on GET /api/system/info: jwt expired

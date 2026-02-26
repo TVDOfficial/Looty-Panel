@@ -4,9 +4,9 @@
 	<description>Loot Panel Minecraft Server Manager</description>
 	<executable>C:\Program Files\nodejs\node.exe</executable>
 	<argument>--harmony</argument>
-	<argument>C:\Users\TVD\Desktop\lootypanel\node_modules\node-windows\lib\wrapper.js</argument>
+	<argument>C:\Lootypanel\node_modules\node-windows\lib\wrapper.js</argument>
 	<argument>--file</argument>
-	<argument>C:\Users\TVD\Desktop\lootypanel\server.js</argument>
+	<argument>C:\Lootypanel\server.js</argument>
 	<argument>--scriptoptions=</argument>
 	<argument>--log</argument>
 	<argument>LootPanel wrapper</argument>
@@ -27,5 +27,5 @@
 		<user>LocalSystem</user>
 		<password></password>
 	</serviceaccount>
-	<workingdirectory>C:\Users\TVD\Desktop\lootypanel</workingdirectory>
+	<workingdirectory>C:\Lootypanel</workingdirectory>
 </service>

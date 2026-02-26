@@ -212,8 +212,9 @@ Pages.loadTab_files = async (serverId) => {
 
     const renderFiles = async (filePath) => {
         Pages._fileState.currentPath = filePath || '';
+        Pages._fileState.currentPath = filePath || '';
         try {
-            const data = await API.get(`/servers/${serverId}/files?path=${encodeURIComponent(filePath || '')}`);
+            const data = await API.get(`/servers/${serverId}/files?path=${encodeURIComponent(filePath || '')}&_=${Date.now()}`);
             const pathParts = (filePath || '').split('/').filter(Boolean);
 
             let breadcrumb = '<span onclick="Pages._navFile(\'\')">Root</span>';
@@ -227,11 +228,15 @@ Pages.loadTab_files = async (serverId) => {
             const selectedItems = Pages._fileState.selectedItems || [];
             Pages._fileState.selectedItems = selectedItems;
             const selectedPaths = selectedItems.map(x => x.path);
+
             container.innerHTML = `
-        <div class="flex-between mb-4">
+        <div class="flex-between mb-4 flex-wrap gap-2">
           <div class="btn-group">
             <button class="btn btn-secondary btn-sm" onclick="Pages._uploadFile()">📤 Upload</button>
             <button class="btn btn-secondary btn-sm" onclick="Pages._newFolder()">📁 New Folder</button>
+          </div>
+          <div class="flex items-center gap-2 flex-1 justify-end" style="min-width: 200px;">
+             <input type="text" id="file-search-input" placeholder="Filter files..." class="plugin-filter-input" style="max-width: 250px;">
           </div>
           <div class="file-mass-actions" id="file-mass-actions" style="display:none">
             <span class="text-muted" id="file-selected-count">0 selected</span>
@@ -256,41 +261,7 @@ Pages.loadTab_files = async (serverId) => {
       `;
 
             const list = document.getElementById('file-list');
-
-            if (filePath) {
-                const parent = filePath.split('/').slice(0, -1).join('/');
-                list.innerHTML = `<div class="file-item file-item-parent" onclick="Pages._navFile('${parent}')"><span class="file-checkbox-spacer"></span><span class="file-icon">⬆️</span><span class="file-name">..</span></div>`;
-            } else {
-                list.innerHTML = '';
-            }
-
-            data.items.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'file-item';
-                div.dataset.path = item.path;
-                div.dataset.name = item.name;
-                div.dataset.isDir = item.isDirectory ? '1' : '0';
-                const escapedPath = item.path.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-                const escapedName = item.name.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-                const isSelected = selectedPaths.includes(item.path);
-                div.innerHTML = `
-          <label class="file-checkbox-wrap" onclick="event.stopPropagation()"><input type="checkbox" class="file-item-cb" data-path="${String(item.path).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" data-name="${String(item.name).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" data-isdir="${item.isDirectory ? '1' : '0'}" ${isSelected ? 'checked' : ''}></label>
-          <span class="file-icon">${fileIcon(item.name, item.isDirectory)}</span>
-          <span class="file-name">${item.name}</span>
-          <span class="file-size">${item.isDirectory ? '' : formatBytes(item.size)}</span>
-          <div class="file-actions">
-            ${!item.isDirectory ? `<button class="btn-icon" title="Edit" onclick="event.stopPropagation();Pages._editFile('${escapedPath}')" style="font-size:14px">✏️</button>` : ''}
-            ${!item.isDirectory ? `<button class="btn-icon" title="Download" onclick="event.stopPropagation();Pages._downloadFile(${serverId},'${escapedPath}')" style="font-size:14px">⬇️</button>` : ''}
-            <button class="btn-icon" title="Delete" onclick="event.stopPropagation();Pages._deleteFile('${escapedPath}','${escapedName}')" style="font-size:14px">🗑️</button>
-          </div>
-        `;
-                if (item.isDirectory) {
-                    div.onclick = () => Pages._navFile(item.path);
-                } else {
-                    div.onclick = () => Pages._editFile(item.path);
-                }
-                list.appendChild(div);
-            });
+            const searchInput = document.getElementById('file-search-input');
 
             const updateSelection = () => {
                 const checkboxes = list.querySelectorAll('.file-item-cb');
@@ -305,6 +276,63 @@ Pages.loadTab_files = async (serverId) => {
                 }
                 document.getElementById('file-mass-action-select').value = '';
             };
+
+            const renderList = (itemsToRender) => {
+                list.innerHTML = '';
+                if (filePath) {
+                    const parent = filePath.split('/').slice(0, -1).join('/');
+                    list.innerHTML = `<div class="file-item file-item-parent" onclick="Pages._navFile('${parent}')"><span class="file-checkbox-spacer"></span><span class="file-icon">⬆️</span><span class="file-name">..</span></div>`;
+                }
+
+                if (itemsToRender.length === 0 && !filePath) {
+                    // Only show empty state if root and no files, or search yields no results
+                    if (data.items.length === 0) {
+                        list.innerHTML = '<div class="empty-state"><p>No files found</p></div>';
+                    } else {
+                        list.innerHTML += '<div class="empty-state"><p>No matching files</p></div>';
+                    }
+                }
+
+                itemsToRender.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'file-item';
+                    div.dataset.path = item.path;
+                    div.dataset.name = item.name;
+                    div.dataset.isDir = item.isDirectory ? '1' : '0';
+                    const escapedPath = item.path.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                    const escapedName = item.name.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                    const isSelected = selectedPaths.includes(item.path);
+                    div.innerHTML = `
+              <label class="file-checkbox-wrap" onclick="event.stopPropagation()"><input type="checkbox" class="file-item-cb" data-path="${String(item.path).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" data-name="${String(item.name).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" data-isdir="${item.isDirectory ? '1' : '0'}" ${isSelected ? 'checked' : ''}></label>
+              <span class="file-icon">${fileIcon(item.name, item.isDirectory)}</span>
+              <span class="file-name">${item.name}</span>
+              <span class="file-size">${item.isDirectory ? '' : formatBytes(item.size)}</span>
+              <div class="file-actions">
+                ${!item.isDirectory ? `<button class="btn-icon" title="Edit" onclick="event.stopPropagation();Pages._editFile('${escapedPath}')" style="font-size:14px">✏️</button>` : ''}
+                ${!item.isDirectory ? `<button class="btn-icon" title="Download" onclick="event.stopPropagation();Pages._downloadFile(${serverId},'${escapedPath}')" style="font-size:14px">⬇️</button>` : ''}
+                <button class="btn-icon" title="Delete" onclick="event.stopPropagation();Pages._deleteFile('${escapedPath}','${escapedName}')" style="font-size:14px">🗑️</button>
+              </div>
+            `;
+                    if (item.isDirectory) {
+                        div.onclick = () => Pages._navFile(item.path);
+                    } else {
+                        div.onclick = () => Pages._editFile(item.path);
+                    }
+                    list.appendChild(div);
+                });
+
+                // Re-bind events for new elements
+                list.querySelectorAll('.file-item-cb').forEach(cb => { cb.onchange = updateSelection; });
+            };
+
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                const filtered = data.items.filter(item => item.name.toLowerCase().includes(query));
+                renderList(filtered);
+            });
+
+            renderList(data.items);
+
 
             list.querySelectorAll('.file-item-cb').forEach(cb => {
                 cb.onchange = updateSelection;
@@ -418,11 +446,14 @@ Pages.loadTab_files = async (serverId) => {
             fd.append('path', Pages._fileState.currentPath);
             for (const f of files) fd.append('files', f);
             try {
-                await API.upload(`/servers/${serverId}/files/upload`, fd);
+                // Pass path in query string as well to ensure it's available before multer processes files
+                const uploadPath = Pages._fileState.currentPath || '';
+                await API.upload(`/servers/${serverId}/files/upload?path=${encodeURIComponent(uploadPath)}`, fd);
                 Toast.success('Files uploaded');
                 modal.remove();
                 renderFiles(Pages._fileState.currentPath);
             } catch (e) { Toast.error(e.message); }
+            finally { input.value = ''; }
         };
     };
 

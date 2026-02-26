@@ -310,8 +310,15 @@ async function installPlugin(serverDir, downloadUrl, filename) {
 function removePlugin(serverDir, filename) {
     const filePath = path.join(serverDir, 'plugins', filename);
     if (!fs.existsSync(filePath)) throw new Error('Plugin file not found');
-    fs.unlinkSync(filePath);
-    logger.info('PLUGINS', `Removed plugin: ${filename}`);
+    try {
+        fs.unlinkSync(filePath);
+        logger.info('PLUGINS', `Removed plugin: ${filename}`);
+    } catch (err) {
+        if (err.code === 'EBUSY' || err.code === 'EPERM') {
+            throw new Error(`Plugin file is busy or locked. Please stop the server before uninstalling "${filename}".`);
+        }
+        throw err;
+    }
 }
 
 module.exports = {

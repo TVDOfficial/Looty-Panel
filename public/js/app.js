@@ -313,11 +313,23 @@ Pages.dashboard = async (el) => {
         } else {
             grid.innerHTML = servers.map(s => `
         <div class="server-card" onclick="location.hash='server/${s.id}'">
-          <div class="server-card-header">
+          <div class="server-card-main-row">
             <h3>${s.name}</h3>
-            ${statusBadge(s.status)}
+            <div class="server-card-right">
+              ${s.status === 'running' ? `
+                <span class="mc-players-count">${s.playersOnline || 0}/${s.playersMax || 0}</span>
+                <div class="mc-signal-bars" title="Connection: Excellent">
+                  <div class="bar active"></div>
+                  <div class="bar active"></div>
+                  <div class="bar active"></div>
+                  <div class="bar active"></div>
+                  <div class="bar active"></div>
+                </div>
+              ` : ''}
+              ${statusBadge(s.status)}
+            </div>
           </div>
-          ${(s.motd || (s.status === 'running' && (s.playersOnline !== undefined || s.playersMax))) ? `<div class="server-card-motd" title="What players see in server list">${s.motd ? Pages._escapeHtml(s.motd) : ''}${s.status === 'running' ? ` — <span class="players-count">${s.playersOnline || 0}/${s.playersMax || 0} players</span>` : ''}</div>` : ''}
+          ${s.motd ? `<div class="server-card-motd-container">${MCRenderer.render(s.motd)}</div>` : '<div class="server-card-motd-container mc-motd-offline">Server is offline</div>'}
           <div class="server-card-meta">
             <span class="badge badge-type">${s.type}</span>
             <span class="badge badge-type">${s.mc_version}</span>
@@ -382,8 +394,23 @@ Pages.servers = async (el, actions) => {
         }
         el.innerHTML = `<div class="server-grid">${servers.map(s => `
       <div class="server-card" onclick="location.hash='server/${s.id}'">
-        <div class="server-card-header"><h3>${s.name}</h3>${statusBadge(s.status)}</div>
-        ${(s.motd || (s.status === 'running' && (s.playersOnline !== undefined || s.playersMax))) ? `<div class="server-card-motd" title="MOTD - what players see in server list">${s.motd ? Pages._escapeHtml(s.motd) : ''}${s.status === 'running' ? ` — <span class="players-count">${s.playersOnline || 0}/${s.playersMax || 0} players</span>` : ''}</div>` : ''}
+        <div class="server-card-main-row">
+          <h3>${s.name}</h3>
+          <div class="server-card-right">
+            ${s.status === 'running' ? `
+              <span class="mc-players-count">${s.playersOnline || 0}/${s.playersMax || 0}</span>
+              <div class="mc-signal-bars" title="Connection: Excellent">
+                <div class="bar active"></div>
+                <div class="bar active"></div>
+                <div class="bar active"></div>
+                <div class="bar active"></div>
+                <div class="bar active"></div>
+              </div>
+            ` : ''}
+            ${statusBadge(s.status)}
+          </div>
+        </div>
+        ${s.motd ? `<div class="server-card-motd-container">${MCRenderer.render(s.motd)}</div>` : '<div class="server-card-motd-container mc-motd-offline">Server is offline</div>'}
         <div class="server-card-meta">
           <span class="badge badge-type">${s.type}</span>
           <span class="badge badge-type">${s.mc_version}</span>

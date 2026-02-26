@@ -31,7 +31,7 @@ async function getServerStatus(host, port, timeoutMs = 3000) {
 
         return {
             online: true,
-            motd: stripMinecraftFormatting(motd) || 'A Minecraft Server',
+            motd: motd || 'A Minecraft Server',
             playersOnline: response.players?.online ?? 0,
             playersMax: response.players?.max ?? 0,
             version: response.version?.name ?? null,
@@ -56,7 +56,14 @@ function getMotdFromProperties(serverDir) {
         if (eq > 0 && trimmed.substring(0, eq).toLowerCase() === 'motd') {
             let motd = trimmed.substring(eq + 1).trim();
             motd = motd.replace(/^"|"$/g, '');
-            return stripMinecraftFormatting(motd) || 'A Minecraft Server';
+            // Unescape Unicode if present (\u00A7 instead of §)
+            motd = motd.replace(/\\u([0-9a-fA-F]{4})/g, (match, grp) => {
+                return String.fromCharCode(parseInt(grp, 16));
+            });
+            // Handle other backslash escapes common in server.properties (e.g. \!, \:, \=, \ )
+            motd = motd.replace(/\\(!|:|#|=| )/g, '$1');
+
+            return motd || 'A Minecraft Server';
         }
     }
     return null;
