@@ -120,6 +120,12 @@ async function initDatabase() {
     value TEXT
   )`);
 
+  db.run(`CREATE TABLE IF NOT EXISTS user_preferences (
+    user_id INTEGER PRIMARY KEY,
+    preferences TEXT DEFAULT '{}',
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  )`);
+
   // Migration: Add ip_address to audit_log if missing
   try {
     const tableInfo = db.exec("PRAGMA table_info(audit_log)");

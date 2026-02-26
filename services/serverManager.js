@@ -38,22 +38,22 @@ function getAllServerStates() {
  */
 async function detectRunningServers() {
     logger.info('SERVER', 'Scanning for already-running servers...');
-    
+
     try {
         const servers = getDb().prepare('SELECT * FROM servers').all();
         let foundCount = 0;
-        
+
         for (const server of servers) {
             const serverDir = pathHelper.toAbsolute(server.server_dir);
             const jarFile = server.jar_file || 'server.jar';
-            
+
             // Check if Java is running this specific jar
             const pid = getJavaPidForServer(serverDir, jarFile);
-            
+
             if (pid) {
                 foundCount++;
                 logger.info('SERVER', `Found running server: ${server.name} (PID: ${pid})`);
-                
+
                 const existing = runningServers.get(server.id);
                 if (!existing || existing.status !== 'running') {
                     // Create state for detected server
@@ -65,25 +65,25 @@ async function detectRunningServers() {
                         startedAt: Date.now(),
                         isDetected: true
                     };
-                    
+
                     runningServers.set(server.id, state);
-                    
+
                     // Start monitoring this PID
                     monitorDetectedProcess(server.id, pid);
-                    
+
                     logger.info('SERVER', `Synced ${server.name} with panel`);
                 } else {
                     logger.debug('SERVER', `Server ${server.name} already tracked`);
                 }
             }
         }
-        
+
         if (foundCount > 0) {
             logger.info('SERVER', `Synced ${foundCount} running server(s) with panel`);
         } else {
             logger.info('SERVER', 'No running servers detected');
         }
-        
+
     } catch (err) {
         logger.error('SERVER', 'Failed to detect running servers', err.message);
     }
@@ -96,21 +96,21 @@ function getJavaPidForServer(serverDir, jarFile) {
     try {
         // Escape backslashes for PowerShell
         const escapedDir = serverDir.replace(/\\/g, '\\\\');
-        
+
         const cmd = `powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-CimInstance Win32_Process -Filter \\"Name='java.exe'\\" | Where-Object { \$_.CommandLine -like '*${jarFile}*' -and \$_.CommandLine -like '*${escapedDir}*' } | Select-Object -First 1 -ExpandProperty ProcessId"`;
-        
+
         const output = execSync(cmd, {
             encoding: 'utf8',
             timeout: 5000,
             windowsHide: true
         }).trim();
-        
+
         // Parse PID from output
         const match = output.match(/^(\d+)$/);
         if (match) {
             return parseInt(match[1]);
         }
-        
+
         return null;
     } catch (err) {
         // No matching process found
@@ -133,7 +133,7 @@ function monitorDetectedProcess(serverId, pid) {
         } catch (err) {
             // Process has exited
             clearInterval(interval);
-            
+
             const state = runningServers.get(serverId);
             if (state && state.status === 'running') {
                 state.status = 'stopped';
@@ -143,7 +143,7 @@ function monitorDetectedProcess(serverId, pid) {
             }
         }
     }, 5000); // Check every 5 seconds
-    
+
     // Store interval reference
     const state = runningServers.get(serverId);
     if (state) {
@@ -216,7 +216,8 @@ function startServer(serverId) {
             for (const line of lines) {
                 addLine(line);
                 // Detect when server is ready
-                if (line.includes('Done (') && line.includes('For help,')) {
+                const readyPatterns = ['Done (', 'Listening on', 'Done!', 'Done in '];
+                if (state.status === 'starting' && readyPatterns.some(p => line.includes(p))) {
                     state.status = 'running';
                     logger.info('SERVER', `Server ${serverConfig.name} is now running`);
                 }
@@ -282,16 +283,16 @@ function startServer(serverId) {
 function stopServer(serverId, force = false) {
     return new Promise((resolve, reject) => {
         const state = runningServers.get(serverId);
-        
+
         // Handle detected servers (no direct process handle)
         if (state && state.isDetected && state.status === 'running') {
             logger.info('SERVER', `Stopping detected server ${serverId}${force ? ' (force)' : ''}`);
-            
+
             // Clear monitoring interval
             if (state._monitorInterval) {
                 clearInterval(state._monitorInterval);
             }
-            
+
             if (force) {
                 // Kill by PID
                 try {
@@ -306,12 +307,12 @@ function stopServer(serverId, force = false) {
                     execSync(`taskkill /PID ${state.process.pid} /F`, { windowsHide: true });
                 } catch (e) { }
             }
-            
+
             state.status = 'stopped';
             state.process = null;
             return resolve({ message: 'Server stopped' });
         }
-        
+
         // Normal stop for panel-started servers
         if (!state || !state.process) {
             return reject(new Error('Server is not running'));
@@ -364,12 +365,12 @@ function sendCommand(serverId, command) {
     if (!state || !state.process) {
         throw new Error('Server is not running');
     }
-    
+
     // Can't send commands to detected servers (no stdin access)
     if (state.isDetected) {
         throw new Error('Cannot send commands to detected server (restart server from panel to enable commands)');
     }
-    
+
     state.process.stdin.write(command + '\n');
     state.consoleBuffer.push(`> ${command}`);
 }
@@ -478,20 +479,20 @@ function getConsoleBuffer(serverId) {
 async function autoStartServers() {
     // First, detect any servers that are already running
     await detectRunningServers();
-    
+
     // Small delay to ensure detection completes
     await new Promise(r => setTimeout(r, 500));
-    
+
     const servers = getDb().prepare('SELECT * FROM servers WHERE auto_start = 1').all();
     for (const server of servers) {
         const state = runningServers.get(server.id);
-        
+
         // Skip if already detected as running
         if (state && state.status === 'running') {
             logger.info('SERVER', `Server ${server.name} already running (detected), skipping auto-start`);
             continue;
         }
-        
+
         try {
             logger.info('SERVER', `Auto-starting server: ${server.name}`);
             await startServer(server.id);

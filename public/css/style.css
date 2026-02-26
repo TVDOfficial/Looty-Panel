@@ -1861,15 +1861,26 @@ tr:hover td {
   }
 
   .top-bar {
-    padding: 12px 16px;
+    padding: 0 16px;
+    height: auto;
+    min-height: 60px;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 8px;
   }
 
   .top-bar h2 {
-    font-size: 18px;
+    font-size: 16px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 50vw;
+    max-width: calc(100% - 140px);
+    margin: 0;
+  }
+
+  .top-bar-actions {
+    margin-left: auto;
+    gap: 4px;
   }
 
   .content-area {
@@ -1905,10 +1916,15 @@ tr:hover td {
   }
 
   #server-tabs .tab {
-    padding: 10px 12px;
+    padding: 10px 16px;
     font-size: 12px;
-    flex: 1;
-    min-width: 0;
+    flex-shrink: 0;
+    width: auto;
+  }
+
+  .tabs {
+    padding: 4px 12px 16px !important;
+    scroll-padding: 0 16px;
   }
 
   .dashboard-overview {
@@ -2216,4 +2232,27 @@ code {
 .plugin-filter-input:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+/* Rearrangement Drag & Drop */
+.server-card[draggable="true"] {
+  cursor: grab;
+  user-select: none;
+}
+
+.server-card[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+.server-card.dragging {
+  cursor: grabbing;
+  border: 1px dashed var(--accent);
+  transform: scale(0.98);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  z-index: 100;
+}
+
+.server-grid,
+#dash-servers {
+  position: relative;
 }

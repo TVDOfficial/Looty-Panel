@@ -67,7 +67,7 @@ Looty Panel is a professional, modern, and lightweight Minecraft server manageme
    ```
 
 4. **Access the panel**:
-   Open your browser and navigate to `http://localhost:3000`.
+   Open your browser and navigate to `http://localhost:8080`.
 
 ### First-Run Setup
 

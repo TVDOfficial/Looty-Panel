@@ -1680,3 +1680,103 @@
 [2026-02-26T10:36:19.454Z] [WARN] [AUTH] 401 on GET /api/servers: jwt expired
 [2026-02-26T10:36:19.460Z] [WARN] [AUTH] 401 on GET /api/system/daemon: jwt expired
 [2026-02-26T10:36:19.461Z] [WARN] [AUTH] 401 on GET /api/system/info: jwt expired
+[2026-02-26T11:04:49.743Z] [WARN] [AUTH] 401 on GET /api/servers: jwt expired
+[2026-02-26T11:04:49.746Z] [WARN] [AUTH] 401 on GET /api/system/info: jwt expired
+[2026-02-26T11:04:49.747Z] [WARN] [AUTH] 401 on GET /api/system/daemon: jwt expired
+[2026-02-26T11:57:40.705Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 4294967295
+[2026-02-26T11:57:40.941Z] [WARN] [SERVER] Server Lootvote Skyblock crashed with code 4294967295
+[2026-02-26T11:57:41.044Z] [WARN] [SERVER] Server Lootvote Lobby crashed with code 4294967295
+[2026-02-26T11:57:43.751Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-26T11:57:43.764Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-26T11:57:43.765Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-26T11:57:43.803Z] [INFO] [DB] Database loaded from disk
+[2026-02-26T11:57:43.833Z] [INFO] [DB] Database initialized
+[2026-02-26T11:57:44.054Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-26T11:57:44.098Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-26T11:57:44.107Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-02-26T11:57:44.108Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-26T11:57:46.100Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-26T11:57:57.315Z] [INFO] [SERVER] No running servers detected
+[2026-02-26T11:57:57.832Z] [INFO] [SERVER] Auto-starting server: Lootvote Skyblock
+[2026-02-26T11:57:57.835Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 1)
+[2026-02-26T11:57:58.853Z] [INFO] [SERVER] Auto-starting server: Lootvote Velocity server
+[2026-02-26T11:57:58.855Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-26T11:57:59.878Z] [INFO] [SERVER] Auto-starting server: Lootvote Lobby
+[2026-02-26T11:57:59.881Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-26T11:58:00.897Z] [INFO] [SERVER] Auto-starting server: Lootvote Survival
+[2026-02-26T11:58:00.900Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-26T11:58:06.457Z] [INFO] [SERVER] Server Lootvote Velocity server is now running
+[2026-02-26T11:58:22.289Z] [WARN] [SERVER] Server Lootvote Skyblock crashed with code 4294967295
+[2026-02-26T11:58:22.590Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 4294967295
+[2026-02-26T11:58:22.835Z] [WARN] [SERVER] Server Lootvote Lobby crashed with code 4294967295
+[2026-02-26T11:58:26.417Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-26T11:58:26.419Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-26T11:58:26.419Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-26T11:58:26.434Z] [INFO] [DB] Database loaded from disk
+[2026-02-26T11:58:26.456Z] [INFO] [DB] Database initialized
+[2026-02-26T11:58:26.595Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-26T11:58:26.613Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-26T11:58:26.622Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-02-26T11:58:26.623Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-26T11:58:28.626Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-26T11:58:37.515Z] [INFO] [SERVER] No running servers detected
+[2026-02-26T11:58:38.018Z] [INFO] [SERVER] Auto-starting server: Lootvote Skyblock
+[2026-02-26T11:58:38.021Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 1)
+[2026-02-26T11:58:39.045Z] [INFO] [SERVER] Auto-starting server: Lootvote Velocity server
+[2026-02-26T11:58:39.052Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-26T11:58:40.073Z] [INFO] [SERVER] Auto-starting server: Lootvote Lobby
+[2026-02-26T11:58:40.074Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-26T11:58:41.099Z] [INFO] [SERVER] Auto-starting server: Lootvote Survival
+[2026-02-26T11:58:41.101Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-26T11:58:48.070Z] [INFO] [SERVER] Server Lootvote Velocity server is now running
+[2026-02-26T11:58:55.561Z] [WARN] [SERVER] Server Lootvote Skyblock crashed with code 4294967295
+[2026-02-26T11:58:56.121Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 4294967295
+[2026-02-26T11:58:56.382Z] [WARN] [SERVER] Server Lootvote Lobby crashed with code 4294967295
+[2026-02-26T12:00:04.075Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-26T12:00:04.077Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-26T12:00:04.078Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-26T12:00:04.099Z] [INFO] [DB] Database loaded from disk
+[2026-02-26T12:00:04.125Z] [INFO] [DB] Database initialized
+[2026-02-26T12:00:04.259Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-26T12:00:04.275Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-26T12:00:04.283Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-02-26T12:00:04.284Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-26T12:00:06.284Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-26T12:00:15.533Z] [INFO] [SERVER] No running servers detected
+[2026-02-26T12:00:16.038Z] [INFO] [SERVER] Auto-starting server: Lootvote Skyblock
+[2026-02-26T12:00:16.040Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 1)
+[2026-02-26T12:00:17.055Z] [INFO] [SERVER] Auto-starting server: Lootvote Velocity server
+[2026-02-26T12:00:17.057Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-26T12:00:18.079Z] [INFO] [SERVER] Auto-starting server: Lootvote Lobby
+[2026-02-26T12:00:18.082Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-26T12:00:19.105Z] [INFO] [SERVER] Auto-starting server: Lootvote Survival
+[2026-02-26T12:00:19.107Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-26T12:00:25.760Z] [INFO] [SERVER] Server Lootvote Velocity server is now running
+[2026-02-26T12:02:12.254Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-26T12:03:30.287Z] [INFO] [SERVER] Server Lootvote Survival is now running
+[2026-02-26T12:04:21.611Z] [INFO] [SERVER] Server Lootvote Skyblock is now running
+[2026-02-26T12:07:53.438Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 143
+[2026-02-26T12:07:53.765Z] [WARN] [SERVER] Server Lootvote Lobby crashed with code 143
+[2026-02-26T12:08:32.686Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-26T12:08:32.695Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-26T12:08:32.696Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-26T12:08:32.730Z] [INFO] [DB] Database loaded from disk
+[2026-02-26T12:08:32.759Z] [INFO] [DB] Database initialized
+[2026-02-26T12:08:32.905Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-26T12:08:32.935Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-26T12:08:32.944Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-02-26T12:08:32.945Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-26T12:08:34.953Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-26T12:08:51.591Z] [INFO] [SERVER] No running servers detected
+[2026-02-26T12:08:52.103Z] [INFO] [SERVER] Auto-starting server: Lootvote Skyblock
+[2026-02-26T12:08:52.106Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 1)
+[2026-02-26T12:08:53.134Z] [INFO] [SERVER] Auto-starting server: Lootvote Velocity server
+[2026-02-26T12:08:53.136Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-26T12:08:54.161Z] [INFO] [SERVER] Auto-starting server: Lootvote Lobby
+[2026-02-26T12:08:54.164Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-26T12:08:55.179Z] [INFO] [SERVER] Auto-starting server: Lootvote Survival
+[2026-02-26T12:08:55.181Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-26T12:09:02.339Z] [INFO] [SERVER] Server Lootvote Velocity server is now running
+[2026-02-26T12:10:57.663Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-26T12:12:10.612Z] [INFO] [SERVER] Server Lootvote Survival is now running
+[2026-02-26T12:12:46.604Z] [INFO] [SERVER] Server Lootvote Skyblock is now running

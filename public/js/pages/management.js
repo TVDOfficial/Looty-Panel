@@ -277,7 +277,16 @@ Pages.settings = async (el) => {
             <input type="number" id="log-max-size" min="1" max="100" value="${panelSettings && panelSettings.log_max_size_mb ? panelSettings.log_max_size_mb : 10}" placeholder="10" style="width:120px">
             <p class="text-muted" style="font-size:12px;margin-top:6px">Each log file will be rotated when it exceeds this size. Keeps up to 3 backup files. Range: 1–100 MB.</p>
           </div>
-          <button class="btn btn-primary btn-sm" id="save-panel-settings-btn">Save Panel Settings</button>
+          <div class="form-group mb-4">
+            <label for="panel-port">Panel HTTP Port</label>
+            <input type="number" id="panel-port" min="1" max="65535" value="${panelSettings && panelSettings.http_port ? panelSettings.http_port : 8080}" placeholder="8080" style="width:120px">
+            <p class="text-muted" style="font-size:12px;margin-top:6px">The port the web panel listens on. <strong>Requires a manual restart of the panel to take effect.</strong></p>
+          </div>
+          <div class="flex gap-2">
+            <button class="btn btn-primary btn-sm" id="save-panel-settings-btn">Save Panel Settings</button>
+            <button class="btn btn-danger btn-sm" id="restart-panel-btn">Restart Panel</button>
+          </div>
+          <p class="text-muted mt-2" style="font-size:11px">⚠️ Restarting the panel will <strong>forcefully shut down</strong> all running Minecraft servers.</p>
         </div>
       </div>
 
@@ -323,7 +332,7 @@ Pages.settings = async (el) => {
         // Update preview borders
         document.querySelectorAll('.theme-preview').forEach(p => p.style.borderColor = 'var(--border-color)');
         opt.querySelector('.theme-preview').style.borderColor = 'var(--accent)';
-        const names = { midnight:'Midnight', noble:'Noble', dark:'Dark', ocean:'Ocean', emerald:'Emerald', crimson:'Crimson', amoled:'AMOLED', looty:'Looty', bluegold:'Blue & Gold', universe:'Universe', minecraft:'Minecraft', snowy:'Snowy' };
+        const names = { midnight: 'Midnight', noble: 'Noble', dark: 'Dark', ocean: 'Ocean', emerald: 'Emerald', crimson: 'Crimson', amoled: 'AMOLED', looty: 'Looty', bluegold: 'Blue & Gold', universe: 'Universe', minecraft: 'Minecraft', snowy: 'Snowy' };
         Toast.success(`Theme changed to ${names[theme] || theme}`);
       };
     });
@@ -350,7 +359,28 @@ Pages.settings = async (el) => {
             alert_email_on_restart: document.getElementById('alert-email-on-restart')?.checked ?? false,
           });
           Toast.success('Alert settings saved');
-        } catch (e) { Toast.error(e.message); }
+        } catch (e) {
+          Toast.error(e.message);
+        }
+      };
+    }
+
+    const restartBtn = document.getElementById('restart-panel-btn');
+    if (restartBtn) {
+      restartBtn.onclick = async () => {
+        if (!confirm('⚠️ Are you sure you want to RESTART the panel?\n\nThis will SHUT DOWN all running Minecraft servers immediately. Any unsaved progress in servers may be lost.')) return;
+
+        try {
+          Toast.info('Sending restart signal...');
+          await API.post('/system/restart');
+          Toast.success('Panel is restarting. Please wait 10-20 seconds before refreshing.');
+          // Optional: Logout or redirect to a "restarting" page
+          setTimeout(() => {
+            window.location.href = '/login';
+          }, 3000);
+        } catch (e) {
+          Toast.error('Failed to restart: ' + e.message);
+        }
       };
     }
 
@@ -358,15 +388,27 @@ Pages.settings = async (el) => {
     const savePanelBtn = document.getElementById('save-panel-settings-btn');
     if (savePanelBtn) {
       savePanelBtn.onclick = async () => {
-        const val = parseInt(document.getElementById('log-max-size')?.value, 10);
-        if (isNaN(val) || val < 1 || val > 100) {
-          Toast.error('Enter a value between 1 and 100');
+        const logVal = parseInt(document.getElementById('log-max-size')?.value, 10);
+        const portVal = parseInt(document.getElementById('panel-port')?.value, 10);
+
+        if (isNaN(logVal) || logVal < 1 || logVal > 100) {
+          Toast.error('Log size must be between 1 and 100');
           return;
         }
+        if (isNaN(portVal) || portVal < 1 || portVal > 65535) {
+          Toast.error('Port must be between 1 and 65535');
+          return;
+        }
+
         try {
-          await API.put('/system/panel-settings', { log_max_size_mb: val });
-          Toast.success('Panel settings saved');
-        } catch (e) { Toast.error(e.message); }
+          await API.put('/system/panel-settings', {
+            log_max_size_mb: logVal,
+            http_port: portVal
+          });
+          Toast.success('Panel settings saved. Restart panel to apply port changes.');
+        } catch (e) {
+          Toast.error(e.message);
+        }
       };
     }
 

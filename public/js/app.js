@@ -4,6 +4,16 @@ const App = {
     currentPage: null,
     ws: null,
     currentServerId: null,
+    preferences: {},
+
+    async savePreferences(updates) {
+        this.preferences = { ...this.preferences, ...updates };
+        try {
+            await API.put('/system/preferences', this.preferences);
+        } catch (e) {
+            console.error('Failed to save preferences', e);
+        }
+    },
 
     init() {
         this.bindEvents();
@@ -62,11 +72,23 @@ const App = {
         document.getElementById('user-role').textContent = this.user.role === 'admin' ? 'Administrator' : 'User';
         document.getElementById('user-avatar').textContent = this.user.username[0].toUpperCase();
         document.getElementById('nav-users').style.display = this.user.role === 'admin' ? '' : 'none';
-        if (this.user.mustChangePassword) {
-            document.getElementById('password-modal').style.display = 'flex';
-        } else {
-            this.route();
-        }
+
+        // Load preferences
+        API.get('/system/preferences').then(prefs => {
+            this.preferences = prefs;
+            if (this.user.mustChangePassword) {
+                document.getElementById('password-modal').style.display = 'flex';
+            } else {
+                this.route();
+            }
+        }).catch(e => {
+            console.error('Failed to load preferences', e);
+            if (this.user.mustChangePassword) {
+                document.getElementById('password-modal').style.display = 'flex';
+            } else {
+                this.route();
+            }
+        });
     },
 
     bindEvents() {
@@ -279,7 +301,18 @@ Pages.dashboard = async (el) => {
         const promises = [API.get('/servers'), API.get('/system/info')];
         if (App.user?.role === 'admin') promises.push(API.get('/system/daemon').catch(() => null));
         const results = await Promise.all(promises);
-        const [servers, sysInfo, daemon] = results;
+        let [servers, sysInfo, daemon] = results;
+
+        // Sort based on preferences
+        if (App.preferences.serverOrder) {
+            const orderMap = new Map(App.preferences.serverOrder.map((id, index) => [id, index]));
+            servers.sort((a, b) => {
+                const orderA = orderMap.has(a.id) ? orderMap.get(a.id) : 9999;
+                const orderB = orderMap.has(b.id) ? orderMap.get(b.id) : 9999;
+                return orderA - orderB;
+            });
+        }
+
         const running = servers.filter(s => s.status === 'running').length;
         const stopped = servers.filter(s => s.status === 'stopped').length;
         const showDaemonNotice = daemon && !daemon.installed;
@@ -312,7 +345,7 @@ Pages.dashboard = async (el) => {
             grid.innerHTML = '<div class="empty-state"><div class="empty-icon">🖥️</div><h3>No servers yet</h3><p>Create your first Minecraft server to get started.</p><button class="btn btn-primary" onclick="location.hash=\'servers\'">Create Server</button></div>';
         } else {
             grid.innerHTML = servers.map(s => `
-        <div class="server-card" onclick="location.hash='server/${s.id}'">
+        <div class="server-card" onclick="location.hash='server/${s.id}'" draggable="true" data-id="${s.id}">
           <div class="server-card-main-row">
             <h3>${s.name}</h3>
             <div class="server-card-right">
@@ -344,6 +377,11 @@ Pages.dashboard = async (el) => {
           </div>
         </div>
       `).join('');
+
+            // Init rearrangement
+            Rearrange.init('dash-servers', (newOrder) => {
+                App.savePreferences({ serverOrder: newOrder });
+            });
         }
     } catch (err) {
         el.innerHTML = `<div class="alert alert-error">Failed to load dashboard: ${err.message}</div>`;
@@ -387,13 +425,24 @@ Pages.servers = async (el, actions) => {
 
     el.innerHTML = '<div class="loading-screen"><div class="spinner spinner-lg"></div></div>';
     try {
-        const servers = await API.get('/servers');
+        let servers = await API.get('/servers');
+
+        // Sort based on preferences
+        if (App.preferences.serverOrder) {
+            const orderMap = new Map(App.preferences.serverOrder.map((id, index) => [id, index]));
+            servers.sort((a, b) => {
+                const orderA = orderMap.has(a.id) ? orderMap.get(a.id) : 9999;
+                const orderB = orderMap.has(b.id) ? orderMap.get(b.id) : 9999;
+                return orderA - orderB;
+            });
+        }
+
         if (servers.length === 0) {
             el.innerHTML = '<div class="empty-state"><div class="empty-icon">🖥️</div><h3>No servers yet</h3><p>Create your first Minecraft server or import an existing one.</p><button class="btn btn-secondary" onclick="Pages.importServer()">📂 Import Server</button><button class="btn btn-primary" onclick="Pages.createServerWizard()">+ Create Server</button></div>';
             return;
         }
-        el.innerHTML = `<div class="server-grid">${servers.map(s => `
-      <div class="server-card" onclick="location.hash='server/${s.id}'">
+        el.innerHTML = `<div class="server-grid" id="main-server-grid">${servers.map(s => `
+      <div class="server-card" onclick="location.hash='server/${s.id}'" draggable="true" data-id="${s.id}">
         <div class="server-card-main-row">
           <h3>${s.name}</h3>
           <div class="server-card-right">
@@ -427,6 +476,11 @@ Pages.servers = async (el, actions) => {
         </div>
       </div>
     `).join('')}</div>`;
+
+        // Init rearrangement
+        Rearrange.init('main-server-grid', (newOrder) => {
+            App.savePreferences({ serverOrder: newOrder });
+        });
     } catch (err) { el.innerHTML = `<div class="alert alert-error">${err.message}</div>`; }
 };
 

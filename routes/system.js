@@ -3,6 +3,7 @@ const os = require('os');
 const { authMiddleware, adminOnly } = require('../middleware/auth');
 const javaDetector = require('../services/javaDetector');
 const daemonInstaller = require('../services/daemonInstaller');
+const serverManager = require('../services/serverManager');
 const { getDb } = require('../database');
 const config = require('../config');
 const logger = require('../utils/logger');
@@ -77,9 +78,10 @@ router.post('/daemon/uninstall', adminOnly, async (req, res) => {
 router.get('/panel-settings', adminOnly, (req, res) => {
     try {
         const rows = getDb().prepare('SELECT key, value FROM settings WHERE key LIKE "panel_%"').all();
-        const settings = { log_max_size_mb: 10 };
+        const settings = { log_max_size_mb: 10, http_port: config.HTTP_PORT };
         for (const r of rows) {
             if (r.key === 'panel_log_max_size_mb') settings.log_max_size_mb = parseInt(r.value, 10) || 10;
+            if (r.key === 'panel_http_port') settings.http_port = parseInt(r.value, 10) || config.HTTP_PORT;
         }
         res.json(settings);
     } catch (err) {
@@ -89,11 +91,18 @@ router.get('/panel-settings', adminOnly, (req, res) => {
 
 router.put('/panel-settings', adminOnly, (req, res) => {
     try {
-        const { log_max_size_mb } = req.body;
+        const { log_max_size_mb, http_port } = req.body;
         if (typeof log_max_size_mb !== 'undefined') {
             const val = Math.max(1, Math.min(100, parseInt(log_max_size_mb, 10) || 10));
             getDb().prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)').run('panel_log_max_size_mb', String(val));
             config.LOG_MAX_SIZE_MB = val;
+        }
+        if (typeof http_port !== 'undefined') {
+            const val = parseInt(http_port, 10);
+            if (val >= 1 && val <= 65535) {
+                getDb().prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)').run('panel_http_port', String(val));
+                // Note: config.HTTP_PORT is NOT updated here because a restart is required
+            }
         }
         res.json({ message: 'Settings saved' });
     } catch (err) {
@@ -133,6 +142,26 @@ router.put('/alert-settings', adminOnly, (req, res) => {
     }
 });
 
+// Preferences (per-user)
+router.get('/preferences', (req, res) => {
+    try {
+        const row = getDb().prepare('SELECT preferences FROM user_preferences WHERE user_id = ?').get(req.user.id);
+        res.json(row ? JSON.parse(row.preferences) : {});
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to get preferences' });
+    }
+});
+
+router.put('/preferences', (req, res) => {
+    try {
+        const prefs = JSON.stringify(req.body);
+        getDb().prepare('INSERT OR REPLACE INTO user_preferences (user_id, preferences) VALUES (?, ?)').run(req.user.id, prefs);
+        res.json({ message: 'Preferences saved' });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to save preferences' });
+    }
+});
+
 // Audit log
 router.get('/audit-log', adminOnly, (req, res) => {
     try {
@@ -147,6 +176,40 @@ router.get('/audit-log', adminOnly, (req, res) => {
         res.json(logs);
     } catch (err) {
         res.status(500).json({ error: 'Failed to get audit log' });
+    }
+});
+
+// Restart panel (admin only)
+router.post('/restart', adminOnly, async (req, res) => {
+    try {
+        logger.info('SYSTEM', `Restart requested by user: ${req.user.username}`);
+
+        // Notify client that we are starting shutdown
+        res.json({ message: 'Panel is restarting. All servers will be shut down.' });
+
+        // Give the response a moment to reach the client
+        setTimeout(async () => {
+            logger.info('SYSTEM', 'Shutting down all servers before panel restart...');
+            await serverManager.shutdownAll();
+
+            const { installed, running } = daemonInstaller.getStatus();
+            if (installed && running) {
+                logger.info('SYSTEM', 'Running as service, triggering service restart...');
+                const { spawn } = require('child_process');
+                // Use a detached powershell to restart the service so we can exit cleanly
+                spawn('powershell.exe', ['-Command', 'Start-Sleep -s 2; Restart-Service lootpanel.exe'], {
+                    detached: true,
+                    stdio: 'ignore'
+                }).unref();
+                process.exit(0);
+            } else {
+                logger.info('SYSTEM', 'Not running as service (or service stopped), exiting process...');
+                process.exit(0);
+            }
+        }, 1000);
+    } catch (err) {
+        logger.error('SYSTEM', 'Restart failed', err.message);
+        res.status(500).json({ error: 'Failed to initiate restart' });
     }
 });
 
