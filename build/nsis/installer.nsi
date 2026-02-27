@@ -31,7 +31,7 @@ VIAddVersionKey "LegalCopyright" "MIT License"
 
 ; Pages
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "..\..\LICENSE"  ; Create a LICENSE file
+!insertmacro MUI_PAGE_LICENSE "..\..\LICENSE"
 !insertmacro MUI_PAGE_DIRECTORY
 Page custom ServiceOptionsPage ServiceOptionsLeave
 !insertmacro MUI_PAGE_INSTFILES
@@ -62,19 +62,15 @@ Function ServiceOptionsPage
         Abort
     ${EndIf}
     
-    ${NSD_CreateLabel} 0 0 100% 24u "Would you like to install LootyPanel as a Windows Service?$
-$
-$
+    ${NSD_CreateLabel} 0 0 100% 80u "Would you like to install LootyPanel as a Windows Service?$
 $
 Installing as a service allows LootyPanel to:$
 $
-• Start automatically when Windows boots$
-$
-• Run in the background without a user logged in$
-$
-• Continue running after closing the browser"
+- Start automatically when Windows boots$
+- Run in the background without a user logged in$
+- Continue running after closing the browser"
     
-    ${NSD_CreateCheckbox} 0 100u 100% 12u "Install LootyPanel as a Windows Service (recommended for servers)"
+    ${NSD_CreateCheckbox} 0 90u 100% 12u "Install LootyPanel as a Windows Service (recommended for servers)"
     Pop $ServiceCheckbox
     ${NSD_Check} $ServiceCheckbox
     StrCpy $InstallService 1
