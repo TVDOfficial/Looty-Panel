@@ -88,21 +88,20 @@ Section "LootyPanel" SecMain
     
     ; Copy application files
     SetOutPath "$INSTDIR\app"
-    File /r "..\*.*"
+    File /r "source\app\*.*"
     
     ; Copy launcher files
     SetOutPath "$INSTDIR"
-    File "launcher.js"
-    File "LootyPanel.bat"
+    File "source\launcher.js"
+    File "source\LootyPanel.bat"
     
     ; Copy daemon files
     SetOutPath "$INSTDIR\daemon"
-    File /r "..\daemon\*.*"
+    File /r "source\daemon\*.*"
     
-    ; Download Node.js (we'll bundle it or download during install)
-    ; For now, create a marker file
-    FileOpen $0 "$INSTDIR\node\.download-required" w
-    FileClose $0
+    ; Copy Node.js
+    SetOutPath "$INSTDIR\node"
+    File /r "source\node\*.*"
     
     ; Create shortcuts
     CreateDirectory "$SMPROGRAMS\LootyPanel"
