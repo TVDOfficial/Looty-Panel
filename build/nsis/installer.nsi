@@ -31,7 +31,7 @@ VIAddVersionKey "LegalCopyright" "MIT License"
 
 ; Pages
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "..\LICENSE"  ; Create a LICENSE file
+!insertmacro MUI_PAGE_LICENSE "..\..\LICENSE"  ; Create a LICENSE file
 !insertmacro MUI_PAGE_DIRECTORY
 Page custom ServiceOptionsPage ServiceOptionsLeave
 !insertmacro MUI_PAGE_INSTFILES
