@@ -90,9 +90,10 @@ Section "LootyPanel" SecMain
     SetOutPath "$INSTDIR\app"
     File /r "..\*.*"
     
-    ; Copy launcher
+    ; Copy launcher files
     SetOutPath "$INSTDIR"
-    File "launcher.exe"
+    File "launcher.js"
+    File "LootyPanel.bat"
     
     ; Copy daemon files
     SetOutPath "$INSTDIR\daemon"
@@ -105,9 +106,9 @@ Section "LootyPanel" SecMain
     
     ; Create shortcuts
     CreateDirectory "$SMPROGRAMS\LootyPanel"
-    CreateShortcut "$SMPROGRAMS\LootyPanel\LootyPanel.lnk" "$INSTDIR\launcher.exe"
+    CreateShortcut "$SMPROGRAMS\LootyPanel\LootyPanel.lnk" "$INSTDIR\LootyPanel.bat"
     CreateShortcut "$SMPROGRAMS\LootyPanel\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
-    CreateShortcut "$DESKTOP\LootyPanel.lnk" "$INSTDIR\launcher.exe"
+    CreateShortcut "$DESKTOP\LootyPanel.lnk" "$INSTDIR\LootyPanel.bat"
     
     ; Write registry
     WriteRegStr HKCU "Software\LootyPanel" "" $INSTDIR
@@ -153,7 +154,8 @@ Section "Uninstall"
     RMDir /r "$INSTDIR\app"
     RMDir /r "$INSTDIR\node"
     RMDir /r "$INSTDIR\daemon"
-    Delete "$INSTDIR\launcher.exe"
+    Delete "$INSTDIR\launcher.js"
+    Delete "$INSTDIR\LootyPanel.bat"
     Delete "$INSTDIR\Uninstall.exe"
     Delete "$INSTDIR\.first-run"
     
