@@ -9,6 +9,7 @@ daemon/*.exe
 .env
 *.db
 *.log
+*.backup
 .DS_Store
 .idea/
 .vscode/
