@@ -62,11 +62,16 @@ Function ServiceOptionsPage
         Abort
     ${EndIf}
     
-    ${NSD_CreateLabel} 0 0 100% 24u "Would you like to install LootyPanel as a Windows Service?$$
-$$
-Installing as a service allows LootyPanel to:$$
-• Start automatically when Windows boots$$
-• Run in the background without a user logged in$$
+    ${NSD_CreateLabel} 0 0 100% 24u "Would you like to install LootyPanel as a Windows Service?$
+$
+$
+$
+Installing as a service allows LootyPanel to:$
+$
+• Start automatically when Windows boots$
+$
+• Run in the background without a user logged in$
+$
 • Continue running after closing the browser"
     
     ${NSD_CreateCheckbox} 0 100u 100% 12u "Install LootyPanel as a Windows Service (recommended for servers)"
@@ -125,7 +130,7 @@ Section "LootyPanel" SecMain
         ${If} $0 == 0
             DetailPrint "Service installed successfully"
             ; Start the service
-            nsExec::Exec 'sc start lootpanel.exe'
+            nsExec::Exec 'sc start LootyPanel'
         ${Else}
             DetailPrint "Service installation may require manual configuration"
         ${EndIf}
@@ -144,9 +149,9 @@ SectionEnd
 ; Uninstaller
 Section "Uninstall"
     ; Stop and remove service
-    nsExec::Exec 'sc stop lootpanel.exe'
+    nsExec::Exec 'sc stop LootyPanel'
     Sleep 2000
-    nsExec::Exec 'sc delete lootpanel.exe'
+    nsExec::Exec 'sc delete LootyPanel'
     
     ; Remove shortcuts
     Delete "$DESKTOP\LootyPanel.lnk"
@@ -163,7 +168,8 @@ Section "Uninstall"
     Delete "$INSTDIR\.first-run"
     
     ; Ask to remove data
-    MessageBox MB_YESNO "Would you like to remove all server data and backups?$$
+    MessageBox MB_YESNO "Would you like to remove all server data and backups?$
+$
 Location: $INSTDIR\data" IDNO SkipDataRemoval
     RMDir /r "$INSTDIR\data"
     SkipDataRemoval:

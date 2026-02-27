@@ -7,8 +7,7 @@ const logger = require('../utils/logger');
 // Windows service management using node-windows so the service reports
 // SERVICE_RUNNING to the SCM (avoids Error 1053 timeout).
 // Uses PowerShell Start-Process -Verb RunAs to trigger UAC when installing/uninstalling.
-// node-windows registers the service as "lootpanel.exe" (id from name), not "LootPanel"
-const SERVICE_NAME = 'lootpanel.exe';
+const SERVICE_NAME = 'LootyPanel';
 
 class DaemonInstaller {
     constructor() {
