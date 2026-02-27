@@ -62,13 +62,7 @@ Function ServiceOptionsPage
         Abort
     ${EndIf}
     
-    ${NSD_CreateLabel} 0 0 100% 80u "Would you like to install LootyPanel as a Windows Service?$
-$
-Installing as a service allows LootyPanel to:$
-$
-- Start automatically when Windows boots$
-- Run in the background without a user logged in$
-- Continue running after closing the browser"
+    ${NSD_CreateLabel} 0 0 100% 80u "Would you like to install LootyPanel as a Windows Service?$\n$\nInstalling as a service allows LootyPanel to:$\n$\n- Start automatically when Windows boots$\n- Run in the background without a user logged in$\n- Continue running after closing the browser"
     
     ${NSD_CreateCheckbox} 0 90u 100% 12u "Install LootyPanel as a Windows Service (recommended for servers)"
     Pop $ServiceCheckbox
@@ -164,9 +158,7 @@ Section "Uninstall"
     Delete "$INSTDIR\.first-run"
     
     ; Ask to remove data
-    MessageBox MB_YESNO "Would you like to remove all server data and backups?$
-$
-Location: $INSTDIR\data" IDNO SkipDataRemoval
+    MessageBox MB_YESNO "Would you like to remove all server data and backups?$\n$\nLocation: $INSTDIR\data" IDNO SkipDataRemoval
     RMDir /r "$INSTDIR\data"
     SkipDataRemoval:
     
