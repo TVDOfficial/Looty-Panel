@@ -12,6 +12,8 @@ on:
 jobs:
   build-portable:
     runs-on: windows-latest
+    permissions:
+      contents: write
     
     steps:
     - uses: actions/checkout@v4
@@ -47,11 +49,17 @@ jobs:
         name: LootyPanel-Setup
         path: dist/LootyPanel-Setup.exe
         
+    - name: Zip portable package
+      run: |
+        cd dist
+        7z a LootyPanel-Portable.zip LootyPanel-Portable/
+        
     - name: Upload to Release
       if: github.event_name == 'release'
       uses: softprops/action-gh-release@v1
       with:
         files: |
           dist/LootyPanel-Setup.exe
+          dist/LootyPanel-Portable.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
