@@ -118,6 +118,27 @@ Looty Panel is a professional, modern, and lightweight Minecraft server manageme
 
 ### Installation
 
+#### Option 1: Windows Installer (Recommended for Windows Users)
+
+The easiest way to get started on Windows:
+
+1. **Download the installer** from [GitHub Releases](https://github.com/TVDOfficial/Looty-Panel/releases)
+   - Look for `LootyPanel-Setup.exe` in the latest release
+
+2. **Run the installer** and follow the setup wizard
+   - Choose installation location (default: `C:\Program Files\LootyPanel`)
+   - Optionally install as a Windows Service (runs automatically on boot)
+
+3. **Launch Looty Panel**:
+   - Desktop shortcut or Start Menu → LootyPanel
+   - Your browser will open automatically
+
+4. **First-time setup**:
+   - Create your admin account when prompted
+   - Start adding your Minecraft servers!
+
+#### Option 2: Manual Installation (Developers / Linux)
+
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/TVDOfficial/Looty-Panel.git
@@ -141,9 +162,10 @@ Looty Panel is a professional, modern, and lightweight Minecraft server manageme
 
 To run Looty Panel as a Windows service for automatic startup:
 
-1. Start the panel normally first
-2. Go to Management → Install Windows Service
-3. The service will start automatically on Windows boot
+- **During installation**: Check "Install LootyPanel as a Windows Service" in the installer
+- **After installation**: Go to Management → Install Windows Service in the web panel
+
+The service will start automatically on Windows boot, allowing your servers to run 24/7 without a user logged in.
 
 ---
 
