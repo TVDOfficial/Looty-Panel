@@ -3,7 +3,10 @@ const crypto = require('crypto');
 const fs = require('fs');
 
 const BASE_DIR = path.resolve(__dirname);
-const DATA_DIR = path.join(BASE_DIR, 'data');
+// Support portable mode - use external data directory if specified
+const DATA_DIR = process.env.LOOTYPANEL_DATA_DIR 
+  ? path.resolve(process.env.LOOTYPANEL_DATA_DIR)
+  : path.join(BASE_DIR, 'data');
 const JWT_SECRET_PATH = path.join(DATA_DIR, '.jwt_secret');
 
 function getOrCreateJwtSecret() {
@@ -25,11 +28,12 @@ module.exports = {
 
   // Paths
   BASE_DIR,
-  SERVERS_DIR: path.join(BASE_DIR, 'servers'),
-  BACKUPS_DIR: path.join(BASE_DIR, 'backups'),
-  CERTS_DIR: path.join(BASE_DIR, 'certs'),
-  DB_PATH: path.join(BASE_DIR, 'data', 'mcpanel.db'),
-  LOG_DIR: path.join(BASE_DIR, 'logs'),
+  DATA_DIR,
+  SERVERS_DIR: path.join(DATA_DIR, 'servers'),
+  BACKUPS_DIR: path.join(DATA_DIR, 'backups'),
+  CERTS_DIR: path.join(DATA_DIR, 'certs'),
+  DB_PATH: path.join(DATA_DIR, 'mcpanel.db'),
+  LOG_DIR: path.join(DATA_DIR, 'logs'),
 
   // Auth (persisted so tokens survive server restarts)
   JWT_SECRET: getOrCreateJwtSecret(),

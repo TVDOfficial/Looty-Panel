@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js --dev",
-    "optimize-screenshots": "node scripts/optimize-screenshots.js"
+    "optimize-screenshots": "node scripts/optimize-screenshots.js",
+    "build": "node build/build.js",
+    "build:portable": "node build/build.js portable",
+    "build:installer": "node build/build.js installer",
+    "build:all": "node build/build.js all"
   },
   "dependencies": {
     "archiver": "^7.0.0",
