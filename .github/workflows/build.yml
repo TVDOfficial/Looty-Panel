@@ -1,0 +1,65 @@
+name: Build Portable Package
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [created, published]
+  workflow_dispatch:
+
+jobs:
+  build-portable:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Install NSIS
+      run: |
+        choco install nsis
+        echo "C:\Program Files (x86)\NSIS" >> $env:GITHUB_PATH
+      
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build portable package
+      run: npm run build:portable
+      
+    - name: Build installer
+      run: npm run build:installer
+      
+    - name: Upload portable artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: LootyPanel-Portable
+        path: dist/LootyPanel-Portable/
+        
+    - name: Upload installer artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: LootyPanel-Setup
+        path: dist/LootyPanel-Setup.exe
+        
+    - name: Zip portable package
+      run: |
+        cd dist
+        7z a LootyPanel-Portable.zip LootyPanel-Portable/
+        
+    - name: Upload to Release
+      if: github.event_name == 'release'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          dist/LootyPanel-Setup.exe
+          dist/LootyPanel-Portable.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

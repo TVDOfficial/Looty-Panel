@@ -9,7 +9,13 @@ daemon/*.exe
 .env
 *.db
 *.log
+*.backup
 .DS_Store
 .idea/
 .vscode/
 .jwt_secret
+
+# Specific files that should never be committed
+data/mcpanel.db
+mcpanel.log
+services/serverManager.js.backup
