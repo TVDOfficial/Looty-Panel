@@ -497,9 +497,18 @@ Pages.servers = async (el, actions) => {
 
 Pages.importServer = async () => {
     const body = `
-    <div class="form-group"><label>Server Directory Path</label>
+    <div class="form-group">
+      <label>Choose server folder</label>
+      <div class="flex gap-2" style="align-items:center;flex-wrap:wrap">
+        <button type="button" class="btn btn-primary" id="import-browse-btn">📂 Browse for folder</button>
+        <span id="import-folder-name" class="text-muted" style="font-size:13px">No folder selected</span>
+      </div>
+      <input type="file" id="import-folder-input" webkitdirectory directory multiple style="display:none">
+      <p class="text-muted" style="font-size:12px;margin-top:6px">Select your Minecraft server folder (must contain server.jar or similar). Files will be copied into the panel.</p>
+    </div>
+    <div class="form-group" style="margin-top:12px">
+      <label>Or enter path (same machine)</label>
       <input type="text" id="import-dir" placeholder="D:\\MinecraftServer or path\\to\\server" style="width:100%">
-      <p class="text-muted" style="font-size:12px;margin-top:4px">Full path to your existing Minecraft server folder (must contain server.jar or similar)</p>
     </div>
     <div class="form-group"><label>Display Name (optional)</label>
       <input type="text" id="import-name" placeholder="My Server">
@@ -507,20 +516,70 @@ Pages.importServer = async () => {
     <div class="form-group"><label>Port (optional)</label>
       <input type="number" id="import-port" placeholder="Auto-detect from server.properties">
     </div>
+    <div id="import-status" class="text-muted" style="display:none;font-size:13px;margin-bottom:8px"></div>
     <div id="import-error" class="alert alert-error" style="display:none"></div>
   `;
     const footer = `<button class="btn btn-secondary modal-close" onclick="this.closest('.modal-overlay').remove()">Cancel</button><button class="btn btn-primary" id="import-submit">Import Server</button>`;
     const modal = showModal('📂 Import Existing Server', body, footer);
+
+    let selectedFiles = [];
+    let selectedFolderName = '';
+
+    document.getElementById('import-browse-btn').onclick = () => document.getElementById('import-folder-input').click();
+    document.getElementById('import-folder-input').onchange = (e) => {
+        const list = e.target.files;
+        selectedFiles = list ? Array.from(list) : [];
+        selectedFolderName = selectedFiles.length && selectedFiles[0].webkitRelativePath
+            ? selectedFiles[0].webkitRelativePath.split(/[/\\]/)[0]
+            : '';
+        document.getElementById('import-folder-name').textContent = selectedFiles.length
+            ? selectedFolderName + ' (' + selectedFiles.length + ' files)'
+            : 'No folder selected';
+        document.getElementById('import-dir').value = '';
+    };
+
     document.getElementById('import-submit').onclick = async () => {
-        const dir = document.getElementById('import-dir').value.trim();
         const errEl = document.getElementById('import-error');
+        const statusEl = document.getElementById('import-status');
         errEl.style.display = 'none';
-        if (!dir) { errEl.textContent = 'Server directory path is required'; errEl.style.display = 'block'; return; }
+        statusEl.style.display = 'none';
+
+        const name = document.getElementById('import-name').value.trim() || undefined;
+        const port = document.getElementById('import-port').value ? parseInt(document.getElementById('import-port').value, 10) : undefined;
+
+        if (selectedFiles.length > 0) {
+            statusEl.style.display = 'block';
+            statusEl.textContent = 'Uploading ' + selectedFiles.length + ' files...';
+            document.getElementById('import-submit').disabled = true;
+            try {
+                const formData = new FormData();
+                formData.append('name', name || selectedFolderName || 'Imported Server');
+                if (port) formData.append('port', port);
+                const relativePaths = selectedFiles.map(f => f.webkitRelativePath || f.name);
+                formData.append('relativePaths', JSON.stringify(relativePaths));
+                for (let i = 0; i < selectedFiles.length; i++) {
+                    formData.append('files', selectedFiles[i]);
+                }
+                await API.upload('/servers/import-upload', formData);
+                Toast.success('Server imported successfully');
+                modal.remove();
+                App.route();
+            } catch (e) {
+                errEl.textContent = e.message;
+                errEl.style.display = 'block';
+                statusEl.style.display = 'none';
+            }
+            document.getElementById('import-submit').disabled = false;
+            return;
+        }
+
+        const dir = document.getElementById('import-dir').value.trim();
+        if (!dir) { errEl.textContent = 'Select a folder with "Browse for folder" or enter a server directory path.'; errEl.style.display = 'block'; return; }
         try {
             await API.post('/servers/import', {
                 serverDir: dir,
-                name: document.getElementById('import-name').value.trim() || undefined,
-                port: document.getElementById('import-port').value ? parseInt(document.getElementById('import-port').value, 10) : undefined,
+                name,
+                port,
             });
             Toast.success('Server imported successfully');
             modal.remove();

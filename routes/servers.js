@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
+const multer = require('multer');
 const { getDb } = require('../database');
 const { authMiddleware } = require('../middleware/auth');
 const serverManager = require('../services/serverManager');
@@ -12,6 +14,15 @@ const pathHelper = require('../utils/pathHelper');
 
 const router = express.Router();
 router.use(authMiddleware);
+
+// Multer for import-upload (folder picker): temp files, then we move into server dir
+const uploadImport = multer({
+    storage: multer.diskStorage({
+        destination: (req, file, cb) => cb(null, os.tmpdir()),
+        filename: (req, file, cb) => cb(null, 'import_' + Date.now() + '_' + Math.random().toString(36).slice(2) + '_' + (file.originalname || 'file').replace(/[^a-zA-Z0-9._-]/g, '_')),
+    }),
+    limits: { fileSize: 200 * 1024 * 1024, files: 3000 },
+});
 
 // List all servers (includes motd, status, player count for running servers)
 router.get('/', async (req, res) => {
@@ -128,6 +139,92 @@ router.post('/import', async (req, res) => {
     } catch (err) {
         logger.error('ROUTE', 'Import server error', err.message);
         res.status(500).json({ error: 'Failed to import server: ' + err.message });
+    }
+});
+
+// Import server by uploading folder contents (from browser folder picker)
+router.post('/import-upload', uploadImport.array('files', 3000), async (req, res) => {
+    const files = req.files || [];
+    if (files.length === 0) {
+        return res.status(400).json({ error: 'No files selected. Use "Browse for folder" and select your server folder.' });
+    }
+
+    let relativePaths = [];
+    try {
+        relativePaths = typeof req.body.relativePaths === 'string' ? JSON.parse(req.body.relativePaths) : req.body.relativePaths || [];
+    } catch (_) {}
+    if (relativePaths.length !== files.length) {
+        relativePaths = files.map((f, i) => f.originalname || 'file' + i);
+    }
+
+    const destDir = path.join(path.resolve(config.SERVERS_DIR), 'Imported_' + Date.now());
+    fs.mkdirSync(destDir, { recursive: true });
+
+    try {
+        for (let i = 0; i < files.length; i++) {
+            const rel = (relativePaths[i] || files[i].originalname || '').replace(/^[^/\\]+[/\\]/, '');
+            const destPath = path.join(destDir, rel);
+            const parent = path.dirname(destPath);
+            if (!fs.existsSync(parent)) fs.mkdirSync(parent, { recursive: true });
+            fs.copyFileSync(files[i].path, destPath);
+            try { fs.unlinkSync(files[i].path); } catch (_) {}
+        }
+
+        const dir = destDir;
+        let jarFile = 'server.jar';
+        const jarList = fs.readdirSync(dir).filter(f => f.endsWith('.jar'));
+        if (jarList.length === 0) {
+            fs.rmSync(destDir, { recursive: true, force: true });
+            return res.status(400).json({ error: 'No JAR file found in the selected folder' });
+        }
+        if (jarList.length === 1) jarFile = jarList[0];
+        else if (jarList.includes('server.jar')) jarFile = 'server.jar';
+        else jarFile = jarList[0];
+
+        let mcPort = req.body.port ? parseInt(req.body.port, 10) : null;
+        const propsPath = path.join(dir, 'server.properties');
+        if (mcPort == null && fs.existsSync(propsPath)) {
+            const content = fs.readFileSync(propsPath, 'utf-8');
+            for (const line of content.split('\n')) {
+                const m = line.match(/^server-port\s*=\s*(\d+)/i);
+                if (m) { mcPort = parseInt(m[1], 10); break; }
+            }
+        }
+        mcPort = mcPort || config.DEFAULT_MC_PORT;
+
+        const existing = getDb().prepare('SELECT id, name FROM servers WHERE port = ?').get(mcPort);
+        if (existing) {
+            fs.rmSync(destDir, { recursive: true, force: true });
+            return res.status(400).json({ error: `Port ${mcPort} is already used by server "${existing.name}"` });
+        }
+
+        const serverName = (req.body.name || '').trim() || 'Imported Server';
+
+        const result = getDb().prepare(
+            `INSERT INTO servers (name, type, mc_version, port, memory_min, memory_max, java_path, jar_file, server_dir, created_by, auto_start)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)`
+        ).run(
+            serverName, 'paper', 'unknown', mcPort,
+            config.DEFAULT_MIN_MEMORY,
+            config.DEFAULT_MAX_MEMORY,
+            'java',
+            jarFile,
+            pathHelper.toRelative(dir),
+            req.user.id
+        );
+
+        const server = getDb().prepare('SELECT * FROM servers WHERE id = ?').get(result.lastInsertRowid);
+        getDb().prepare('INSERT INTO audit_log (user_id, action, details, ip_address) VALUES (?, ?, ?, ?)').run(
+            req.user.id, 'server_import', `Imported server: ${serverName} (upload)`, req.ip
+        );
+
+        res.status(201).json({ ...server, status: 'stopped' });
+    } catch (err) {
+        if (fs.existsSync(destDir)) {
+            try { fs.rmSync(destDir, { recursive: true, force: true }); } catch (_) {}
+        }
+        logger.error('ROUTE', 'Import upload error', err.message);
+        res.status(500).json({ error: 'Failed to import: ' + err.message });
     }
 });
 

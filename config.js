@@ -3,7 +3,8 @@ const crypto = require('crypto');
 const fs = require('fs');
 
 const BASE_DIR = path.resolve(__dirname);
-const DATA_DIR = path.join(BASE_DIR, 'data');
+// Use DATA_DIR env for a fixed data path (e.g. after moving the panel, or to share one DB)
+const DATA_DIR = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : path.join(BASE_DIR, 'data');
 const JWT_SECRET_PATH = path.join(DATA_DIR, '.jwt_secret');
 
 function getOrCreateJwtSecret() {
@@ -25,10 +26,11 @@ module.exports = {
 
   // Paths
   BASE_DIR,
+  DATA_DIR,
   SERVERS_DIR: path.join(BASE_DIR, 'servers'),
   BACKUPS_DIR: path.join(BASE_DIR, 'backups'),
   CERTS_DIR: path.join(BASE_DIR, 'certs'),
-  DB_PATH: path.join(BASE_DIR, 'data', 'mcpanel.db'),
+  DB_PATH: path.join(DATA_DIR, 'mcpanel.db'),
   LOG_DIR: path.join(BASE_DIR, 'logs'),
 
   // Auth (persisted so tokens survive server restarts)

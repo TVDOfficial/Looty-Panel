@@ -19,10 +19,15 @@ async function initDatabase() {
   if (fs.existsSync(DB_PATH)) {
     const buffer = fs.readFileSync(DB_PATH);
     db = new SQL.Database(buffer);
-    logger.info('DB', 'Database loaded from disk');
+    let n = '?';
+    try {
+      const r = db.exec('SELECT COUNT(*) as c FROM users');
+      if (r.length && r[0].values[0]) n = r[0].values[0][0];
+    } catch (_) { /* table may not exist yet */ }
+    logger.info('DB', `Database loaded from disk: ${DB_PATH} (${n} user(s))`);
   } else {
     db = new SQL.Database();
-    logger.info('DB', 'New database created');
+    logger.info('DB', `New database created (no file at ${DB_PATH})`);
   }
 
   // Create tables

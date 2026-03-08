@@ -12,6 +12,7 @@ const logger = require('./utils/logger');
 const { generateSelfSignedCert } = require('./utils/certGenerator');
 const serverManager = require('./services/serverManager');
 const scheduler = require('./services/scheduler');
+const databaseBackup = require('./services/databaseBackup');
 
 // ========== Main Bootstrap ==========
 async function main() {
@@ -185,6 +186,7 @@ async function main() {
     }
 
     scheduler.loadSchedules();
+    databaseBackup.start();
     setTimeout(() => serverManager.autoStartServers(), 2000);
 
     // Graceful shutdown
@@ -192,6 +194,7 @@ async function main() {
         logger.info('APP', 'Shutting down...');
         const { saveDatabase } = require('./database');
         saveDatabase();
+        databaseBackup.stop();
         scheduler.stopAll();
         await serverManager.shutdownAll();
         process.exit(0);

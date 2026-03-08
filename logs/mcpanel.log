@@ -1795,3 +1795,295 @@
 [2026-02-26T14:25:12.375Z] [INFO] [PLUGINS] Installed plugin: GPTeleport-1.2.1.jar
 [2026-02-26T14:26:45.141Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
 [2026-02-26T14:28:48.403Z] [INFO] [SERVER] Server Lootvote Survival is now running
+[2026-02-26T16:09:22.806Z] [INFO] [SERVER] Stopping server 4 (force)
+[2026-02-26T16:09:23.183Z] [INFO] [SERVER] Server Lootvote Survival stopped (exit code: null)
+[2026-02-26T16:20:07.104Z] [INFO] [SERVER] Starting server Lootvote Survival 2 (ID: 6)
+[2026-02-26T16:20:13.230Z] [INFO] [SERVER] Server Lootvote Survival 2 stopped (exit code: 0)
+[2026-02-26T16:21:19.011Z] [INFO] [SERVER] Starting server Lootvote Survival 2 (ID: 6)
+[2026-02-26T16:21:33.719Z] [INFO] [SERVER] Server Lootvote Survival 2 is now running
+[2026-02-26T16:24:37.506Z] [INFO] [SERVER] Stopping server 6 (force)
+[2026-02-26T16:24:37.574Z] [INFO] [SERVER] Server Lootvote Survival 2 stopped (exit code: null)
+[2026-02-26T16:24:43.123Z] [INFO] [SERVER] Starting server Lootvote Survival 2 (ID: 6)
+[2026-02-26T16:24:57.874Z] [INFO] [SERVER] Server Lootvote Survival 2 is now running
+[2026-02-26T16:30:26.018Z] [INFO] [SERVER] Stopping server 6 (force)
+[2026-02-26T16:30:26.133Z] [INFO] [SERVER] Server Lootvote Survival 2 stopped (exit code: null)
+[2026-02-26T16:53:19.890Z] [INFO] [JAR] Downloading paper 1.21.11...
+[2026-02-26T16:54:13.641Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-26T16:55:52.935Z] [INFO] [PLUGINS] Installed plugin: GriefPrevention.jar
+[2026-02-26T16:56:10.883Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-26T16:56:38.716Z] [INFO] [PLUGINS] Installed plugin: voicechat-fabric-2.6.12+26.1-snapshot-10.jar
+[2026-02-26T16:56:52.688Z] [INFO] [SERVER] Stopping server 7 (force)
+[2026-02-26T16:56:52.889Z] [INFO] [SERVER] Server Lootvote Survival2 stopped (exit code: null)
+[2026-02-26T16:57:04.422Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-26T16:57:16.650Z] [INFO] [SERVER] Stopping server 7 (force)
+[2026-02-26T16:57:16.734Z] [INFO] [SERVER] Server Lootvote Survival2 stopped (exit code: null)
+[2026-02-26T16:57:19.278Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-26T16:58:30.333Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-26T17:00:00.066Z] [INFO] [SERVER] Stopping server 7 (force)
+[2026-02-26T17:00:00.984Z] [INFO] [SERVER] Server Lootvote Survival2 stopped (exit code: null)
+[2026-02-26T17:00:23.058Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-26T17:01:28.806Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-26T17:02:14.215Z] [INFO] [SERVER] Stopping server 7 (force)
+[2026-02-26T17:02:15.129Z] [INFO] [SERVER] Server Lootvote Survival2 stopped (exit code: null)
+[2026-02-26T17:02:15.911Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-26T17:03:17.958Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-26T17:06:04.377Z] [INFO] [SERVER] Stopping server 7 (force)
+[2026-02-26T17:06:05.409Z] [INFO] [SERVER] Server Lootvote Survival2 stopped (exit code: null)
+[2026-02-26T17:06:09.529Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-26T17:07:22.389Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-26T17:35:52.685Z] [INFO] [SERVER] Stopping server 7 (force)
+[2026-02-26T17:35:53.806Z] [INFO] [SERVER] Server Lootvote Survival2 stopped (exit code: null)
+[2026-02-26T17:35:55.551Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-26T17:36:57.109Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-26T17:37:21.734Z] [INFO] [PLUGINS] Installed plugin: GPTeleport.jar
+[2026-02-26T17:37:34.882Z] [INFO] [PLUGINS] Installed plugin: ClaimKickstart-1.1.0.jar
+[2026-02-26T17:38:08.206Z] [INFO] [PLUGINS] Installed plugin: GriefPrevention_Expansion.jar
+[2026-02-26T17:38:19.013Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-26T17:38:29.631Z] [ERROR] [ROUTE] Spiget install error "Cannot install external or premium resources from Spiget"
+[2026-02-26T17:38:57.003Z] [INFO] [PLUGINS] Installed plugin: MyClaimsGUI___GriefPrevention_Addon_.jar
+[2026-02-26T17:40:12.212Z] [INFO] [SERVER] Stopping server 7 (force)
+[2026-02-26T17:40:13.203Z] [INFO] [SERVER] Server Lootvote Survival2 stopped (exit code: null)
+[2026-02-26T17:40:51.164Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-26T17:41:55.439Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-26T17:45:17.578Z] [INFO] [SERVER] Stopping server 7 (force)
+[2026-02-26T17:45:18.588Z] [INFO] [SERVER] Server Lootvote Survival2 stopped (exit code: null)
+[2026-02-26T17:46:56.563Z] [INFO] [PLUGINS] Installed plugin: EconomyShopGUI.jar
+[2026-02-26T17:47:15.500Z] [INFO] [PLUGINS] Removed plugin: EconomyShopGUI-6.14.3.jar
+[2026-02-26T17:47:45.423Z] [INFO] [PLUGINS] Removed plugin: Residence5.1.7.6.jar
+[2026-02-26T17:52:27.043Z] [INFO] [PLUGINS] Installed plugin: Modern_LWC_-_Continuation_of_LWC.jar
+[2026-02-26T17:52:49.551Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-26T17:53:58.203Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-27T04:01:47.441Z] [INFO] [SERVER] Stopping server 7
+[2026-02-27T04:01:48.778Z] [INFO] [SERVER] Server Lootvote Survival2 stopped gracefully
+[2026-02-27T04:01:50.968Z] [INFO] [SERVER] Stopping server 3
+[2026-02-27T04:01:51.992Z] [INFO] [SERVER] Server Lootvote Lobby stopped gracefully
+[2026-02-27T04:01:54.853Z] [INFO] [SERVER] Stopping server 2
+[2026-02-27T04:01:55.696Z] [INFO] [SERVER] Server Lootvote Velocity server stopped gracefully
+[2026-02-27T04:01:57.953Z] [INFO] [SERVER] Stopping server 1
+[2026-02-27T04:02:00.933Z] [INFO] [SERVER] Stopping server 1
+[2026-02-27T04:02:04.969Z] [INFO] [SERVER] Server Lootvote Skyblock stopped gracefully
+[2026-02-27T04:04:36.702Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-27T04:04:36.710Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-27T04:04:36.711Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-27T04:04:36.731Z] [INFO] [DB] Database loaded from disk
+[2026-02-27T04:04:36.755Z] [INFO] [DB] Database initialized
+[2026-02-27T04:04:36.890Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-27T04:04:36.917Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-27T04:04:36.923Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-02-27T04:04:36.924Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-27T04:04:38.928Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-27T04:04:42.945Z] [INFO] [SERVER] No running servers detected
+[2026-02-27T04:04:43.456Z] [INFO] [SERVER] Auto-starting server: Lootvote Skyblock
+[2026-02-27T04:04:43.459Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 1)
+[2026-02-27T04:04:44.489Z] [INFO] [SERVER] Auto-starting server: Lootvote Velocity server
+[2026-02-27T04:04:44.494Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-27T04:04:45.513Z] [INFO] [SERVER] Auto-starting server: Lootvote Lobby
+[2026-02-27T04:04:45.514Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-27T04:04:46.530Z] [INFO] [SERVER] Auto-starting server: Lootvote Survival
+[2026-02-27T04:04:46.531Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 4)
+[2026-02-27T04:04:47.549Z] [INFO] [SERVER] Auto-starting server: Lootvote Survival2
+[2026-02-27T04:04:47.550Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-27T04:04:50.373Z] [INFO] [SERVER] Server Lootvote Velocity server is now running
+[2026-02-27T04:04:52.153Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-27T04:05:30.033Z] [INFO] [SERVER] Server Lootvote Survival2 stopped (exit code: 0)
+[2026-02-27T04:05:38.000Z] [INFO] [SERVER] Stopping server 4 (force)
+[2026-02-27T04:05:38.197Z] [INFO] [SERVER] Server Lootvote Survival stopped (exit code: null)
+[2026-02-27T04:05:38.833Z] [INFO] [SERVER] Server Lootvote Survival2 stopped (exit code: 0)
+[2026-02-27T04:06:20.537Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-27T04:06:39.032Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-27T04:07:33.694Z] [INFO] [SERVER] Server Lootvote Skyblock is now running
+[2026-02-27T04:07:53.664Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-27T04:35:30.524Z] [WARN] [AUTH] 401 on GET /api/system/status: Missing or invalid Authorization header
+[2026-02-27T12:04:36.517Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-27T12:04:36.526Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-27T12:04:36.526Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-27T12:04:36.550Z] [INFO] [DB] Database loaded from disk
+[2026-02-27T12:04:36.567Z] [INFO] [DB] Database initialized
+[2026-02-27T12:04:36.709Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-27T12:04:36.737Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-27T12:04:36.743Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-02-27T12:04:36.744Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-27T12:04:38.745Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-27T12:04:42.706Z] [INFO] [SERVER] No running servers detected
+[2026-02-27T12:04:43.216Z] [INFO] [SERVER] Auto-starting server: Lootvote Skyblock
+[2026-02-27T12:04:43.220Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 1)
+[2026-02-27T12:04:44.243Z] [INFO] [SERVER] Auto-starting server: Lootvote Velocity server
+[2026-02-27T12:04:44.245Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-27T12:04:45.262Z] [INFO] [SERVER] Auto-starting server: Lootvote Lobby
+[2026-02-27T12:04:45.265Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-27T12:04:46.276Z] [INFO] [SERVER] Auto-starting server: Lootvote Survival2
+[2026-02-27T12:04:46.278Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-27T12:04:50.527Z] [INFO] [SERVER] Server Lootvote Velocity server is now running
+[2026-02-27T12:06:06.676Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-27T12:06:42.311Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-27T12:07:24.654Z] [INFO] [SERVER] Server Lootvote Skyblock is now running
+[2026-02-27T17:04:55.586Z] [WARN] [SERVER] Server Lootvote Velocity server crashed with code 143
+[2026-02-27T17:04:55.684Z] [WARN] [SERVER] Server Lootvote Lobby crashed with code 143
+[2026-02-27T17:04:55.760Z] [WARN] [SERVER] Server Lootvote Survival2 crashed with code 143
+[2026-02-27T17:05:32.325Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-27T17:05:32.334Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-02-27T17:05:32.335Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-02-27T17:05:32.358Z] [INFO] [DB] Database loaded from disk
+[2026-02-27T17:05:32.380Z] [INFO] [DB] Database initialized
+[2026-02-27T17:05:32.510Z] [INFO] [CERTS] SSL certificates already exist
+[2026-02-27T17:05:32.537Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-02-27T17:05:32.545Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-02-27T17:05:32.545Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-02-27T17:05:34.555Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-02-27T17:05:43.192Z] [INFO] [SERVER] No running servers detected
+[2026-02-27T17:05:43.704Z] [INFO] [SERVER] Auto-starting server: Lootvote Skyblock
+[2026-02-27T17:05:43.707Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 1)
+[2026-02-27T17:05:44.735Z] [INFO] [SERVER] Auto-starting server: Lootvote Velocity server
+[2026-02-27T17:05:44.737Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-27T17:05:45.744Z] [INFO] [SERVER] Auto-starting server: Lootvote Lobby
+[2026-02-27T17:05:45.748Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-27T17:05:46.764Z] [INFO] [SERVER] Auto-starting server: Lootvote Survival2
+[2026-02-27T17:05:46.766Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-27T17:05:55.644Z] [INFO] [SERVER] Server Lootvote Velocity server is now running
+[2026-02-27T17:07:24.053Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-27T17:08:07.630Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-27T17:08:54.677Z] [INFO] [SERVER] Server Lootvote Skyblock is now running
+[2026-02-28T09:55:12.415Z] [INFO] [SERVER] Stopping server 7
+[2026-02-28T09:55:13.466Z] [INFO] [SERVER] Server Lootvote Survival2 stopped gracefully
+[2026-02-28T09:55:15.719Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-28T09:56:28.274Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-28T10:01:39.271Z] [INFO] [SERVER] Stopping server 1
+[2026-02-28T10:01:44.919Z] [INFO] [SERVER] Server Lootvote Skyblock stopped gracefully
+[2026-02-28T10:01:47.116Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 1)
+[2026-02-28T10:02:05.515Z] [INFO] [SERVER] Stopping server 7
+[2026-02-28T10:02:06.532Z] [INFO] [SERVER] Server Lootvote Survival2 stopped gracefully
+[2026-02-28T10:02:09.035Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-28T10:03:18.934Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-28T10:04:09.975Z] [INFO] [SERVER] Server Lootvote Skyblock is now running
+[2026-02-28T10:08:22.711Z] [INFO] [SERVER] Stopping server 7
+[2026-02-28T10:08:23.631Z] [INFO] [SERVER] Server Lootvote Survival2 stopped gracefully
+[2026-02-28T10:08:25.728Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-28T10:09:24.906Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-28T10:11:20.063Z] [INFO] [SERVER] Stopping server 7 (force)
+[2026-02-28T10:11:20.187Z] [INFO] [SERVER] Server Lootvote Survival2 stopped (exit code: null)
+[2026-02-28T10:11:22.686Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-28T10:12:19.180Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-28T10:12:21.889Z] [INFO] [SERVER] Stopping server 2
+[2026-02-28T10:12:22.586Z] [INFO] [SERVER] Server Lootvote Velocity server stopped gracefully
+[2026-02-28T10:12:24.918Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-28T10:12:28.928Z] [INFO] [SERVER] Server Lootvote Velocity server is now running
+[2026-02-28T10:14:50.667Z] [ERROR] [PLUGINS] Spiget search failed "HTTP 404 for https://api.spiget.org/v2/search/resources/fake%20players%20velocity?size=20&sort=-downloads"
+[2026-02-28T10:15:05.787Z] [ERROR] [PLUGINS] Spiget search failed "HTTP 404 for https://api.spiget.org/v2/search/resources/fake%20players%20velocity?size=20&sort=-downloads"
+[2026-02-28T10:24:43.563Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-28T10:24:43.603Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-28T10:24:44.809Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-28T10:24:48.867Z] [INFO] [SERVER] Server Lootvote Velocity server is now running
+[2026-02-28T10:25:21.189Z] [INFO] [SERVER] Stopping server 7
+[2026-02-28T10:25:22.073Z] [INFO] [SERVER] Server Lootvote Survival2 stopped gracefully
+[2026-02-28T10:25:24.218Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-28T10:26:47.717Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-28T10:28:22.945Z] [INFO] [SERVER] Stopping server 7
+[2026-02-28T10:28:23.820Z] [INFO] [SERVER] Server Lootvote Survival2 stopped gracefully
+[2026-02-28T10:28:25.973Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-28T10:29:28.412Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-28T10:36:33.199Z] [INFO] [SERVER] Stopping server 2 (force)
+[2026-02-28T10:36:33.245Z] [INFO] [SERVER] Server Lootvote Velocity server stopped (exit code: null)
+[2026-02-28T10:36:59.994Z] [INFO] [SERVER] Starting server Lootvote Velocity server (ID: 2)
+[2026-02-28T10:37:03.145Z] [INFO] [SERVER] Server Lootvote Velocity server is now running
+[2026-02-28T11:35:35.165Z] [WARN] [AUTH] 401 on GET /api/system/preferences: jwt expired
+[2026-02-28T11:37:08.689Z] [INFO] [SERVER] Stopping server 7
+[2026-02-28T11:37:09.730Z] [INFO] [SERVER] Server Lootvote Survival2 stopped gracefully
+[2026-02-28T11:37:12.224Z] [INFO] [SERVER] Starting server Lootvote Survival2 (ID: 7)
+[2026-02-28T11:37:52.378Z] [INFO] [SERVER] Stopping server 3
+[2026-02-28T11:37:55.027Z] [INFO] [SERVER] Server Lootvote Lobby stopped gracefully
+[2026-02-28T11:37:57.461Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-28T11:38:35.887Z] [INFO] [SERVER] Server Lootvote Survival2 is now running
+[2026-02-28T11:39:08.866Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-28T11:40:40.468Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-02-28T11:40:40.611Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: null)
+[2026-02-28T11:40:48.935Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-28T11:41:41.740Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-02-28T11:54:43.294Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-02-28T11:54:43.438Z] [INFO] [SERVER] Server Lootvote Lobby stopped (exit code: null)
+[2026-02-28T11:55:13.327Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 3)
+[2026-02-28T11:56:08.066Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-03-01T13:38:32.831Z] [WARN] [AUTH] 401 on GET /api/system/info: jwt expired
+[2026-03-01T13:38:32.833Z] [WARN] [AUTH] 401 on GET /api/servers: jwt expired
+[2026-03-01T13:38:32.834Z] [WARN] [AUTH] 401 on GET /api/system/daemon: jwt expired
+[2026-03-02T04:34:32.780Z] [WARN] [AUTH] 401 on GET /api/system/preferences: jwt expired
+[2026-03-03T09:04:15.451Z] [ERROR] [PLUGINS] Spiget search failed "HTTP 404 for https://api.spiget.org/v2/search/resources/Eternal%20end?size=20&sort=-downloads"
+[2026-03-03T09:04:16.980Z] [ERROR] [PLUGINS] Spiget search failed "HTTP 404 for https://api.spiget.org/v2/search/resources/Eternal%20end?size=20&sort=-downloads"
+[2026-03-06T05:25:17.641Z] [WARN] [AUTH] 401 on GET /api/system/status: Missing or invalid Authorization header
+[2026-03-07T01:59:43.149Z] [WARN] [AUTH] 401 on GET /api/system/preferences: jwt expired
+[2026-03-07T01:59:44.117Z] [WARN] [AUTH] 401 on GET /api/system/preferences: jwt expired
+[2026-03-07T15:40:10.375Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-03-07T15:40:10.383Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-03-07T15:40:10.384Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-03-07T15:40:10.403Z] [INFO] [DB] Database loaded from disk
+[2026-03-07T15:40:10.431Z] [INFO] [DB] Database initialized
+[2026-03-07T15:40:10.597Z] [INFO] [CERTS] SSL certificates already exist
+[2026-03-07T15:40:10.617Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-03-07T15:40:10.625Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-03-07T15:40:10.626Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-03-07T15:40:12.627Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-03-07T15:40:12.628Z] [INFO] [SERVER] No running servers detected
+[2026-03-08T01:50:01.909Z] [WARN] [AUTH] 401 on GET /api/system/preferences: User 1 not found
+[2026-03-08T01:50:40.530Z] [WARN] [AUTH] 401 on GET /api/servers: Missing or invalid Authorization header
+[2026-03-08T01:51:01.104Z] [WARN] [AUTH] 401 on GET /api/system/preferences: jwt expired
+[2026-03-08T03:18:09.867Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-03-08T03:18:09.882Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-03-08T03:18:09.882Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-03-08T03:18:09.909Z] [INFO] [DB] Database loaded from disk
+[2026-03-08T03:18:09.928Z] [INFO] [DB] Database initialized
+[2026-03-08T03:18:10.077Z] [INFO] [CERTS] SSL certificates already exist
+[2026-03-08T03:18:10.104Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-03-08T03:18:10.112Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-03-08T03:18:10.113Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-03-08T03:18:12.128Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-03-08T03:18:12.130Z] [INFO] [SERVER] No running servers detected
+[2026-03-08T08:59:59.262Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-03-08T08:59:59.271Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-03-08T08:59:59.272Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-03-08T08:59:59.304Z] [INFO] [DB] Database loaded from disk
+[2026-03-08T08:59:59.324Z] [INFO] [DB] Database initialized
+[2026-03-08T08:59:59.454Z] [INFO] [CERTS] SSL certificates already exist
+[2026-03-08T08:59:59.478Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-03-08T08:59:59.485Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-03-08T08:59:59.486Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-03-08T09:00:01.487Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-03-08T09:00:01.488Z] [INFO] [SERVER] No running servers detected
+[2026-03-08T09:06:16.224Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-03-08T09:06:16.226Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-03-08T09:06:16.227Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-03-08T09:06:16.270Z] [INFO] [DB] Database loaded from disk: C:\Lootypanel\data\mcpanel.db (0 user(s))
+[2026-03-08T09:06:16.277Z] [INFO] [DB] Database initialized
+[2026-03-08T09:06:16.424Z] [INFO] [CERTS] SSL certificates already exist
+[2026-03-08T09:06:16.448Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-03-08T09:06:16.458Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-03-08T09:06:16.458Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-03-08T09:06:18.448Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-03-08T09:06:18.450Z] [INFO] [SERVER] No running servers detected
+[2026-03-08T09:08:20.223Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-03-08T09:08:20.231Z] [INFO] [APP]   Looty Panel - Minecraft Server Manager
+[2026-03-08T09:08:20.232Z] [INFO] [APP] ═══════════════════════════════════════
+[2026-03-08T09:08:20.265Z] [INFO] [DB] Database loaded from disk: C:\Lootypanel\data\mcpanel.db (0 user(s))
+[2026-03-08T09:08:20.271Z] [INFO] [DB] Database initialized
+[2026-03-08T09:08:20.397Z] [INFO] [CERTS] SSL certificates already exist
+[2026-03-08T09:08:20.424Z] [INFO] [SCHEDULER] Loaded 0 scheduled tasks
+[2026-03-08T09:08:20.431Z] [INFO] [APP] HTTP server running on http://0.0.0.0:8080
+[2026-03-08T09:08:20.431Z] [INFO] [APP] HTTPS server running on https://0.0.0.0:443
+[2026-03-08T09:08:22.439Z] [INFO] [SERVER] Scanning for already-running servers...
+[2026-03-08T09:08:22.440Z] [INFO] [SERVER] No running servers detected
+[2026-03-08T09:22:54.377Z] [WARN] [AUTH] 401 on GET /api/system/preferences: jwt expired
+[2026-03-08T09:27:12.721Z] [INFO] [SERVER] Starting server Lootvote Velocity (ID: 1)
+[2026-03-08T09:27:17.554Z] [INFO] [SERVER] Server Lootvote Velocity is now running
+[2026-03-08T09:27:44.926Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 2)
+[2026-03-08T09:28:09.807Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 3)
+[2026-03-08T09:29:00.167Z] [INFO] [SERVER] Server Lootvote Lobby is now running
+[2026-03-08T09:29:01.867Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 4)
+[2026-03-08T09:29:29.414Z] [INFO] [SERVER] Stopping server 2
+[2026-03-08T09:29:30.397Z] [INFO] [SERVER] Server Lootvote Lobby stopped gracefully
+[2026-03-08T09:29:32.618Z] [INFO] [SERVER] Starting server Lootvote Lobby (ID: 2)
+[2026-03-08T09:29:33.448Z] [INFO] [SERVER] Stopping server 3 (force)
+[2026-03-08T09:29:34.891Z] [INFO] [SERVER] Server Lootvote Survival stopped (exit code: null)
+[2026-03-08T09:29:39.868Z] [INFO] [SERVER] Starting server Lootvote Survival (ID: 3)
+[2026-03-08T09:29:47.808Z] [INFO] [SERVER] Stopping server 4 (force)
+[2026-03-08T09:29:48.850Z] [INFO] [SERVER] Server Lootvote Skyblock stopped (exit code: null)
+[2026-03-08T09:29:51.658Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 4)
+[2026-03-08T09:29:56.034Z] [INFO] [SERVER] Starting server Lootvote Skyblock (ID: 4)
+[2026-03-08T09:30:31.428Z] [INFO] [SERVER] Server Lootvote Skyblock stopped (exit code: 0)

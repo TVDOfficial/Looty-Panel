@@ -25,6 +25,7 @@ const API = {
             if (typeof App !== 'undefined' && App.showLogin) {
                 App.user = null;
                 App.showLogin();
+                if (typeof Toast !== 'undefined') Toast.warning('Session expired — please log in again.');
             } else {
                 location.reload();
             }
